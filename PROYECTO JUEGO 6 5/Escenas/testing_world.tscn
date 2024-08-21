@@ -1,0 +1,175 @@
+[gd_scene load_steps=16 format=3 uid="uid://dtjviddtunp3j"]
+
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="1_qdk8m"]
+[ext_resource type="Material" uid="uid://csxksolgvgwie" path="res://Modelos/Texturas/PisoTextura.tres" id="2_fm7xe"]
+[ext_resource type="Material" uid="uid://bj8hn5slk10nh" path="res://Modelos/Texturas/TechoTextura.tres" id="3_ejk0a"]
+[ext_resource type="Material" uid="uid://ccu50x5tvlatm" path="res://Modelos/Texturas/ParedTextura.tres" id="4_w0fh6"]
+[ext_resource type="PackedScene" uid="uid://bfvdbnwf2urn4" path="res://Escenas/mesa.tscn" id="5_36x1n"]
+[ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="7_fu7ci"]
+[ext_resource type="PackedScene" uid="uid://2i1kadg4xro3" path="res://Escenas/LinternaTest.tscn" id="8_q55v5"]
+[ext_resource type="AudioStream" uid="uid://bf0uwsafpkoxv" path="res://Sonidos/war-horn-horror-73771.mp3" id="9_qiefj"]
+[ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="9_sdvge"]
+[ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="10_x5bex"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmyas"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_86lin"]
+sky_material = SubResource("ProceduralSkyMaterial_nmyas")
+
+[sub_resource type="Environment" id="Environment_8d7ch"]
+background_mode = 2
+sky = SubResource("Sky_86lin")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ap31t"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e80s7"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="TestingWorld" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8d7ch")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_qdk8m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88826, 0, -1)
+
+[node name="piso" type="MeshInstance3D" parent="."]
+transform = Transform3D(65.856, 0, 0, 0, 0.1, 0, 0, 0, 46.8547, 0, 0, 0)
+material_override = ExtResource("2_fm7xe")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="piso"]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="piso/StaticBody3D"]
+visible = false
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="techo" type="MeshInstance3D" parent="."]
+transform = Transform3D(65.856, 0, 0, 0, 0.1, 0, 0, 0, 46.8547, 0, 6, 0)
+material_override = ExtResource("3_ejk0a")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="techo"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="techo/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Pared" type="MeshInstance3D" parent="."]
+transform = Transform3D(65.856, 0, 0, 0, 7.10976, 0, 0, 0, 0.140564, 0, 3, 23)
+material_override = ExtResource("4_w0fh6")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Pared2" type="MeshInstance3D" parent="."]
+transform = Transform3D(65.856, 0, 0, 0, 7.10976, 0, 0, 0, 0.140564, 0, 3, -23)
+material_override = ExtResource("4_w0fh6")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Pared3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.30293e-06, 0, 0.140564, 0, 7.10976, 0, -52.6848, 0, -6.14425e-09, 32, 3, -1)
+material_override = ExtResource("4_w0fh6")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Pared4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.30293e-06, 0, 0.140564, 0, 7.10976, 0, -52.6848, 0, -6.14425e-09, -31, 3, -1)
+material_override = ExtResource("4_w0fh6")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Pared5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.05233e-06, 0, 0.140564, 0, 7.10976, 0, -24.0745, 0, -6.14425e-09, 2.13013, 3, 11.4289)
+material_override = ExtResource("4_w0fh6")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Pared6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.05233e-06, 0, 0.140564, 0, 7.10976, 0, -24.0745, 0, -6.14425e-09, 2.13013, 3, -14.5869)
+material_override = ExtResource("4_w0fh6")
+mesh = SubResource("BoxMesh_ap31t")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pared6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pared6/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_e80s7")
+
+[node name="Mesa" parent="." instance=ExtResource("5_36x1n")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.44415, 0.0500002, -1.60354)
+
+[node name="UI" parent="." instance=ExtResource("7_fu7ci")]
+
+[node name="StaticBody3D" parent="." instance=ExtResource("8_q55v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, -3)
+
+[node name="light" parent="." instance=ExtResource("9_sdvge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02687, 6, -1.81727)
+
+[node name="Ambient Sound" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Ambient Sound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, -30.7722)
+stream = ExtResource("9_qiefj")
+volume_db = 5.0
+autoplay = true
+max_distance = 60.0
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Ambient Sound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, 30.7324)
+stream = ExtResource("9_qiefj")
+volume_db = 5.0
+autoplay = true
+max_distance = 60.0
+
+[node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Ambient Sound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.2293, 13.4702, 2.24907)
+stream = ExtResource("9_qiefj")
+volume_db = 5.0
+autoplay = true
+max_distance = 60.0
+
+[node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Ambient Sound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9482, 13.4702, 2.24907)
+stream = ExtResource("9_qiefj")
+volume_db = 5.0
+autoplay = true
+max_distance = 60.0
+
+[node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="Ambient Sound"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10634, 13.4702, 0.404638)
+stream = ExtResource("9_qiefj")
+volume_db = 5.0
+autoplay = true
+max_distance = 60.0
+
+[node name="Puerta" parent="." instance=ExtResource("10_x5bex")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.11056, 0.05, -1.59603)

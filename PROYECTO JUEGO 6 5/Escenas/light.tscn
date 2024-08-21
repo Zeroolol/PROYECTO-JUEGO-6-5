@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b01dp5hsad1k8"]
+
+[ext_resource type="Material" uid="uid://bijayr0frfp5j" path="res://Modelos/Texturas/LuzTestTextura.tres" id="1_bfydk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_swsg4"]
+
+[node name="light" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_bfydk")
+mesh = SubResource("SphereMesh_swsg4")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841802, 0)

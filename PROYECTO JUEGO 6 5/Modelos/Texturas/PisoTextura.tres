@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://csxksolgvgwie"]
+
+[ext_resource type="Texture2D" uid="uid://f601uqawce2k" path="res://Modelos/Texturas/PisoTextura.jpg" id="1_2vo41"]
+
+[resource]
+albedo_color = Color(0.299547, 0.299547, 0.299547, 1)
+albedo_texture = ExtResource("1_2vo41")
+uv1_scale = Vector3(6, 6, 6)
+uv1_triplanar = true
