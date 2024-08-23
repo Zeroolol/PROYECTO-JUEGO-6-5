@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bfvdbnwf2urn4"]
 
-[ext_resource type="Material" uid="uid://chlilewwjl47m" path="res://Modelos/Texturas/MesaTest.tres" id="1_njctv"]
+[ext_resource type="Material" uid="uid://bibumbv102673" path="res://Modelos/Texturas/PuertaTest.tres" id="1_aftlu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_0j25i"]
 
@@ -11,7 +11,7 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 
 [node name="Tabla" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.2, 0, 0, 0, 0.1, 0, 0, 0, 1.9, 0, 1, 0)
-material_override = ExtResource("1_njctv")
+material_override = ExtResource("1_aftlu")
 mesh = SubResource("BoxMesh_0j25i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Tabla"]
@@ -21,7 +21,7 @@ shape = SubResource("ConcavePolygonShape3D_yvthi")
 
 [node name="Pata" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.100183, 0, 0, 0, 0.972774, 0, 0, 0, 0.101897, -1.50764, 0.553441, -0.860154)
-material_override = ExtResource("1_njctv")
+material_override = ExtResource("1_aftlu")
 mesh = SubResource("BoxMesh_0j25i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pata"]
@@ -31,7 +31,7 @@ shape = SubResource("ConcavePolygonShape3D_yvthi")
 
 [node name="Pata2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.100183, 0, 0, 0, 0.972774, 0, 0, 0, 0.101897, 1.4935, 0.553441, -0.860154)
-material_override = ExtResource("1_njctv")
+material_override = ExtResource("1_aftlu")
 mesh = SubResource("BoxMesh_0j25i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pata2"]
@@ -41,7 +41,7 @@ shape = SubResource("ConcavePolygonShape3D_yvthi")
 
 [node name="Pata3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.100183, 0, 0, 0, 0.972774, 0, 0, 0, 0.101897, 1.4935, 0.553441, 0.837971)
-material_override = ExtResource("1_njctv")
+material_override = ExtResource("1_aftlu")
 mesh = SubResource("BoxMesh_0j25i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pata3"]
@@ -51,7 +51,7 @@ shape = SubResource("ConcavePolygonShape3D_yvthi")
 
 [node name="Pata4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.100183, 0, 0, 0, 0.972774, 0, 0, 0, 0.101897, -1.49266, 0.553441, 0.840497)
-material_override = ExtResource("1_njctv")
+material_override = ExtResource("1_aftlu")
 mesh = SubResource("BoxMesh_0j25i")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Pata4"]

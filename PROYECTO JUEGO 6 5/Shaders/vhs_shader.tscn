@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj1r7rwhj0ro8"]
+
+[ext_resource type="Shader" path="res://Shaders/VHS.gdshader" id="1_qpmbu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxlui"]
+shader = ExtResource("1_qpmbu")
+shader_parameter/range = 0.05
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.0045
+shader_parameter/colorOffsetIntensity = 0.2
+
+[node name="VHS_shader" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vxlui")
+layout_mode = 0
+offset_right = 1151.0
+offset_bottom = 651.0
+mouse_filter = 2

@@ -1,24 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://2i1kadg4xro3"]
 
 [ext_resource type="Script" path="res://Scripts/PickupLinternTest.gd" id="1_s2ytd"]
+[ext_resource type="ArrayMesh" uid="uid://b4tdmugqwj0e" path="res://Modelos/Linterna/ModeloLinterna.obj" id="2_mnelx"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_u2thd"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xs8aq"]
-size = Vector3(0.332855, 1.44867, 0.329834)
+[sub_resource type="BoxShape3D" id="BoxShape3D_btwmi"]
+size = Vector3(2.31348, 10.6236, 2.36749)
 
 [node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(0.165305, 0, 0, 0, 0.131028, 0, 0, 0, 0.155458, 0, 0, 0)
 script = ExtResource("1_s2ytd")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.21, 0, 0, 0, 0.634216, 0, 0, 0, 0.2, 0, 0.633855, 0)
-mesh = SubResource("CylinderMesh_u2thd")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.320099, 0, 0, 0, 0.126545, 0, 0, 0, 0.317906, 0, 1.30733, 0)
-mesh = SubResource("CylinderMesh_u2thd")
+[node name="ModeloLinterna" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497568, 0, 0.233013)
+mesh = ExtResource("2_mnelx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.00082, 0, 0, 0, 1.00082, 0, 0, 0, 1.00082, 0.000442505, 0.721448, 0.00134277)
-shape = SubResource("BoxShape3D_xs8aq")
-metadata/_edit_group_ = true
+transform = Transform3D(1.17078, 0, 0, 0, 1.17078, 0, 0, 0, 1.17078, -0.469341, 6.20846, 0.195254)
+shape = SubResource("BoxShape3D_btwmi")

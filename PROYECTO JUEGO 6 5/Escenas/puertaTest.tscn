@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ceh7xg4t5agqy"]
+[gd_scene load_steps=8 format=3 uid="uid://ceh7xg4t5agqy"]
 
-[ext_resource type="Material" uid="uid://bibumbv102673" path="res://Modelos/Texturas/PuertaTest.tres" id="1_coyfw"]
 [ext_resource type="Script" path="res://Scripts/PuertaTest.gd" id="1_nj3ul"]
+[ext_resource type="ArrayMesh" uid="uid://6cosmjiwcr8k" path="res://Modelos/PuertaAula/PuertaAula.obj" id="2_ni0ve"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xvn1x"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_3mt04"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ox0ja"]
+size = Vector3(2.40875, 5.02472, 0.218506)
 
 [sub_resource type="Animation" id="Animation_p4gha"]
 resource_name = "Abrir"
@@ -71,11 +70,13 @@ transform = Transform3D(1.98235, 0, 0, 0, 3.69238, 0, 0, 0, 0.162298, -0.94061, 
 script = ExtResource("1_nj3ul")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Bisagra/StaticBody3D"]
-shape = SubResource("BoxShape3D_xvn1x")
+transform = Transform3D(-0.504452, 0, -4.41006e-08, 0, 0.270828, 0, 5.38656e-07, 0, -6.16151, -0.0304973, 0.178326, -0.290951)
+shape = SubResource("BoxShape3D_ox0ja")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Bisagra/StaticBody3D"]
-material_override = ExtResource("1_coyfw")
-mesh = SubResource("BoxMesh_3mt04")
+[node name="PuertaAula" type="MeshInstance3D" parent="Bisagra/StaticBody3D"]
+transform = Transform3D(-0.504452, 0, -4.41006e-08, 0, 0.270828, 0, 5.38656e-07, 0, -6.16151, -0.0310669, -0.499529, -0.258609)
+mesh = ExtResource("2_ni0ve")
+skeleton = NodePath("../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Bisagra/StaticBody3D"]
 root_node = NodePath("../../..")
