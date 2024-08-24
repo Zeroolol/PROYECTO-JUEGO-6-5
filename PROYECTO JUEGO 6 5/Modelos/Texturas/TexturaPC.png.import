@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f601uqawce2k"
-path.s3tc="res://.godot/imported/PisoTextura.jpg-bbed6095f379a6578c317f2dc5f6b4f4.s3tc.ctex"
+uid="uid://ddnsc0uyfcxrl"
+path.s3tc="res://.godot/imported/TexturaPC.png-b7ce2b15f0d4da1469536ebf2b37fb98.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Modelos/Texturas/PisoTextura.jpg"
-dest_files=["res://.godot/imported/PisoTextura.jpg-bbed6095f379a6578c317f2dc5f6b4f4.s3tc.ctex"]
+source_file="res://Modelos/Texturas/TexturaPC.png"
+dest_files=["res://.godot/imported/TexturaPC.png-b7ce2b15f0d4da1469536ebf2b37fb98.s3tc.ctex"]
 
 [params]
 
