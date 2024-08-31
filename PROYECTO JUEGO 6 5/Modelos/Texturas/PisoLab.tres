@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://csvfl6wfiwdvl"]
+
+[ext_resource type="Texture2D" uid="uid://dis8wdh6jla0b" path="res://Modelos/Texturas/piso textura.png" id="1_31yw6"]
+
+[resource]
+albedo_texture = ExtResource("1_31yw6")
+uv1_scale = Vector3(10, 10, 10)
+uv1_triplanar = true

@@ -1,85 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ceh7xg4t5agqy"]
+[gd_scene load_steps=2 format=3 uid="uid://ceh7xg4t5agqy"]
 
-[ext_resource type="Script" path="res://Scripts/PuertaTest.gd" id="1_nj3ul"]
-[ext_resource type="ArrayMesh" uid="uid://6cosmjiwcr8k" path="res://Modelos/PuertaAula/PuertaAula.obj" id="2_ni0ve"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ox0ja"]
-size = Vector3(2.40875, 5.02472, 0.218506)
-
-[sub_resource type="Animation" id="Animation_p4gha"]
-resource_name = "Abrir"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bisagra:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_vtge6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bisagra:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_trens"]
-resource_name = "cerrar"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Bisagra:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_55pir"]
-_data = {
-"Abrir": SubResource("Animation_p4gha"),
-"RESET": SubResource("Animation_vtge6"),
-"cerrar": SubResource("Animation_trens")
-}
+[ext_resource type="ArrayMesh" uid="uid://c257vn68o0j5j" path="res://Modelos/PuertaAula/PuertaAula.obj" id="2_ni0ve"]
 
 [node name="Puerta" type="Node3D"]
 
 [node name="Bisagra" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94061, 2.0356, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra"]
-transform = Transform3D(1.98235, 0, 0, 0, 3.69238, 0, 0, 0, 0.162298, -0.94061, -0.19115, 0)
-script = ExtResource("1_nj3ul")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Bisagra/StaticBody3D"]
-transform = Transform3D(-0.504452, 0, -4.41006e-08, 0, 0.270828, 0, 5.38656e-07, 0, -6.16151, -0.0304973, 0.178326, -0.290951)
-shape = SubResource("BoxShape3D_ox0ja")
-
-[node name="PuertaAula" type="MeshInstance3D" parent="Bisagra/StaticBody3D"]
-transform = Transform3D(-0.504452, 0, -4.41006e-08, 0, 0.270828, 0, 5.38656e-07, 0, -6.16151, -0.0310669, -0.499529, -0.258609)
+[node name="PuertaAula" type="MeshInstance3D" parent="Bisagra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.870814, -2.0356, 0.0726795)
 mesh = ExtResource("2_ni0ve")
-skeleton = NodePath("../../..")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Bisagra/StaticBody3D"]
-root_node = NodePath("../../..")
-libraries = {
-"": SubResource("AnimationLibrary_55pir")
-}
+skeleton = NodePath("../..")
