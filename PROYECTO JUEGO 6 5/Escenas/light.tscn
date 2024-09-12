@@ -1,15 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://b01dp5hsad1k8"]
 
 [ext_resource type="ArrayMesh" uid="uid://4se5wktgil65" path="res://Modelos/Luces/LUCES_TECHO.obj" id="1_80pcw"]
-[ext_resource type="Material" uid="uid://bijayr0frfp5j" path="res://Modelos/Texturas/LuzTestTextura.tres" id="1_bfydk"]
+[ext_resource type="Material" uid="uid://duxayo0a4vjjo" path="res://Assets/Material/Luces.tres" id="1_njcpa"]
 
 [node name="light" type="Node3D"]
 
 [node name="LucesTecho" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.156291, 0, -0.0025831, 0, 0.101302, 0, 0.00797478, 0, 0.0506239, 0.358231, 0.311325, 0.197807)
-material_override = ExtResource("1_bfydk")
+material_override = ExtResource("1_njcpa")
 mesh = ExtResource("1_80pcw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841802, 0)
-omni_range = 6.0
+light_color = Color(0.761168, 0.925729, 0.997979, 1)
+omni_range = 9.192

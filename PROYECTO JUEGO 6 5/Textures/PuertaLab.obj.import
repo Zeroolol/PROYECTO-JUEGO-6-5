@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bwqltmytra2jr"
+path="res://.godot/imported/PuertaLab.obj-4e5af71a4dfaae87d4412e55fe10c5fa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/PuertaLab.obj-4e5af71a4dfaae87d4412e55fe10c5fa.mesh"]
+
+source_file="res://Textures/PuertaLab.obj"
+dest_files=["res://.godot/imported/PuertaLab.obj-4e5af71a4dfaae87d4412e55fe10c5fa.mesh", "res://.godot/imported/PuertaLab.obj-4e5af71a4dfaae87d4412e55fe10c5fa.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://snuy104ppvmg"]
+
+[ext_resource type="ArrayMesh" uid="uid://c37h3o6ruoi8" path="res://Modelos/Llave/Llaves.obj" id="1_028l6"]
+[ext_resource type="Script" path="res://Scripts/PickUpKey.gd" id="1_wtnxj"]
+
+[sub_resource type="Shader" id="Shader_stffe"]
+code = "shader_type spatial;
+render_mode blend_mix,
+	cull_disabled,
+	depth_prepass_alpha,
+	shadows_disabled,
+	specular_disabled,
+	vertex_lighting;
+
+uniform bool affine_mapping = false;
+uniform sampler2D albedo : source_color, filter_nearest;
+uniform float alpha_scissor : hint_range(0, 1) = 0.5;
+uniform float jitter: hint_range(0, 1) = 0.25;
+uniform ivec2 resolution = ivec2(320, 240);
+
+vec4 snap_to_position(vec4 base_position)
+{
+	vec4 snapped_position = base_position;
+	snapped_position.xyz = base_position.xyz / base_position.w;
+	
+	vec2 snap_resulotion = floor(vec2(resolution) * (1.0 - jitter));
+	snapped_position.x = floor(snap_resulotion.x * snapped_position.x) / snap_resulotion.x;
+	snapped_position.y = floor(snap_resulotion.y * snapped_position.y) / snap_resulotion.y;
+	
+	snapped_position.xyz *= base_position.w;
+	return snapped_position;
+}
+
+void vertex()
+{
+	vec4 snapped_position = snap_to_position(PROJECTION_MATRIX * MODELVIEW_MATRIX * vec4(VERTEX, 1.0));
+	if (affine_mapping)
+	{
+		POSITION = snapped_position;
+		POSITION /= abs(POSITION.w);
+	}
+	else
+	{
+		POSITION = snapped_position;
+	}
+}
+
+void fragment()
+{
+	vec4 color_base = COLOR;
+	vec4 texture_color = texture(albedo, UV);
+
+	ALBEDO = (color_base * texture_color).rgb;
+	ALPHA = texture_color.a * color_base.a;
+	ALPHA_SCISSOR_THRESHOLD = alpha_scissor;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vywgj"]
+render_priority = 0
+shader = SubResource("Shader_stffe")
+shader_parameter/affine_mapping = false
+shader_parameter/alpha_scissor = 0.5
+shader_parameter/jitter = 0.25
+shader_parameter/resolution = Vector2i(320, 240)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k26m1"]
+size = Vector3(15.0652, 0.910164, 6.52905)
+
+[node name="Llave" type="Node3D"]
+transform = Transform3D(0.0354367, 0, 0, 0, 0.0598027, 0, 0, 0, 0.0311605, 0, 0, 0)
+
+[node name="Llave" type="StaticBody3D" parent="."]
+script = ExtResource("1_wtnxj")
+
+[node name="Llaves" type="MeshInstance3D" parent="Llave"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.77201, 0, -0.960198)
+mesh = ExtResource("1_028l6")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_vywgj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Llave"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0.284963, 0.0196263, -1.04191)
+shape = SubResource("BoxShape3D_k26m1")

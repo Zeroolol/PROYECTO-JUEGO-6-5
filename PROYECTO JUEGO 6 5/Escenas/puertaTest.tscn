@@ -1,13 +1,109 @@
-[gd_scene load_steps=2 format=3 uid="uid://ceh7xg4t5agqy"]
+[gd_scene load_steps=9 format=3 uid="uid://ceh7xg4t5agqy"]
 
-[ext_resource type="ArrayMesh" uid="uid://c257vn68o0j5j" path="res://Modelos/PuertaAula/PuertaAula.obj" id="2_ni0ve"]
+[ext_resource type="Script" path="res://Scripts/Puerta.gd" id="2_0hg6c"]
+[ext_resource type="ArrayMesh" uid="uid://dky8grbr10vdj" path="res://Textures/PuertaAula.obj" id="2_r52do"]
+[ext_resource type="ArrayMesh" uid="uid://bwqltmytra2jr" path="res://Textures/PuertaLab.obj" id="3_hwd1v"]
 
-[node name="Puerta" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_b7p8q"]
+size = Vector3(2.41296, 5.05801, 0.228699)
+
+[sub_resource type="Animation" id="Animation_1if1n"]
+resource_name = "Abrir"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bisagra:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c7o7j"]
+resource_name = "Cerrar"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bisagra:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tn4rl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bisagra:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gj15o"]
+_data = {
+"Abrir": SubResource("Animation_1if1n"),
+"Cerrar": SubResource("Animation_c7o7j"),
+"RESET": SubResource("Animation_tn4rl")
+}
+
+[node name="Puertas" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="Bisagra" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94061, 2.0356, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19805, 2.45661, 0)
 
-[node name="PuertaAula" type="MeshInstance3D" parent="Bisagra"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.870814, -2.0356, 0.0726795)
-mesh = ExtResource("2_ni0ve")
-skeleton = NodePath("../..")
+[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19805, -2.45661, 0)
+script = ExtResource("2_0hg6c")
+
+[node name="PuertaAula" type="MeshInstance3D" parent="Bisagra/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.93319, 0, -0.167433)
+mesh = ExtResource("2_r52do")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bisagra/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131989, 2.49391, -0.153076)
+shape = SubResource("BoxShape3D_b7p8q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bisagra/StaticBody3D"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_gj15o")
+}
+
+[node name="Bisagra2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.19805, 2.45661, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19805, -2.45661, 0)
+script = ExtResource("2_0hg6c")
+
+[node name="PuertaLab" type="MeshInstance3D" parent="Bisagra2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.76837e-07, 0, 0)
+mesh = ExtResource("3_hwd1v")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bisagra2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00128317, 2.49391, -0.0144346)
+shape = SubResource("BoxShape3D_b7p8q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bisagra2/StaticBody3D"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_gj15o")
+}

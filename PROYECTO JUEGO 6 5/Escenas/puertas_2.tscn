@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://86hx4480nwcb"]
+
+[ext_resource type="Script" path="res://Scripts/PuertaGrande.gd" id="1_b5nb2"]
+[ext_resource type="Script" path="res://Scripts/DoorParents.gd" id="1_s1axe"]
+[ext_resource type="ArrayMesh" uid="uid://danusx2juu8rh" path="res://Textures/PuertaBaño.obj" id="1_uewh8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ie0i4"]
+size = Vector3(4.83379, 5.16504, 0.228531)
+
+[sub_resource type="Animation" id="Animation_hi2it"]
+resource_name = "Abrir"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Bisagra2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -4.71239, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b3jnl"]
+resource_name = "Cerrar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Bisagra2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -4.71239, 0), Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lsxle"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../Bisagra2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vn46k"]
+_data = {
+"Abrir": SubResource("Animation_hi2it"),
+"Cerrar": SubResource("Animation_b3jnl"),
+"RESET": SubResource("Animation_lsxle")
+}
+
+[node name="Puertas2" type="Node3D"]
+script = ExtResource("1_s1axe")
+
+[node name="Bisagra" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85373, 2.38952, -0.279206)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85373, -2.38952, 0)
+script = ExtResource("1_b5nb2")
+
+[node name="PuertaBaño" type="MeshInstance3D" parent="Bisagra/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65172, 0, 0.162915)
+mesh = ExtResource("1_uewh8")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bisagra/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.295849, 2.58643, 0.161293)
+shape = SubResource("BoxShape3D_ie0i4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bisagra/StaticBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_vn46k")
+}
+
+[node name="Bisagra2" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, 7.29946, 2.38952, 0.0525548)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85373, -2.38952, 0)
+
+[node name="PuertaBaño" type="MeshInstance3D" parent="Bisagra2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.68083, 0, 0.162914)
+mesh = ExtResource("1_uewh8")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bisagra2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.318703, 2.58643, 0.161293)
+shape = SubResource("BoxShape3D_ie0i4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Bisagra2/StaticBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_vn46k")
+}

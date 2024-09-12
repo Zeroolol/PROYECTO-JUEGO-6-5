@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c02wit6wuhsdp"
+path="res://.godot/imported/Cajoneras.obj-0a01f92f2c2c908bc3feed7d1d95440d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Cajoneras.obj-0a01f92f2c2c908bc3feed7d1d95440d.mesh"]
+
+source_file="res://Modelos/Cajoneras/Cajoneras.obj"
+dest_files=["res://.godot/imported/Cajoneras.obj-0a01f92f2c2c908bc3feed7d1d95440d.mesh", "res://.godot/imported/Cajoneras.obj-0a01f92f2c2c908bc3feed7d1d95440d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

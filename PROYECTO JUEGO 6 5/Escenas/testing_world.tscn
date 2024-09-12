@@ -1,18 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=20 format=3 uid="uid://dtjviddtunp3j"]
 
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_pkxaa"]
+[ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="4_by31u"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="6_yj7ha"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="7_fu7ci"]
-[ext_resource type="Material" uid="uid://csvfl6wfiwdvl" path="res://Modelos/Texturas/PisoLab.tres" id="8_p27aj"]
-[ext_resource type="PackedScene" uid="uid://2i1kadg4xro3" path="res://Escenas/LinternaTest.tscn" id="9_d6ymi"]
+[ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="9_7pjq2"]
 [ext_resource type="AudioStream" uid="uid://bf0uwsafpkoxv" path="res://Sonidos/war-horn-horror-73771.mp3" id="9_qiefj"]
-[ext_resource type="ArrayMesh" uid="uid://ce4togcc24xf3" path="res://Modelos/Silla/SillaModelo.obj" id="9_vl5ah"]
 [ext_resource type="Script" path="res://Scripts/Escena inicio.gd" id="10_0xs08"]
-[ext_resource type="ArrayMesh" uid="uid://cu1bmos1e4hjp" path="res://Modelos/Computadora/teclado.obj" id="11_0b2jm"]
-[ext_resource type="ArrayMesh" uid="uid://jca8rvi55fkl" path="res://Modelos/Inodoro/inodoro.obj" id="11_tommk"]
+[ext_resource type="PackedScene" uid="uid://2i1kadg4xro3" path="res://Escenas/LinternaTest.tscn" id="10_dxovd"]
+[ext_resource type="ArrayMesh" uid="uid://dky8grbr10vdj" path="res://Textures/PuertaAula.obj" id="11_6ywhm"]
 [ext_resource type="PackedScene" uid="uid://bqrxw2naeb4hh" path="res://Escenas/Pausa.tscn" id="12_dqfwq"]
-[ext_resource type="ArrayMesh" uid="uid://ce5qb36cqsilc" path="res://Modelos/Computadora/Monitor.obj" id="12_xxig2"]
-[ext_resource type="ArrayMesh" uid="uid://b75wklis2rgnn" path="res://Modelos/Computadora/Soporte.obj" id="13_l1dqo"]
-[ext_resource type="ArrayMesh" uid="uid://b47bxbfe851q0" path="res://Modelos/Computadora/Monitoooor.obj" id="14_byjqm"]
+[ext_resource type="PackedScene" uid="uid://86hx4480nwcb" path="res://Escenas/puertas_2.tscn" id="12_vywq5"]
+[ext_resource type="PackedScene" uid="uid://snuy104ppvmg" path="res://Escenas/llave.tscn" id="13_64mry"]
+[ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="16_dqlfs"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmyas"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,23 +22,16 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_nmyas")
 
 [sub_resource type="Environment" id="Environment_8d7ch"]
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_86lin")
 glow_enabled = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_etb4m"]
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_broyg"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_syj7h"]
-size = Vector3(3.27618, 0.75473, 3.06458)
 
 [sub_resource type="Animation" id="Animation_0dijk"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("camara escena:position")
+tracks/0/path = NodePath("camara escena:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +43,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("camara escena:rotation")
+tracks/1/path = NodePath("camara escena:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -66,26 +59,26 @@ length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("camara escena:position")
+tracks/0/path = NodePath("camara escena:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 7, 8, 9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 1.03593, 0), Vector3(0, 1.77552, 0), Vector3(0, 2.01556, 0), Vector3(-0.0360031, 2.33823, -0.124397)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("camara escena:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.9, 2.2, 3.2, 5, 6, 8, 9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0.288503, 1.5708, 1.5708), Vector3(0.872665, 1.5708, 1.5708), Vector3(0.552314, 0.13337, 0.0702757), Vector3(0.551524, -0.158825, 0), Vector3(0.454173, -0.150471, 0.0173131), Vector3(-1.30027, -0.150098, 0.0174533), Vector3(-0.701976, -0.0523592, -0.0934355), Vector3(-0.015277, -0.0422734, 0.00140323)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("camara escena:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.03593, 0), Vector3(0, 1.77552, 0), Vector3(0, 2.01556, 0), Vector3(-0.0360031, 2.33823, -0.124397)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vv3ds"]
@@ -95,6 +88,7 @@ _data = {
 }
 
 [node name="TestingWorld" type="Node3D"]
+script = ExtResource("1_pkxaa")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_8d7ch")
@@ -105,24 +99,24 @@ visible = false
 shadow_enabled = true
 
 [node name="Ambient Sound" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1877, 0, 32.5268)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1877, 0, -31.8457)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Ambient Sound"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, -30.7722)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, -65.662)
 stream = ExtResource("9_qiefj")
 volume_db = 53.077
 autoplay = true
 max_distance = 60.0
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Ambient Sound"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, 30.7324)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, 58.374)
 stream = ExtResource("9_qiefj")
 volume_db = 42.821
 autoplay = true
 max_distance = 60.0
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Ambient Sound"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.2293, 13.4702, 2.24907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7882, 13.4702, 2.24907)
 stream = ExtResource("9_qiefj")
 volume_db = 38.718
 autoplay = true
@@ -136,198 +130,93 @@ autoplay = true
 max_distance = 60.0
 
 [node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="Ambient Sound"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10634, 13.4702, 0.404638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25786, 13.4702, 0.404638)
 stream = ExtResource("9_qiefj")
 volume_db = 46.923
 autoplay = true
 max_distance = 60.0
 
 [node name="Player" parent="." instance=ExtResource("6_yj7ha")]
-transform = Transform3D(-0.015114, 0, -0.999886, 0, 1, 0, 0.999886, 0, -0.015114, -40.8417, 0.226699, 33.7876)
-
-[node name="StaticBody3D" parent="." instance=ExtResource("9_d6ymi")]
-transform = Transform3D(0.0809994, 0, 0, 0, 0.0720654, 0, 0, 0, 0.0932748, -24.3605, 1.55238, 25.4233)
-
-[node name="PC" type="Node3D" parent="."]
-transform = Transform3D(-2.77744, 0, 1.31629e-06, 0, 13.6292, 0, -2.42811e-07, 0, -15.0566, -38.6359, 1.0848, 32.6558)
-
-[node name="Teclado" type="MeshInstance3D" parent="PC"]
-transform = Transform3D(-1.05255e-08, 0, -0.316525, 0, 0.0733718, 0, 0.0444189, 0, -2.55223e-09, 2.72171, -0.0553209, -0.492774)
-mesh = ExtResource("11_0b2jm")
-skeleton = NodePath("../..")
-
-[node name="Monitor" type="MeshInstance3D" parent="PC"]
-transform = Transform3D(-8.81844e-09, 0, -0.162822, 0, 0.0318152, 0, 0.0372148, 0, -1.31288e-09, 2.2354, -0.0624576, -0.535321)
-mesh = ExtResource("12_xxig2")
-skeleton = NodePath("../..")
-
-[node name="Soporte" type="MeshInstance3D" parent="PC"]
-transform = Transform3D(-0.0222707, 0, -0.106003, 0, 0.020568, 0, 0.0225188, 0, -0.00356733, 2.43437, -0.0600096, -0.479989)
-mesh = ExtResource("13_l1dqo")
-skeleton = NodePath("../..")
-
-[node name="Monitoooor" type="MeshInstance3D" parent="PC"]
-transform = Transform3D(-0.0423973, 0, -0.21465, 0, 0.0331333, 0, 0.0291879, 0, -0.0106096, 2.36236, -0.0620802, -0.493477)
-mesh = ExtResource("14_byjqm")
-skeleton = NodePath("../..")
-
-[node name="PC2" type="Node3D" parent="."]
-transform = Transform3D(-2.77744, 0, 1.31629e-06, 0, 13.6292, 0, -2.42811e-07, 0, -15.0566, -38.6773, 1.0848, 29.3977)
-
-[node name="Teclado" type="MeshInstance3D" parent="PC2"]
-transform = Transform3D(-1.05255e-08, 0, -0.316525, 0, 0.0733718, 0, 0.0444189, 0, -2.55223e-09, 2.7199, -0.0553209, -0.508096)
-mesh = ExtResource("11_0b2jm")
-skeleton = NodePath("../..")
-
-[node name="Monitor" type="MeshInstance3D" parent="PC2"]
-transform = Transform3D(-8.81844e-09, 0, -0.162822, 0, 0.0318152, 0, 0.0372148, 0, -1.31288e-09, 2.2354, -0.0624576, -0.535321)
-mesh = ExtResource("12_xxig2")
-skeleton = NodePath("../..")
-
-[node name="Soporte" type="MeshInstance3D" parent="PC2"]
-transform = Transform3D(-0.0215694, 0, -0.106063, 0, 0.020568, 0, 0.0231915, 0, -0.000313674, 2.43548, -0.0600096, -0.480195)
-mesh = ExtResource("13_l1dqo")
-skeleton = NodePath("../..")
-
-[node name="Monitoooor" type="MeshInstance3D" parent="PC2"]
-transform = Transform3D(-0.0414819, 0, -0.214874, 0, 0.0331333, 0, 0.0304748, 0, -0.0040196, 2.36126, -0.0620802, -0.49327)
-mesh = ExtResource("14_byjqm")
-skeleton = NodePath("../..")
-
-[node name="PC3" type="Node3D" parent="."]
-transform = Transform3D(-2.77744, 0, 0.0218126, 0, 13.6292, 0, -0.0040237, 0, -15.0566, -38.8122, 1.0848, 26.4407)
-
-[node name="Teclado" type="MeshInstance3D" parent="PC3"]
-transform = Transform3D(-1.05938e-08, 0, -0.316557, 0, 0.0733719, 0, 0.0444111, 0, -2.53203e-09, 2.71346, -0.0553209, -0.522052)
-mesh = ExtResource("11_0b2jm")
-skeleton = NodePath("../..")
-
-[node name="Monitor" type="MeshInstance3D" parent="PC3"]
-transform = Transform3D(-8.81844e-09, 0, -0.162822, 0, 0.0318152, 0, 0.0372148, 0, -1.31288e-09, 2.2354, -0.0624576, -0.535321)
-mesh = ExtResource("12_xxig2")
-skeleton = NodePath("../..")
-
-[node name="Soporte" type="MeshInstance3D" parent="PC3"]
-transform = Transform3D(-0.0222707, 0, -0.106003, 0, 0.020568, 0, 0.0225188, 0, -0.00356733, 2.43437, -0.0600096, -0.479989)
-mesh = ExtResource("13_l1dqo")
-skeleton = NodePath("../..")
-
-[node name="Monitoooor" type="MeshInstance3D" parent="PC3"]
-transform = Transform3D(-0.0423973, 0, -0.21465, 0, 0.0331333, 0, 0.0291879, 0, -0.0106096, 2.36236, -0.0620802, -0.493477)
-mesh = ExtResource("14_byjqm")
-skeleton = NodePath("../..")
-
-[node name="PC4" type="Node3D" parent="."]
-transform = Transform3D(-2.77744, 0, 1.31629e-06, 0, 13.6292, 0, -2.42811e-07, 0, -15.0566, -38.6359, 1.0848, 23.5223)
-
-[node name="Teclado" type="MeshInstance3D" parent="PC4"]
-transform = Transform3D(-1.05255e-08, 0, -0.316525, 0, 0.0733718, 0, 0.0444189, 0, -2.55223e-09, 2.72171, -0.0553209, -0.535726)
-mesh = ExtResource("11_0b2jm")
-skeleton = NodePath("../..")
-
-[node name="Monitor" type="MeshInstance3D" parent="PC4"]
-transform = Transform3D(-8.81844e-09, 0, -0.162822, 0, 0.0318152, 0, 0.0372148, 0, -1.31288e-09, 2.2354, -0.0624576, -0.535321)
-mesh = ExtResource("12_xxig2")
-skeleton = NodePath("../..")
-
-[node name="Soporte" type="MeshInstance3D" parent="PC4"]
-transform = Transform3D(-0.0222707, 0, -0.106003, 0, 0.020568, 0, 0.0225188, 0, -0.00356733, 2.43437, -0.0600096, -0.479989)
-mesh = ExtResource("13_l1dqo")
-skeleton = NodePath("../..")
-
-[node name="Monitoooor" type="MeshInstance3D" parent="PC4"]
-transform = Transform3D(-0.0423973, 0, -0.21465, 0, 0.0331333, 0, 0.0291879, 0, -0.0106096, 2.36236, -0.0620802, -0.493477)
-mesh = ExtResource("14_byjqm")
-skeleton = NodePath("../..")
-
-[node name="PC5" type="Node3D" parent="."]
-transform = Transform3D(-2.77744, 0, 1.31629e-06, 0, 13.6292, 0, -2.42811e-07, 0, -15.0566, -38.4373, 1.06528, 20.2001)
-
-[node name="Teclado" type="MeshInstance3D" parent="PC5"]
-transform = Transform3D(-1.05255e-08, 0, -0.316525, 0, 0.0733718, 0, 0.0444189, 0, -2.55223e-09, 2.72171, -0.0553209, -0.550834)
-mesh = ExtResource("11_0b2jm")
-skeleton = NodePath("../..")
-
-[node name="Monitor" type="MeshInstance3D" parent="PC5"]
-transform = Transform3D(-8.81844e-09, 0, -0.162822, 0, 0.0318152, 0, 0.0372148, 0, -1.31288e-09, 2.2354, -0.0624576, -0.535321)
-mesh = ExtResource("12_xxig2")
-skeleton = NodePath("../..")
-
-[node name="Soporte" type="MeshInstance3D" parent="PC5"]
-transform = Transform3D(-0.0222707, 0, -0.106003, 0, 0.020568, 0, 0.0225188, 0, -0.00356733, 2.43437, -0.0600096, -0.479989)
-mesh = ExtResource("13_l1dqo")
-skeleton = NodePath("../..")
-
-[node name="Monitoooor" type="MeshInstance3D" parent="PC5"]
-transform = Transform3D(-0.0423973, 0, -0.21465, 0, 0.0331333, 0, 0.0291879, 0, -0.0106096, 2.36236, -0.0620802, -0.493477)
-mesh = ExtResource("14_byjqm")
-skeleton = NodePath("../..")
-
-[node name="PC6" type="Node3D" parent="."]
-transform = Transform3D(-0.278652, 0, 14.9806, 0, 13.6292, 0, -2.76343, 0, -1.51058, -35.2359, 1.0848, 31.8236)
-
-[node name="Teclado" type="MeshInstance3D" parent="PC6"]
-transform = Transform3D(-1.05255e-08, 0, -0.316525, 0, 0.0733718, 0, 0.0444189, 0, -2.55223e-09, 2.72171, -0.0553209, -0.550834)
-mesh = ExtResource("11_0b2jm")
-skeleton = NodePath("../..")
-
-[node name="Monitor" type="MeshInstance3D" parent="PC6"]
-transform = Transform3D(-8.81844e-09, 0, -0.162822, 0, 0.0318152, 0, 0.0372148, 0, -1.31288e-09, 2.2354, -0.0624576, -0.535321)
-mesh = ExtResource("12_xxig2")
-skeleton = NodePath("../..")
-
-[node name="Soporte" type="MeshInstance3D" parent="PC6"]
-transform = Transform3D(-0.0222707, 0, -0.106003, 0, 0.020568, 0, 0.0225188, 0, -0.00356733, 2.43437, -0.0600096, -0.479989)
-mesh = ExtResource("13_l1dqo")
-skeleton = NodePath("../..")
-
-[node name="Monitoooor" type="MeshInstance3D" parent="PC6"]
-transform = Transform3D(-0.0423973, 0, -0.21465, 0, 0.0331333, 0, 0.0291879, 0, -0.0106096, 2.36236, -0.0620802, -0.493477)
-mesh = ExtResource("14_byjqm")
-skeleton = NodePath("../..")
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.30087, 0, 0.999886, 0, -0.015114, -24.0478, 0.243136, -33.4503)
 
 [node name="Escenario" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81188, 0.115096, 3.42548)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81188, 0.115096, -76.5745)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Escenario"]
-transform = Transform3D(51.6117, 0, 0, 0, 0.20399, 0, 0, 0, 40.1146, -24.1955, 0, 30.1225)
-material_override = ExtResource("8_p27aj")
-mesh = SubResource("BoxMesh_etb4m")
+[node name="Colegio" parent="Escenario" instance=ExtResource("4_by31u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9232, -0.115096, 111.72)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Escenario/MeshInstance3D"]
+[node name="light" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -8.44971, 4.4675, 53.8465)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Escenario/MeshInstance3D/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_broyg")
+[node name="light2" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -13.0598, 4.4675, 53.8465)
 
-[node name="Silla" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.227819, 0, 0, 0, 0.21915, 0, 0, 0, 0.266451, -26.2337, 0.176095, 35.9351)
-mesh = ExtResource("9_vl5ah")
-skeleton = NodePath("../..")
+[node name="light3" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -8.44971, 4.4675, 69.3191)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Silla"]
+[node name="light4" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -12.1506, 4.4675, 69.3191)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Silla/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 7.92327, 0, 0, 0, 1, 0.448715, 3.04073, -0.513885)
-shape = SubResource("BoxShape3D_syj7h")
+[node name="light5" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -8.95929, 4.4675, 103.436)
+
+[node name="light6" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -12.6602, 4.4675, 103.436)
+
+[node name="light7" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.129174, -0.00713704, -0.991596, -0.00309681, 0.999967, -0.00760069, 0.991617, 0.00405259, 0.129147, -10.8095, 4.4675, 125.274)
+
+[node name="light8" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.129174, -0.00713704, -0.991596, -0.00309681, 0.999967, -0.00760069, 0.991617, 0.00405259, 0.129147, -10.81, 4.4675, 121.573)
+
+[node name="light9" parent="Escenario" instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.991638, 0.00405147, 0.128992, -0.00309681, 0.999966, -0.00760069, -0.129018, 0.00713767, 0.991617, -22.2224, 4.35241, 44.2513)
 
 [node name="Escena inicio" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -41.0068, -0.338628, 33.8011)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.9632, 0.678865, -33.4368)
 script = ExtResource("10_0xs08")
 
 [node name="camara escena" type="Camera3D" parent="Escena inicio"]
 current = true
 fov = 68.6998
-far = 15.0
+far = 294.36
 
 [node name="animacion escena" type="AnimationPlayer" parent="Escena inicio"]
 libraries = {
 "": SubResource("AnimationLibrary_vv3ds")
 }
 
-[node name="Inodoro" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.765613, 0, 0, 0, 0.788834, -45.1445, -1.87494, 10.2551)
-mesh = ExtResource("11_tommk")
-
 [node name="UI" parent="." instance=ExtResource("7_fu7ci")]
 
 [node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
+
+[node name="Puerta" parent="." instance=ExtResource("9_7pjq2")]
+transform = Transform3D(-3.50835e-08, 0, -1, 0, 0.658745, 0, 0.802616, 0, -4.37114e-08, -19.4693, 0.248785, -31.0213)
+
+[node name="Bisagra2" parent="Puerta" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3512, 2.45661, -5.72205e-06)
+
+[node name="PuertaLab" parent="Puerta/Bisagra2/StaticBody3D" index="0"]
+transform = Transform3D(0.816772, 0, -1.06581e-14, 0, 1.04454, 0, 5.32907e-14, 0, 0.691978, 72.8394, 0, 28.5079)
+
+[node name="light7" parent="." instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.129174, -0.00713704, -0.991596, -0.00309681, 0.999967, -0.00760069, 0.991617, 0.00405259, 0.129147, -13.6213, 4.5826, 48.6995)
+
+[node name="light8" parent="." instance=ExtResource("16_dqlfs")]
+transform = Transform3D(0.129174, -0.00713704, -0.991596, -0.00309681, 0.999967, -0.00760069, 0.991617, 0.00405259, 0.129147, -13.6219, 4.5826, 44.9986)
+
+[node name="StaticBody3D" parent="." instance=ExtResource("10_dxovd")]
+transform = Transform3D(0.110327, 0, 0, 0, 0.062541, 0, 0, 0, 0.0907695, -21.0296, 1.6485, -29.4759)
+
+[node name="PuertaAula" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.33994e-08, 0, 1, 0, 0.734319, 0, -0.76409, 0, -4.37114e-08, -19.3723, 0, -23.5927)
+mesh = ExtResource("11_6ywhm")
+skeleton = NodePath("../../..")
+
+[node name="Puertas2" parent="." instance=ExtResource("12_vywq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8394, 0.178927, -54.5915)
+
+[node name="Llave" parent="." instance=ExtResource("13_64mry")]
+transform = Transform3D(0.0354367, 0, 0, 0, 0.0598027, 0, 0, 0, 0.0311605, -22.1898, 2.22534, -29.7377)
+
+[editable path="Puerta"]

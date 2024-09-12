@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b1dek4058prq2"]
+
+[ext_resource type="Texture2D" uid="uid://d451pijysgec" path="res://Textures/SillaTextura.png" id="1_4blke"]
+
+[resource]
+albedo_texture = ExtResource("1_4blke")
+roughness = 0.0
