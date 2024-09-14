@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn3uh0vv5ak5r"]
+[gd_scene load_steps=9 format=3 uid="uid://dn3uh0vv5ak5r"]
 
 [ext_resource type="Script" path="res://Scripts/player.tres.gd" id="1_8e347"]
 [ext_resource type="Script" path="res://Scripts/FlashLight.gd" id="2_y3y1k"]
 [ext_resource type="AudioStream" uid="uid://vleevdnyhgh3" path="res://Sonidos/sonido linterna.mp3" id="3_saa6l"]
 [ext_resource type="Script" path="res://Scripts/RayCast3D.gd" id="3_uwjih"]
+[ext_resource type="AudioStream" uid="uid://cde8kxqq375pq" path="res://Sonidos/PasoJugador.mp3" id="5_7uu1o"]
+[ext_resource type="AudioStream" uid="uid://cf518li35dl0b" path="res://Sonidos/CorrerJugador.mp3" id="5_scwy0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vexrq"]
 
@@ -34,6 +36,7 @@ far = 125.0
 [node name="FlashLight" type="SpotLight3D" parent="CharacterBody3D/Cabeza/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16442, 0)
 visible = false
+light_color = Color(0.784464, 0.984383, 0.988278, 1)
 light_energy = 2.0
 light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
@@ -51,3 +54,12 @@ volume_db = -1.0
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Cabeza"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.58289, -0.425309)
 script = ExtResource("3_uwjih")
+
+[node name="Caminar" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+stream = ExtResource("5_7uu1o")
+volume_db = -20.0
+
+[node name="Correr" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
+stream = ExtResource("5_scwy0")
+volume_db = -20.0

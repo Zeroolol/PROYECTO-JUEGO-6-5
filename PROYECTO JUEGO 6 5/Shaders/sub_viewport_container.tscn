@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkiec54o636tm"]
+
+[ext_resource type="Shader" path="res://Shaders/PostProcesing.gdshader" id="1_eq6w4"]
+[ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="2_lghh7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r1jou"]
+shader = ExtResource("1_eq6w4")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer"]
+material = SubResource("ShaderMaterial_r1jou")
+offset_right = 1177.0
+offset_bottom = 659.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="Colegio" parent="SubViewport" instance=ExtResource("2_lghh7")]
