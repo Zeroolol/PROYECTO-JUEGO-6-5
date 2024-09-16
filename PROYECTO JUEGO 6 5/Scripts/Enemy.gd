@@ -47,18 +47,20 @@ func detect_player():
 	return distance_to_player <= detection_range
 
 func get_random_point_in_region(region: NavigationRegion3D) -> Vector3:
-	# Obtener el nodo CollisionShape3D o BoxShape3D asociado a la región
-	var collision_shape = region.get_node("CollisionShape3D")
+	# Obtener el nodo CollisionShape3D asociado a la región
+	var collision_shape = get_node("/root/TestingWorld/Enemy/CharacterBody3D/Colision_de_enemigo") as CollisionShape3D
 	
 	if collision_shape:
-		# Obtener el AABB del CollisionShape3D
+		# Obtener la forma como BoxShape3D
 		var shape = collision_shape.shape as BoxShape3D
 		if shape:
-			var aabb = shape.get_aabb()
-			var center = aabb.position + aabb.size / 2
-			var extents = aabb.size / 2
-
-			# Generar un punto aleatorio dentro del AABB
+			# Obtener las extents del BoxShape3D
+			var extents = shape.extents
+			
+			# Calcular el centro (en este caso asumimos que está en el origen del CollisionShape3D)
+			var center = collision_shape.global_transform.origin
+			
+			# Generar un punto aleatorio dentro del volumen de la caja
 			var random_point = Vector3(
 				randf_range(center.x - extents.x, center.x + extents.x),
 				randf_range(center.y - extents.y, center.y + extents.y),
@@ -67,6 +69,7 @@ func get_random_point_in_region(region: NavigationRegion3D) -> Vector3:
 
 			return random_point
 		else:
-			return global_transform.origin  # En caso de que no haya una BoxShape3D, retorna la posición actual
+			return global_transform.origin  # Si no hay una BoxShape3D, retorna la posición actual
 	else:
-		return global_transform.origin  # En caso de que no haya CollisionShape3D, retorna la posición actual
+		return global_transform.origin  # Si no hay CollisionShape3D, retorna la posición actual
+# En caso de que no haya CollisionShape3D, retorna la posición actual

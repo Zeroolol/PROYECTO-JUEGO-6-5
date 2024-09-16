@@ -12,29 +12,19 @@ var movable = false
 var current_energy = MAX_ENERGY
 var running = false
 var footstep_timer = 0.0
-
+var speed = SPEED
 @onready var camera = $Cabeza/Camera3D
 @onready var energy_bar = null  # Nodo de UI para la barra de energía
 @onready var footstep_sound = $Caminar  # Nodo de sonido de pasos
 @onready var run_sound = $Correr  # Nodo de sonido de correr
-
+@onready var animation = $Cabeza/Camera3D/AnimationPlayer
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var yaw = 0.0  
 var pitch = 0.0  
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
-	# Asegúrate de que el nodo UI esté cargado correctamente
-	var ui_scene = get_tree().root.get_node("UI")  # Acceder al nodo root para encontrar la UI
-	if ui_scene:
-		energy_bar = ui_scene.get_node("EnergyBar")
-		if energy_bar:
-			energy_bar.max_value = MAX_ENERGY  # Asegúrate de que el valor máximo de la barra de energía sea correcto
-		else:
-			print("Error: Nodo 'EnergyBar' no encontrado en la escena UI")
-	else:
-		print("Error: UI no encontrada en el árbol de nodos")
+	energy_bar = get_node("/root/" + get_tree().current_scene.name + "/UI/EnergyBar")  # Acceder al nodo root para encontrar la UI
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -43,6 +33,25 @@ func _unhandled_input(event):
 		pitch = clamp(pitch, -90, 90)
 		rotation_degrees.y = yaw
 		camera.rotation_degrees.x = pitch
+
+func _process(delta):
+	if speed == RUN_SPEED:
+		if footstep_sound.playing:
+				footstep_sound.stop()
+		energy_bar.value -= RUN_ENERGY_COST * delta
+		if energy_bar.value <= energy_bar.min_value or (velocity.x == 0 and velocity.z == 0):
+			speed = SPEED
+			if run_sound.playing:
+				run_sound.stop()
+	elif speed != RUN_SPEED:
+		if energy_bar.value < energy_bar.max_value:
+			energy_bar.value += ENERGY_RECOVERY_RATE * delta
+
+	# Controlar el sonido de los pasos
+	footstep_timer -= delta
+	if is_on_floor() and speed == SPEED and velocity.length() > 0 and footstep_timer <= 0:
+		footstep_sound.play()
+		footstep_timer = 0.5  # Ajusta el intervalo de tiempo entre pasos
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -54,43 +63,25 @@ func _physics_process(delta):
 
 		var input_dir = Input.get_vector("atras", "avanzar", "izquierda", "derecha")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-		var speed = SPEED
 
-		if Input.is_action_pressed("avanzar") and Input.is_action_pressed("Correr") and current_energy > 0 and is_on_floor():
-			running = true
-			if not run_sound.playing:
-				run_sound.play()  # Reproduce el sonido de correr si no se está reproduciendo
-			if footstep_sound.playing:
-				footstep_sound.stop()  # Detiene el sonido de pasos si se está reproduciendo
-		else:
-			running = false
-			if run_sound.playing:
-				run_sound.stop()  # Detiene el sonido de correr si está reproduciéndose
-			if not footstep_sound.playing:
-				footstep_timer -= delta
-				if footstep_timer <= 0:
-					if direction:
-						footstep_sound.play()  # Reproduce el sonido de pasos si no está reproduciéndose
-					footstep_timer = 0.5  # Intervalo entre pasos
-
-		if running:
-			speed = RUN_SPEED
-			current_energy -= RUN_ENERGY_COST * delta
-			if current_energy <= 0:
-				running = false
-		else:
-			current_energy = min(current_energy + ENERGY_RECOVERY_RATE * delta, MAX_ENERGY)
-
+		# Movimiento
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			animation.play("animacion")
+
+			if Input.is_action_just_pressed("Correr"):
+				speed = RUN_SPEED
+				if not run_sound.playing:
+					run_sound.play()
+			if Input.is_action_just_released("Correr"):
+				speed = SPEED
+				if run_sound.playing:
+					run_sound.stop()
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 			velocity.z = move_toward(velocity.z, 0, speed)
-			if footstep_sound.playing:
-				footstep_sound.stop()  # Detiene el sonido de pasos si no hay movimiento
-
+			run_sound.stop()
+			footstep_sound.stop()
+			
 		move_and_slide()
-
-		if energy_bar:
-			energy_bar.value = current_energy
