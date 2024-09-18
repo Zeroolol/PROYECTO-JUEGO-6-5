@@ -11,6 +11,5 @@ func _on_inicio_pressed():
 	
 
 
-
 func _on_salir_pressed():
 	get_tree().quit()

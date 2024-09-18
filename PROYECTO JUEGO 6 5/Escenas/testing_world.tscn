@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=20 format=3 uid="uid://dtjviddtunp3j"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_pkxaa"]
 [ext_resource type="AudioStream" uid="uid://b33i1mhvhwym4" path="res://Sonidos/Tren.mp3" id="3_jaduy"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="10_5fqsu"]
 [ext_resource type="PackedScene" uid="uid://mjt0q6wr83ab" path="res://Escenas/Enemy.tscn" id="11_u50ql"]
 [ext_resource type="PackedScene" uid="uid://bqrxw2naeb4hh" path="res://Escenas/Pausa.tscn" id="12_dqfwq"]
+[ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="12_jxkid"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmyas"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -20,7 +21,9 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_nmyas")
 
 [sub_resource type="Environment" id="Environment_8d7ch"]
-background_energy_multiplier = 0.1
+background_mode = 1
+background_color = Color(0.00386358, 0.00119117, 0.0187014, 1)
+background_energy_multiplier = 3.0
 sky = SubResource("Sky_86lin")
 glow_enabled = true
 
@@ -139,6 +142,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8591, 1.33408, -5.12115)
 stream = ExtResource("3_jaduy")
 volume_db = 10.0
 
+[node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8847, 1.22751, -72.1415)
+
+[node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
+navigation_region = NodePath("../../NavigationRegion3D")
+detection_range = 20.0
+player = NodePath("../../Player/CharacterBody3D")
+
+[node name="NavigationAgent3D" parent="Enemy/CharacterBody3D" index="2"]
+path_desired_distance = 56.28
+target_desired_distance = 55.39
+path_max_distance = 61.01
+
 [node name="Player" parent="." instance=ExtResource("6_yj7ha")]
 transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.30456, 0, 0.999886, 0, -0.015114, -32.2459, 0.0792042, -47.5475)
 
@@ -156,28 +172,12 @@ libraries = {
 "": SubResource("AnimationLibrary_vv3ds")
 }
 
-[node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 2.12824, -91)
-
-[node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-navigation_region = NodePath("../../Escenario/NavigationRegion3D")
-detection_range = 20.0
-player = NodePath("../../Player/CharacterBody3D")
-
-[node name="NavigationAgent3D" parent="Enemy/CharacterBody3D" index="2"]
-target_desired_distance = 5.0
-height = 2.0
-
-[node name="Escenario" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.81188, 0.115096, -74.5745)
-
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Escenario"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.811998, -0.443677, 74.575)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000118017, -0.328581, 0.000497103)
 navigation_mesh = SubResource("NavigationMesh_c26uv")
 enter_cost = 1.0
 
-[node name="Colegio" parent="Escenario/NavigationRegion3D" instance=ExtResource("5_1rkta")]
+[node name="Colegio" parent="NavigationRegion3D" instance=ExtResource("5_1rkta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0162, 0.328581, 19.6619)
 
 [node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
@@ -193,5 +193,11 @@ transform = Transform3D(0.10975, 0, 0, 0, 0.0641022, 0, 0, 0, 0.102519, -30.6935
 wait_time = 300.0
 autostart = true
 
-[editable path="Player"]
+[node name="light" parent="." instance=ExtResource("12_jxkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5309, 4.99055, -69.7359)
+
+[node name="light2" parent="." instance=ExtResource("12_jxkid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.5309, 4.99055, -48.068)
+
 [editable path="Enemy"]
+[editable path="Player"]

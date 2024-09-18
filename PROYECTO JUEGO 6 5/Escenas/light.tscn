@@ -13,4 +13,5 @@ mesh = ExtResource("1_80pcw")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841802, 0)
 light_color = Color(0.761168, 0.925729, 0.997979, 1)
-omni_range = 9.192
+light_bake_mode = 1
+omni_range = 3.408

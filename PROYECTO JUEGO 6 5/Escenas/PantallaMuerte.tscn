@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr3cbsjxva4cm"]
+
+[ext_resource type="Script" path="res://Scripts/PantallaMuerte.gd" id="1_hrsxg"]
+[ext_resource type="FontFile" uid="uid://cgw1ofuro8lid" path="res://Assets/press-start/prstartk.ttf" id="3_eq037"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_hrsxg")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -323.0
+offset_top = -214.0
+offset_right = 317.0
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+focus_mode = 2
+mouse_filter = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_eq037")
+theme_override_font_sizes/font_size = 80
+text = "YOU DIED"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -296.0
+offset_right = 113.0
+offset_bottom = -166.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+focus_mode = 2
+mouse_filter = 0
+
+[node name="Reintentar" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_eq037")
+theme_override_font_sizes/font_size = 40
+text = "REINTENTAR
+"
+
+[node name="Salir" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_eq037")
+theme_override_font_sizes/font_size = 40
+text = "SALIR"

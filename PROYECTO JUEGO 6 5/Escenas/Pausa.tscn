@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bqrxw2naeb4hh"]
+[gd_scene load_steps=3 format=3 uid="uid://bqrxw2naeb4hh"]
 
 [ext_resource type="Script" path="res://Pausa.gd" id="1_xtgqj"]
+[ext_resource type="FontFile" uid="uid://cgw1ofuro8lid" path="res://Assets/press-start/prstartk.ttf" id="2_fbkq1"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
@@ -25,5 +26,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fbkq1")
 theme_override_font_sizes/font_size = 70
 text = "PAUSA"
