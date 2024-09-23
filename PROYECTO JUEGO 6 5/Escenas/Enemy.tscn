@@ -7,8 +7,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkk7v"]
 albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_em03a"]
-size = Vector3(1, 2.04987, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qbirg"]
 
 [node name="Enemy" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
@@ -27,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, -1.10382e-07, 1, 0, -2.52525, -4.37114e-08, 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
 [node name="Colision_de_enemigo" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00839233, 0)
-shape = SubResource("BoxShape3D_em03a")
+transform = Transform3D(1, 0, 0, 0, 2.03449, 0, 0, 0, 1, 0, 0.00839233, 0)
+shape = SubResource("BoxShape3D_qbirg")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CharacterBody3D"]

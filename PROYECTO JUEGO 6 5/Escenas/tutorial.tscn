@@ -1,0 +1,322 @@
+[gd_scene load_steps=19 format=3 uid="uid://dwehjyj4c4ck4"]
+
+[ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="1_qj02i"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="2_pbb50"]
+[ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
+[ext_resource type="Script" path="res://Scripts/AnimacionIntro.gd" id="4_0yoml"]
+[ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="4_o11gv"]
+[ext_resource type="PackedScene" uid="uid://cgp0sgtxi1q5a" path="res://Escenas/puertaIntro.tscn" id="6_eypyh"]
+[ext_resource type="Script" path="res://Scripts/puertaIntro.gd" id="7_h6c83"]
+[ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="8_84hwc"]
+[ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="9_lvmu4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftbl1"]
+sky_top_color = Color(0.407843, 0.337255, 0.854902, 1)
+sky_horizon_color = Color(0.913725, 0.505882, 0, 1)
+sky_curve = 0.184672
+sky_cover_modulate = Color(0.815686, 0.521569, 0, 1)
+sun_angle_max = 134.9
+sun_curve = 0.713524
+
+[sub_resource type="Sky" id="Sky_dy1ln"]
+sky_material = SubResource("ProceduralSkyMaterial_ftbl1")
+
+[sub_resource type="Environment" id="Environment_bjnqf"]
+background_mode = 2
+background_color = Color(1, 0.890196, 0.890196, 1)
+background_energy_multiplier = 0.87
+sky = SubResource("Sky_dy1ln")
+ambient_light_color = Color(0.899793, 0.789445, 0.0899988, 1)
+tonemap_mode = 2
+tonemap_white = 3.67
+
+[sub_resource type="Animation" id="Animation_aupyr"]
+resource_name = "Introduccion"
+length = 12.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camara Intro:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.4, 4.2, 5, 5.4, 5.8, 6, 7.2, 9.1, 10.6, 11.4, 12.1, 12.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -1.45735, 0), Vector3(0, -1.45735, 0), Vector3(0, -1.45735, 0), Vector3(0, -2.88503, 0), Vector3(-0.856957, -3.1032, 0), Vector3(-0.429351, -3.1032, 0), Vector3(0, -3.1032, 0), Vector3(0, -1.5324, 0), Vector3(0, -1.81863, 0), Vector3(-0.71384, -1.81863, 0), Vector3(0, -1.81863, 0), Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camara Intro:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.4, 5.8, 8, 9.1, 10.6, 12.1, 12.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-37.4127, 2.16185, 11.4622), Vector3(-37.4127, 2.16185, 10.8637), Vector3(-37.4127, 2.67231, 10.4207), Vector3(-34.6828, 2.67231, 10.4207), Vector3(-33.16, 2.67231, 11.2034), Vector3(-31.6414, 2.67231, 12.0343), Vector3(-29.3816, 2.67231, 12.6045), Vector3(-27.6038, 2.74134, 12.8132)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Puertas/Bisagra:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(10.6, 11.4, 12.3, 12.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.64061, 0), Vector3(0, 1.64061, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bgfc3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camara Intro:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camara Intro:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-37.4127, 2.16185, 11.4622)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Puertas/Bisagra:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u7ra"]
+_data = {
+"Introduccion": SubResource("Animation_aupyr"),
+"RESET": SubResource("Animation_bgfc3")
+}
+
+[sub_resource type="Animation" id="Animation_5q3wh"]
+resource_name = "AnimacionBaño"
+length = 19.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CamaraBaño:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4, 2, 5.4, 7.2, 7.9, 10.3, 12.6, 14.2, 15.4, 17.6, 17.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.84321, 3.82276, -0.624655), Vector3(-3.84321, 3.82276, -3.84712), Vector3(-3.84321, 3.82276, -4.91948), Vector3(-4.23792, 3.82276, -4.91948), Vector3(-4.81622, 3.82276, -4.91948), Vector3(-5.22432, 3.40443, -4.91948), Vector3(-3.33443, 4.16908, -4.91948), Vector3(-3.33443, 4.16908, -4.64749), Vector3(-3.33443, 4.16908, -5.05212), Vector3(-3.33443, 4.16908, -5.05212), Vector3(-3.33443, 4.008, -5.05212), Vector3(-3.33443, 0.904133, -6.32232)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CamaraBaño:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.4, 2, 2.6, 5.4, 7.2, 8.4, 10.3, 12.6, 14.2, 15.4, 16.2, 17.6, 17.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.7158e-06, 0), Vector3(0, -0.20944, 0), Vector3(0, 0.837758, 0), Vector3(0, 2.72271, 0), Vector3(0, 1.6057, 0), Vector3(-0.837758, 1.6057, 0), Vector3(-0.811578, 1.6057, 0), Vector3(0, 1.6057, 0), Vector3(0, 1.6057, 0.628319), Vector3(0, 1.6057, -0.418879), Vector3(0, 1.6057, -0.418879), Vector3(0, 1.6057, 0.628319), Vector3(0, 1.6057, -0.418879), Vector3(4.21656e-17, 1.6057, -1.5708)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.4, 2.6, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.78256, 0), Vector3(0, 1.78256, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4eiuy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../CamaraBaño:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.84321, 3.82276, -0.624655)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.78256, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../CamaraBaño:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.20944, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bcy3s"]
+_data = {
+"AnimacionBaño": SubResource("Animation_5q3wh"),
+"RESET": SubResource("Animation_4eiuy")
+}
+
+[node name="Tutorial" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340086, 0)
+
+[node name="Colegio" parent="." instance=ExtResource("1_qj02i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9551, -0.292524, -1.60715)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bjnqf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7048, 4.97862, 0)
+light_color = Color(0.875337, 0.619671, 0.109824, 1)
+light_energy = 1.792
+
+[node name="Player" parent="." instance=ExtResource("2_pbb50")]
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.38259, 0, 0.999886, 0, -0.015114, -27.5962, 0.410121, 12.8022)
+
+[node name="UI" parent="." instance=ExtResource("3_3x1y6")]
+
+[node name="AnimacionIntro" type="Node3D" parent="."]
+script = ExtResource("4_0yoml")
+
+[node name="Camara Intro" type="Camera3D" parent="AnimacionIntro"]
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, -37.4127, 2.16185, 11.4622)
+
+[node name="AnimacionIntro" type="AnimationPlayer" parent="AnimacionIntro"]
+libraries = {
+"": SubResource("AnimationLibrary_8u7ra")
+}
+
+[node name="Puertas" parent="." instance=ExtResource("4_o11gv")]
+transform = Transform3D(-3.63201e-08, 0, 0.581635, 0, 0.830908, 0, -0.830908, 0, -2.54241e-08, -30.1289, -0.321772, 12.6298)
+
+[node name="Puertas3" parent="." instance=ExtResource("4_o11gv")]
+transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 0.676708, -0.13132, -60.645)
+
+[node name="PuertaIntro" parent="." instance=ExtResource("6_eypyh")]
+transform = Transform3D(-3.31941e-08, 0, 1, 0, 0.642552, 0, -0.759392, 0, -4.37114e-08, 2.84239, -0.0715667, -70.6446)
+script = ExtResource("7_h6c83")
+
+[node name="Bisagra" parent="PuertaIntro" index="0"]
+transform = Transform3D(-0.210184, 0, 0.977661, 0, 1, 0, -0.977661, 0, -0.210184, -4.9342, 2.35685, -2.16026)
+
+[node name="StaticBody3D" parent="PuertaIntro/Bisagra" index="0"]
+script = null
+
+[node name="AnimacionIB" type="AnimationPlayer" parent="PuertaIntro/Bisagra/StaticBody3D" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_bcy3s")
+}
+
+[node name="CamaraBaño" type="Camera3D" parent="PuertaIntro"]
+transform = Transform3D(1.28807, 0, -0.207912, 0, 1.55629, 0, 0.273788, 0, 0.978147, -3.84321, 3.82276, -0.624655)
+current = true
+
+[node name="light" parent="." instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -43.1127, 4.89009, 8.50994)
+
+[node name="LucesTecho" parent="light" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="light" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light5" parent="." instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -37.8433, 4.89009, 8.50994)
+
+[node name="LucesTecho" parent="light5" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="light5" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light2" parent="." instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -33.6669, 4.89009, 8.50994)
+
+[node name="OmniLight3D" parent="light2" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light3" parent="." instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, -21.9259, 4.92011, 13.1024)
+
+[node name="OmniLight3D" parent="light3" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light4" parent="." instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, -0.592151, 4.92011, 13.1024)
+
+[node name="OmniLight3D" parent="light4" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="VHS_shader" parent="." instance=ExtResource("9_lvmu4")]
+
+[editable path="Puertas"]
+[editable path="PuertaIntro"]
+[editable path="light"]
+[editable path="light5"]
+[editable path="light2"]
+[editable path="light3"]
+[editable path="light4"]

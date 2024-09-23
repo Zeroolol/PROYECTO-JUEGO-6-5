@@ -13,5 +13,14 @@ mesh = ExtResource("1_80pcw")
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841802, 0)
 light_color = Color(0.761168, 0.925729, 0.997979, 1)
+light_energy = 1.618
+light_indirect_energy = 1.795
+light_volumetric_fog_energy = 1.473
+light_size = 0.151
+light_specular = 0.0
 light_bake_mode = 1
-omni_range = 3.408
+distance_fade_enabled = true
+distance_fade_begin = 288.24
+distance_fade_length = 134.12
+omni_range = 13.2379
+omni_attenuation = 0.870551

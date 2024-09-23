@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://by3n8nbpc5fr7"
+path="res://.godot/imported/CartelBaño.obj-fe0934bf306fa6864a85115fdec988a4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/CartelBaño.obj-fe0934bf306fa6864a85115fdec988a4.mesh"]
+
+source_file="res://Modelos/CartelBaño/CartelBaño.obj"
+dest_files=["res://.godot/imported/CartelBaño.obj-fe0934bf306fa6864a85115fdec988a4.mesh", "res://.godot/imported/CartelBaño.obj-fe0934bf306fa6864a85115fdec988a4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

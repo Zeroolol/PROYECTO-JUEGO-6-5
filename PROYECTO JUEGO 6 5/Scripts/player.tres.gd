@@ -8,11 +8,13 @@ const MAX_ENERGY = 100
 const RUN_ENERGY_COST = 25.0
 const ENERGY_RECOVERY_RATE = 15.0
 
-var movable = false
+var movable = true  # Controla si el jugador puede moverse
+var cinematic_active = false  # Variable para controlar si una cinemática está activa
 var current_energy = MAX_ENERGY
 var running = false
 var footstep_timer = 0.0
 var speed = SPEED
+
 @onready var camera = $Cabeza/Camera3D
 @onready var energy_bar = null  # Nodo de UI para la barra de energía
 @onready var footstep_sound = $Caminar  # Nodo de sonido de pasos
@@ -37,7 +39,7 @@ func _unhandled_input(event):
 func _process(delta):
 	if speed == RUN_SPEED:
 		if footstep_sound.playing:
-				footstep_sound.stop()
+			footstep_sound.stop()
 		energy_bar.value -= RUN_ENERGY_COST * delta
 		if energy_bar.value <= energy_bar.min_value or (velocity.x == 0 and velocity.z == 0):
 			speed = SPEED
@@ -54,34 +56,40 @@ func _process(delta):
 		footstep_timer = 0.5  # Ajusta el intervalo de tiempo entre pasos
 
 func _physics_process(delta):
+	# No hacer nada si no se puede mover o si hay una cinemática activa
+	if not movable or cinematic_active:
+		return  # Salir de la función si no está permitido moverse
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	if movable:
-		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
+	# Control de movimiento si el jugador es "movable"
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 
-		var input_dir = Input.get_vector("atras", "avanzar", "izquierda", "derecha")
-		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir = Input.get_vector("atras", "avanzar", "izquierda", "derecha")
+	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
-		# Movimiento
-		if direction:
-			velocity.x = direction.x * speed
-			velocity.z = direction.z * speed
-			animation.play("animacion")
+	# Movimiento
+	if direction:
+		velocity.x = direction.x * speed
+		velocity.z = direction.z * speed
+		animation.play("animacion")
 
-			if Input.is_action_just_pressed("Correr"):
-				speed = RUN_SPEED
-				if not run_sound.playing:
-					run_sound.play()
-			if Input.is_action_just_released("Correr"):
-				speed = SPEED
-				if run_sound.playing:
-					run_sound.stop()
-		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
-			velocity.z = move_toward(velocity.z, 0, speed)
-			run_sound.stop()
-			footstep_sound.stop()
-			
-		move_and_slide()
+		if Input.is_action_just_pressed("Correr"):
+			speed = RUN_SPEED
+			animation.play("CamaraCorrer")
+			if not run_sound.playing:
+				run_sound.play()
+		if Input.is_action_just_released("Correr"):
+			speed = SPEED
+			animation.play("CamaraCorrer")
+			if run_sound.playing:
+				run_sound.stop()
+	else:
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.z = move_toward(velocity.z, 0, speed)
+		run_sound.stop()
+		footstep_sound.stop()
+		
+	move_and_slide()
