@@ -1,7 +1,7 @@
 extends Node3D
 
 var interactable = true
-@onready var cinematic_camera: Camera3D = get_tree().get_root().get_node("CamaraBaño")  # Ajusta el camino si es necesario
+@onready var cinematic_camera: Node = get_node("/root/Tutorial/PuertasIntro/CamaraBaño")   # Ajusta el camino si es necesario
 @onready var new_scene: PackedScene = preload("res://Escenas/testing_world.tscn")
 @onready var animacion: AnimationPlayer = $Bisagra/StaticBody3D/AnimacionIB  # Asegúrate de que esta referencia sea correcta
 

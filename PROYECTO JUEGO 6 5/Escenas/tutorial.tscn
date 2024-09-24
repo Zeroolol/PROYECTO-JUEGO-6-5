@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwehjyj4c4ck4"]
+[gd_scene load_steps=20 format=3 uid="uid://dwehjyj4c4ck4"]
 
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="1_qj02i"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="2_pbb50"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/puertaIntro.gd" id="7_h6c83"]
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="8_84hwc"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="9_lvmu4"]
+[ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="10_tx5dm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftbl1"]
 sky_top_color = Color(0.407843, 0.337255, 0.854902, 1)
@@ -32,7 +33,7 @@ tonemap_white = 3.67
 
 [sub_resource type="Animation" id="Animation_aupyr"]
 resource_name = "Introduccion"
-length = 12.8
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -40,10 +41,10 @@ tracks/0/path = NodePath("Camara Intro:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6, 1.4, 4.2, 5, 5.4, 5.8, 6, 7.2, 9.1, 10.6, 11.4, 12.1, 12.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1.7, 3, 4.5, 6.5, 8.4, 10.6, 12.2, 12.6, 13, 13.2, 14.4, 16.3, 17.8, 18.6, 19.3, 20),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, -3.14159, 0), Vector3(0, -1.45735, 0), Vector3(0, -1.45735, 0), Vector3(0, -1.45735, 0), Vector3(0, -2.88503, 0), Vector3(-0.856957, -3.1032, 0), Vector3(-0.429351, -3.1032, 0), Vector3(0, -3.1032, 0), Vector3(0, -1.5324, 0), Vector3(0, -1.81863, 0), Vector3(-0.71384, -1.81863, 0), Vector3(0, -1.81863, 0), Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0)]
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -1.45735, 0), Vector3(0, -1.19555, 0), Vector3(0, -1.08734, 0), Vector3(0, -0.968658, 0), Vector3(0, -1.08909, 0), Vector3(0, -1.45735, 0), Vector3(0.0977384, -1.08036, 0), Vector3(0, -2.88503, 0), Vector3(-0.856957, -3.1032, 0), Vector3(-0.429351, -3.1032, 0), Vector3(0, -3.1032, 0), Vector3(0, -1.5324, 0), Vector3(0, -1.81863, 0), Vector3(-0.71384, -1.81863, 0), Vector3(0, -1.81863, 0), Vector3(0, -1.5708, 0), Vector3(0, -1.5708, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -52,7 +53,7 @@ tracks/1/path = NodePath("Camara Intro:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 5.4, 5.8, 8, 9.1, 10.6, 12.1, 12.8),
+"times": PackedFloat32Array(0, 12.6, 13, 15.2, 16.3, 17.8, 19.3, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-37.4127, 2.16185, 11.4622), Vector3(-37.4127, 2.16185, 10.8637), Vector3(-37.4127, 2.67231, 10.4207), Vector3(-34.6828, 2.67231, 10.4207), Vector3(-33.16, 2.67231, 11.2034), Vector3(-31.6414, 2.67231, 12.0343), Vector3(-29.3816, 2.67231, 12.6045), Vector3(-27.6038, 2.74134, 12.8132)]
@@ -64,10 +65,36 @@ tracks/2/path = NodePath("../Puertas/Bisagra:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(10.6, 11.4, 12.3, 12.8),
+"times": PackedFloat32Array(17.8, 18.6, 19.5, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 1.64061, 0), Vector3(0, 1.64061, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.8, 4.1, 6.5, 9.8, 15.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"mostrar_dialogo"
+}, {
+"args": [],
+"method": &"mostrar_dialogo"
+}, {
+"args": [],
+"method": &"mostrar_dialogo"
+}, {
+"args": [],
+"method": &"mostrar_dialogo"
+}, {
+"args": [],
+"method": &"mostrar_dialogo"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_bgfc3"]
@@ -312,6 +339,8 @@ light_volumetric_fog_energy = 2.455
 omni_range = 6.674
 
 [node name="VHS_shader" parent="." instance=ExtResource("9_lvmu4")]
+
+[node name="Dialogos" parent="." instance=ExtResource("10_tx5dm")]
 
 [editable path="Puertas"]
 [editable path="PuertaIntro"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://drkp5ftnrtf06"]
+[gd_scene load_steps=4 format=3 uid="uid://drkp5ftnrtf06"]
 
 [ext_resource type="FontFile" uid="uid://cjxmwla8ws1j7" path="res://Assets/Handjet/static/Handjet-SemiBold.ttf" id="1_0s7cm"]
+[ext_resource type="Script" path="res://Scripts/UI.gd" id="1_ok4j5"]
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="3_02kqo"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -11,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 mouse_default_cursor_shape = 3
+script = ExtResource("1_ok4j5")
 
 [node name="interact_text" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -41,3 +44,12 @@ grow_vertical = 0
 mouse_filter = 2
 value = 100.0
 show_percentage = false
+
+[node name="TextoObjetivos" type="Label" parent="."]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 18.0
+offset_right = 1549.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("3_02kqo")
+theme_override_font_sizes/font_size = 15

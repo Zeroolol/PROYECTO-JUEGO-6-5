@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2ots3rtyq6sp"]
+
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="2_63tbf"]
+
+[sub_resource type="Theme" id="Theme_m1r7d"]
+RichTextLabel/colors/default_color = Color(1, 1, 1, 1)
+RichTextLabel/colors/font_selected_color = Color(1, 1, 1, 0)
+RichTextLabel/colors/font_shadow_color = Color(1, 1, 1, 0)
+
+[node name="Dialogos" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = 387.0
+offset_right = -47.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_m1r7d")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 60.0
+offset_right = 1040.0
+offset_bottom = 239.0
+
+[node name="DialogoTexto" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 1001.0
+offset_bottom = 171.0
+theme_override_fonts/normal_font = ExtResource("2_63tbf")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
