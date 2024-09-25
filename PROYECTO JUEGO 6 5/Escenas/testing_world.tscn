@@ -19,7 +19,6 @@
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ld8r"]
 panorama = ExtResource("1_2vvpm")
-energy_multiplier = 0.5
 
 [sub_resource type="Sky" id="Sky_v5qp7"]
 sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
@@ -27,11 +26,11 @@ sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
 [sub_resource type="Environment" id="Environment_fqr8s"]
 background_mode = 2
 sky = SubResource("Sky_v5qp7")
-tonemap_mode = 3
-glow_enabled = true
+tonemap_mode = 2
 fog_enabled = true
 fog_light_color = Color(0.244768, 0.268561, 0.305965, 1)
-fog_density = 0.02
+fog_density = 0.017
+fog_sky_affect = 0.606
 
 [sub_resource type="Animation" id="Animation_0dijk"]
 length = 0.001
@@ -150,7 +149,6 @@ transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.40159, 0, 0.999886, 0, -0.
 
 [node name="Escena inicio" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.727, 1.16536, -34.6957)
-visible = false
 script = ExtResource("10_0xs08")
 
 [node name="camara escena" type="Camera3D" parent="Escena inicio"]
