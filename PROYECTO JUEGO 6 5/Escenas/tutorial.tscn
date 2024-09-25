@@ -5,11 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
 [ext_resource type="Script" path="res://Scripts/AnimacionIntro.gd" id="4_0yoml"]
 [ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="4_o11gv"]
-[ext_resource type="PackedScene" uid="uid://cgp0sgtxi1q5a" path="res://Escenas/puertaIntro.tscn" id="6_eypyh"]
-[ext_resource type="Script" path="res://Scripts/puertaIntro.gd" id="7_h6c83"]
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="8_84hwc"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="9_lvmu4"]
 [ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="10_tx5dm"]
+[ext_resource type="Script" path="res://Scripts/Area3D.gd" id="11_nj55y"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftbl1"]
 sky_top_color = Color(0.407843, 0.337255, 0.854902, 1)
@@ -142,99 +141,107 @@ _data = {
 "RESET": SubResource("Animation_bgfc3")
 }
 
-[sub_resource type="Animation" id="Animation_5q3wh"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7mi0"]
+
+[sub_resource type="Animation" id="Animation_yu04u"]
 resource_name = "AnimacionBaño"
-length = 19.0
+length = 16.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../CamaraBaño:position")
+tracks/0/path = NodePath("CamaraBaño:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.4, 2, 5.4, 7.2, 7.9, 10.3, 12.6, 14.2, 15.4, 17.6, 17.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.4, 2.2, 2.4, 2.8, 4, 5.2, 6.6, 10.4, 12.8, 14, 15, 15.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-3.84321, 3.82276, -0.624655), Vector3(-3.84321, 3.82276, -3.84712), Vector3(-3.84321, 3.82276, -4.91948), Vector3(-4.23792, 3.82276, -4.91948), Vector3(-4.81622, 3.82276, -4.91948), Vector3(-5.22432, 3.40443, -4.91948), Vector3(-3.33443, 4.16908, -4.91948), Vector3(-3.33443, 4.16908, -4.64749), Vector3(-3.33443, 4.16908, -5.05212), Vector3(-3.33443, 4.16908, -5.05212), Vector3(-3.33443, 4.008, -5.05212), Vector3(-3.33443, 0.904133, -6.32232)]
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, 1.5708, 0), Vector3(0, 2.53518, 0), Vector3(0, 4.58149, 0), Vector3(0, 4.58149, 0), Vector3(0, 3.12065, 0), Vector3(-1.16937, 3.12065, 0), Vector3(0, 3.12065, 0), Vector3(0, 3.12065, 0.570723), Vector3(0, 3.12065, -0.572468), Vector3(0, 3.12065, 0.570723), Vector3(2.3045e-10, 3.12065, -1.42768)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../CamaraBaño:rotation")
+tracks/1/path = NodePath("CamaraBaño:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.4, 2, 2.6, 5.4, 7.2, 8.4, 10.3, 12.6, 14.2, 15.4, 16.2, 17.6, 17.9),
+"times": PackedFloat32Array(0, 2.2, 2.8, 5.76872, 6.6, 7.8, 10.4, 11, 11.6, 12.8, 13.3, 14, 15, 15.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 2.7158e-06, 0), Vector3(0, -0.20944, 0), Vector3(0, 0.837758, 0), Vector3(0, 2.72271, 0), Vector3(0, 1.6057, 0), Vector3(-0.837758, 1.6057, 0), Vector3(-0.811578, 1.6057, 0), Vector3(0, 1.6057, 0), Vector3(0, 1.6057, 0.628319), Vector3(0, 1.6057, -0.418879), Vector3(0, 1.6057, -0.418879), Vector3(0, 1.6057, 0.628319), Vector3(0, 1.6057, -0.418879), Vector3(4.21656e-17, 1.6057, -1.5708)]
+"values": [Vector3(8.94336, 2.38476, -68.1695), Vector3(6.20501, 2.38476, -68.1695), Vector3(5.2163, 2.38476, -68.1695), Vector3(5.2163, 2.38476, -67.4808), Vector3(5.2163, 2.38476, -67.0715), Vector3(5.2163, 2.27866, -67.0715), Vector3(5.2163, 2.40799, -67.7966), Vector3(5.2163, 2.24875, -68.1016), Vector3(5.2163, 2.35649, -68.4049), Vector3(5.2163, 2.3121, -68.7387), Vector3(5.31054, 2.3121, -68.7387), Vector3(5.13773, 2.3121, -68.7387), Vector3(5.30906, 2.3121, -68.7387), Vector3(3.73071, 0.574223, -68.7387)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("..:rotation")
-tracks/2/interp = 1
+tracks/2/path = NodePath("Puertaintro/Bisagra:rotation")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.4, 2.6, 3.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 1.7, 2.5, 3, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.78256, 0), Vector3(0, 1.78256, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 1.63886, 0), Vector3(0, 1.44946, 0), Vector3(0, 1.55939, 0), Vector3(0, 1.63886, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4eiuy"]
+[sub_resource type="Animation" id="Animation_25i8e"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../CamaraBaño:position")
+tracks/0/path = NodePath("CamaraBaño:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-3.84321, 3.82276, -0.624655)]
+"values": [Vector3(8.94336, 2.38476, -68.1695)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:rotation")
+tracks/1/path = NodePath("CamaraBaño:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 1.78256, 0)]
+"values": [Vector3(0, 3.61632, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../CamaraBaño:rotation")
+tracks/2/path = NodePath("Puertaintro/Bisagra:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.20944, 0)]
+"values": [Vector3(0, 1.36659, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bcy3s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bssto"]
 _data = {
-"AnimacionBaño": SubResource("Animation_5q3wh"),
-"RESET": SubResource("Animation_4eiuy")
+"AnimacionBaño": SubResource("Animation_yu04u"),
+"RESET": SubResource("Animation_25i8e")
 }
 
 [node name="Tutorial" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340086, 0)
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bjnqf")
+
 [node name="Colegio" parent="." instance=ExtResource("1_qj02i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9551, -0.292524, -1.60715)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_bjnqf")
+[node name="TechoGeneral" parent="Colegio" index="0"]
+visible = true
+
+[node name="TechoLab" parent="Colegio" index="1"]
+visible = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7048, 4.97862, 0)
@@ -242,11 +249,17 @@ light_color = Color(0.875337, 0.619671, 0.109824, 1)
 light_energy = 1.792
 
 [node name="Player" parent="." instance=ExtResource("2_pbb50")]
-transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.38259, 0, 0.999886, 0, -0.015114, -27.5962, 0.410121, 12.8022)
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.38259, 0, 0.999886, 0, -0.015114, -19.8811, 0.410121, 12.8022)
+
+[node name="CharacterBody3D" parent="Player" index="0" groups=["player"]]
+
+[node name="MeshInstance3D" parent="Player/CharacterBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="UI" parent="." instance=ExtResource("3_3x1y6")]
 
 [node name="AnimacionIntro" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.0637, 0, -0.316187)
 script = ExtResource("4_0yoml")
 
 [node name="Camara Intro" type="Camera3D" parent="AnimacionIntro"]
@@ -258,32 +271,13 @@ libraries = {
 }
 
 [node name="Puertas" parent="." instance=ExtResource("4_o11gv")]
-transform = Transform3D(-3.63201e-08, 0, 0.581635, 0, 0.830908, 0, -0.830908, 0, -2.54241e-08, -30.1289, -0.321772, 12.6298)
+transform = Transform3D(-3.63201e-08, 0, 0.581635, 0, 0.830908, 0, -0.830908, 0, -2.54241e-08, -23.0971, -0.321772, 12.2264)
 
 [node name="Puertas3" parent="." instance=ExtResource("4_o11gv")]
-transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 0.676708, -0.13132, -60.645)
-
-[node name="PuertaIntro" parent="." instance=ExtResource("6_eypyh")]
-transform = Transform3D(-3.31941e-08, 0, 1, 0, 0.642552, 0, -0.759392, 0, -4.37114e-08, 2.84239, -0.0715667, -70.6446)
-script = ExtResource("7_h6c83")
-
-[node name="Bisagra" parent="PuertaIntro" index="0"]
-transform = Transform3D(-0.210184, 0, 0.977661, 0, 1, 0, -0.977661, 0, -0.210184, -4.9342, 2.35685, -2.16026)
-
-[node name="StaticBody3D" parent="PuertaIntro/Bisagra" index="0"]
-script = null
-
-[node name="AnimacionIB" type="AnimationPlayer" parent="PuertaIntro/Bisagra/StaticBody3D" index="2"]
-libraries = {
-"": SubResource("AnimationLibrary_bcy3s")
-}
-
-[node name="CamaraBaño" type="Camera3D" parent="PuertaIntro"]
-transform = Transform3D(1.28807, 0, -0.207912, 0, 1.55629, 0, 0.273788, 0, 0.978147, -3.84321, 3.82276, -0.624655)
-current = true
+transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -61.0598)
 
 [node name="light" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -43.1127, 4.89009, 8.50994)
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -36.3579, 4.89009, 7.7197)
 
 [node name="LucesTecho" parent="light" index="0"]
 transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
@@ -296,7 +290,7 @@ light_volumetric_fog_energy = 2.455
 omni_range = 6.674
 
 [node name="light5" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -37.8433, 4.89009, 8.50994)
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -31.0885, 4.89009, 7.7197)
 
 [node name="LucesTecho" parent="light5" index="0"]
 transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
@@ -309,7 +303,7 @@ light_volumetric_fog_energy = 2.455
 omni_range = 6.674
 
 [node name="light2" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -33.6669, 4.89009, 8.50994)
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -26.9121, 4.89009, 7.7197)
 
 [node name="OmniLight3D" parent="light2" index="1"]
 light_color = Color(0.835404, 0.94866, 0.596878, 1)
@@ -319,7 +313,7 @@ light_volumetric_fog_energy = 2.455
 omni_range = 6.674
 
 [node name="light3" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, -21.9259, 4.92011, 13.1024)
+transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, -15.1711, 4.92011, 12.3122)
 
 [node name="OmniLight3D" parent="light3" index="1"]
 light_color = Color(0.835404, 0.94866, 0.596878, 1)
@@ -329,7 +323,7 @@ light_volumetric_fog_energy = 2.455
 omni_range = 6.674
 
 [node name="light4" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, -0.592151, 4.92011, 13.1024)
+transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, 6.16267, 4.92011, 12.3122)
 
 [node name="OmniLight3D" parent="light4" index="1"]
 light_color = Color(0.835404, 0.94866, 0.596878, 1)
@@ -342,10 +336,38 @@ omni_range = 6.674
 
 [node name="Dialogos" parent="." instance=ExtResource("10_tx5dm")]
 
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(5.89, 0, 0, 0, 0.775, 0, 0, 0, 5.335, 4.48055, 0.0333574, -68.7364)
+script = ExtResource("11_nj55y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0478483, -0.195763)
+shape = SubResource("BoxShape3D_i7mi0")
+
+[node name="AnimacionBaño" type="Node3D" parent="."]
+
+[node name="Puertaintro" parent="AnimacionBaño" instance=ExtResource("4_o11gv")]
+transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -68.3812)
+
+[node name="Bisagra" parent="AnimacionBaño/Puertaintro" index="0"]
+transform = Transform3D(0.202787, 0, 0.979223, 0, 1, 0, -0.979223, 0, 0.202787, 1.19807, 2.45661, -3.8147e-06)
+
+[node name="CamaraBaño" type="Camera3D" parent="AnimacionBaño"]
+transform = Transform3D(-0.889416, 0, -0.457098, 0, 1, 0, 0.457098, 0, -0.889416, 8.94336, 2.38476, -68.1695)
+current = true
+
+[node name="Escena1" type="AnimationPlayer" parent="AnimacionBaño"]
+libraries = {
+"": SubResource("AnimationLibrary_bssto")
+}
+
+[editable path="Colegio"]
+[editable path="Colegio/NavigationRegion3D/colegio[1]"]
+[editable path="Player"]
 [editable path="Puertas"]
-[editable path="PuertaIntro"]
 [editable path="light"]
 [editable path="light5"]
 [editable path="light2"]
 [editable path="light3"]
 [editable path="light4"]
+[editable path="AnimacionBaño/Puertaintro"]
