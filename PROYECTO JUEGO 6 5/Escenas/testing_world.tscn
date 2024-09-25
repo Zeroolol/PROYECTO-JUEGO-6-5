@@ -216,6 +216,9 @@ visible = true
 [node name="light" parent="Mapa" instance=ExtResource("12_jxkid")]
 transform = Transform3D(0.998393, 0, 0.0566754, 0, 1.69391, 0, -0.0566754, 0, 0.998393, -11.002, 5.87856, -47.6105)
 
+[node name="light7" parent="Mapa" instance=ExtResource("12_jxkid")]
+transform = Transform3D(0.998393, 0, 0.0566754, 0, 1.69391, 0, -0.0566754, 0, 0.998393, -18.4602, 6.00498, -63.4659)
+
 [node name="light2" parent="Mapa" instance=ExtResource("12_jxkid")]
 transform = Transform3D(0.998393, 0, 0.0566754, 0, 1.69391, 0, -0.0566754, 0, 0.998393, -13.2498, 5.87856, -47.6105)
 

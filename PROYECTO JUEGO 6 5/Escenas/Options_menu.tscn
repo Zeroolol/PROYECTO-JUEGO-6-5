@@ -1,0 +1,135 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcdtwnpvp124u"]
+
+[ext_resource type="Script" path="res://Scripts/OptionsMenu.gd" id="1_ksgpp"]
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="1_xtsi4"]
+[ext_resource type="Script" path="res://Scripts/AudioSetting.gd" id="2_6yrkq"]
+
+[node name="Options_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ksgpp")
+
+[node name="Opciones" type="Label" parent="."]
+layout_mode = 2
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 1140.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 32
+text = "OPCIONES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioSetting" type="Control" parent="."]
+anchors_preset = 0
+offset_top = 58.0
+offset_right = 1151.0
+offset_bottom = 228.0
+script = ExtResource("2_6yrkq")
+
+[node name="Confirmar" type="Button" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 913.0
+offset_top = 530.0
+offset_right = 1141.0
+offset_bottom = 580.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_xtsi4")
+text = "CONFIRMAR"
+
+[node name="Atras" type="Button" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 27.0
+offset_top = 530.0
+offset_right = 255.0
+offset_bottom = 580.0
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_xtsi4")
+text = "ATRAS
+"
+
+[node name="MasterLabel2" type="Label" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 46.0
+offset_right = 141.0
+offset_bottom = 67.0
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 20
+text = "MASTER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmbienteLabel" type="Label" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 21.0
+offset_top = 73.0
+offset_right = 181.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 20
+text = "AMBIENTE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFXLabel" type="Label" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 22.0
+offset_top = 103.0
+offset_right = 82.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 20
+text = "SFX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Master" type="HSlider" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 191.0
+offset_top = 45.0
+offset_right = 977.0
+offset_bottom = 61.0
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+
+[node name="Ambiente" type="HSlider" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 191.0
+offset_top = 76.0
+offset_right = 977.0
+offset_bottom = 92.0
+max_value = 1.0
+step = 0.05
+
+[node name="SFX" type="HSlider" parent="AudioSetting"]
+layout_mode = 2
+offset_left = 191.0
+offset_top = 104.0
+offset_right = 977.0
+offset_bottom = 120.0
+max_value = 1.0
+step = 0.05
+
+[connection signal="pressed" from="AudioSetting/Confirmar" to="." method="_on_confirmar_pressed"]
+[connection signal="pressed" from="AudioSetting/Atras" to="." method="_on_confirmar_pressed"]
+[connection signal="pressed" from="AudioSetting/Atras" to="." method="_on_atras_pressed"]
+[connection signal="mouse_exited" from="AudioSetting/Master" to="AudioSetting" method="_on_master_mouse_exited"]
+[connection signal="mouse_exited" from="AudioSetting/Master" to="AudioSetting" method="_on_h_slider_mouse_exited"]
+[connection signal="mouse_exited" from="AudioSetting/Ambiente" to="AudioSetting" method="_on_ambiente_mouse_exited"]
+[connection signal="mouse_exited" from="AudioSetting/SFX" to="AudioSetting" method="_on_sfx_mouse_exited"]
