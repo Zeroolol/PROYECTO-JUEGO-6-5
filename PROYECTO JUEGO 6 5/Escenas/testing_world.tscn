@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=25 format=3 uid="uid://dtjviddtunp3j"]
 
+[ext_resource type="Texture2D" uid="uid://dvdr7fo441otx" path="res://Texturas/sky.jpg" id="1_2vvpm"]
 [ext_resource type="AudioStream" uid="uid://b33i1mhvhwym4" path="res://Sonidos/Tren.mp3" id="3_jaduy"]
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="5_1rkta"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="6_yj7ha"]
@@ -16,32 +17,21 @@
 [ext_resource type="Texture2D" uid="uid://c04b4x2kx8htn" path="res://Textures/RejaTextura.png" id="14_vftjx"]
 [ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="16_f55pm"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nmyas"]
-sky_top_color = Color(0.240658, 0.507449, 0.665536, 1)
-sky_horizon_color = Color(0.0585729, 0.0204804, 0.20131, 1)
-sky_curve = 0.113679
-sky_energy_multiplier = 0.65
-sky_cover_modulate = Color(0.0142752, 0.0142752, 0.0142752, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-sun_angle_max = 0.0
-sun_curve = 0.219613
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ld8r"]
+panorama = ExtResource("1_2vvpm")
+energy_multiplier = 0.5
 
-[sub_resource type="Sky" id="Sky_86lin"]
-sky_material = SubResource("ProceduralSkyMaterial_nmyas")
+[sub_resource type="Sky" id="Sky_v5qp7"]
+sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
 
-[sub_resource type="Environment" id="Environment_8d7ch"]
+[sub_resource type="Environment" id="Environment_fqr8s"]
 background_mode = 2
-background_color = Color(0.476686, 0.683186, 0.766218, 1)
-background_energy_multiplier = 0.9
-sky = SubResource("Sky_86lin")
-ambient_light_source = 3
-ambient_light_color = Color(0.237334, 0.345405, 0.411268, 1)
-ambient_light_sky_contribution = 0.23
-ambient_light_energy = 1.68
+sky = SubResource("Sky_v5qp7")
+tonemap_mode = 3
+glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.0995547, 0.112246, 0.132199, 1)
-fog_light_energy = 0.67
-fog_density = 0.1227
+fog_light_color = Color(0.244768, 0.268561, 0.305965, 1)
+fog_density = 0.02
 
 [sub_resource type="Animation" id="Animation_0dijk"]
 length = 0.001
@@ -115,7 +105,7 @@ uv1_triplanar = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70831, -0.54103, 1.92401)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_8d7ch")
+environment = SubResource("Environment_fqr8s")
 
 [node name="Ambient Sound" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1877, 0, -31.8457)
@@ -156,10 +146,7 @@ stream = ExtResource("3_jaduy")
 volume_db = 10.0
 
 [node name="Player" parent="." instance=ExtResource("6_yj7ha")]
-transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.40159, 0, 0.999886, 0, -0.015114, -17.6331, 0.411985, -34.7092)
-
-[node name="MeshInstance3D" parent="Player/CharacterBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.40159, 0, 0.999886, 0, -0.015114, -17.6331, 0.820907, -34.7092)
 
 [node name="Escena inicio" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.727, 1.16536, -34.6957)
@@ -220,6 +207,7 @@ transform = Transform3D(-3.29731e-08, 0, 0.7, 0, 0.659156, 0, -0.754336, 0, -3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.4517, 0.893772, 4.19866)
 
 [node name="TechoGeneral" parent="Mapa/Colegio" index="0"]
+transform = Transform3D(47.6728, 0, 0, 0, 0.100253, 0, 0, 0, 133.136, 9.18521, 5.73725, -83.6914)
 visible = true
 
 [node name="TechoLab" parent="Mapa/Colegio" index="1"]
@@ -249,7 +237,7 @@ transform = Transform3D(0.855947, 0, 0, 0, 1, 0, 0, 0, 1, -14.3863, 0.311114, -5
 [node name="Dialogos" parent="." instance=ExtResource("16_f55pm")]
 
 [node name="StaticBody3D" parent="." instance=ExtResource("8_3em28")]
-transform = Transform3D(0.085, 0, 0, 0, 0.067, 0, 0, 0, 0.08, -17.3535, 1.86648, -31.2372)
+transform = Transform3D(0.085, 0, 0, 0, 0.067, 0, 0, 0, 0.08, -17.7107, 1.86648, -31.1831)
 
 [editable path="Player"]
 [editable path="Enemy"]

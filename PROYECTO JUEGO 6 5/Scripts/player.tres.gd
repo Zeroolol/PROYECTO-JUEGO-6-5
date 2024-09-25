@@ -52,8 +52,9 @@ func _process(delta):
 	# Controlar el sonido de los pasos
 	footstep_timer -= delta
 	if is_on_floor() and speed == SPEED and velocity.length() > 0 and footstep_timer <= 0:
+		footstep_sound.volume_db = -10
 		footstep_sound.play()
-		footstep_timer = 0.5  # Ajusta el intervalo de tiempo entre pasos
+		footstep_timer = 1  # Ajusta el intervalo de tiempo entre pasos
 
 func _physics_process(delta):
 	# No hacer nada si no se puede mover o si hay una cinemática activa
@@ -86,6 +87,8 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 		run_sound.stop()
-		footstep_sound.stop()
+		footstep_sound.volume_db -= 40 * delta  # Reduce el volumen de forma gradual
+		if footstep_sound.volume_db <= -80:  # Considerar -80dB como "silencio"
+			footstep_sound.stop()
 		
 	move_and_slide()
