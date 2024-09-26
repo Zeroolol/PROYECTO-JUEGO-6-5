@@ -19,6 +19,7 @@
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ld8r"]
 panorama = ExtResource("1_2vvpm")
+energy_multiplier = 0.5
 
 [sub_resource type="Sky" id="Sky_v5qp7"]
 sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
@@ -27,6 +28,7 @@ sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
 background_mode = 2
 sky = SubResource("Sky_v5qp7")
 tonemap_mode = 2
+glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.244768, 0.268561, 0.305965, 1)
 fog_density = 0.017
@@ -114,24 +116,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, -65.662)
 stream = ExtResource("9_qiefj")
 autoplay = true
 max_distance = 60.0
+bus = &"Ambiente"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Ambient Sound"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4702, 58.374)
 stream = ExtResource("9_qiefj")
 autoplay = true
 max_distance = 60.0
+bus = &"Ambiente"
 
 [node name="AudioStreamPlayer3D3" type="AudioStreamPlayer3D" parent="Ambient Sound"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.7882, 13.4702, 2.24907)
 stream = ExtResource("9_qiefj")
 autoplay = true
 max_distance = 60.0
+bus = &"Ambiente"
 
 [node name="AudioStreamPlayer3D4" type="AudioStreamPlayer3D" parent="Ambient Sound"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9482, 13.4702, 2.24907)
 stream = ExtResource("9_qiefj")
 autoplay = true
 max_distance = 60.0
+bus = &"Ambiente"
 
 [node name="AudioStreamPlayer3D5" type="AudioStreamPlayer3D" parent="Ambient Sound"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.25786, 13.4702, 0.404638)
@@ -140,9 +146,10 @@ autoplay = true
 max_distance = 60.0
 
 [node name="Tren" type="AudioStreamPlayer3D" parent="Ambient Sound"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8591, 1.33408, -5.12115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.4417, 1.33408, -5.12115)
 stream = ExtResource("3_jaduy")
 volume_db = 10.0
+bus = &"Ambiente"
 
 [node name="Player" parent="." instance=ExtResource("6_yj7ha")]
 transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.40159, 0, 0.999886, 0, -0.015114, -17.6331, 0.820907, -34.7092)
@@ -206,10 +213,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.4517, 0.893772, 4.19866)
 
 [node name="TechoGeneral" parent="Mapa/Colegio" index="0"]
 transform = Transform3D(47.6728, 0, 0, 0, 0.100253, 0, 0, 0, 133.136, 9.18521, 5.73725, -83.6914)
-visible = true
-
-[node name="TechoLab" parent="Mapa/Colegio" index="1"]
-visible = true
 
 [node name="light" parent="Mapa" instance=ExtResource("12_jxkid")]
 transform = Transform3D(0.998393, 0, 0.0566754, 0, 1.69391, 0, -0.0566754, 0, 0.998393, -11.002, 5.87856, -47.6105)

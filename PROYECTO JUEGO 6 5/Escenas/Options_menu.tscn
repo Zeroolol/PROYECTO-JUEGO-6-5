@@ -27,6 +27,57 @@ text = "OPCIONES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="AUDIO" type="Label" parent="."]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 56.0
+offset_right = 175.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 32
+text = "AUDIO
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CONTROLES" type="Label" parent="."]
+layout_mode = 2
+offset_left = 17.0
+offset_top = 194.0
+offset_right = 177.0
+offset_bottom = 226.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 32
+text = "CONTROLES
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MOVIMIENTOS" type="Label" parent="."]
+layout_mode = 2
+offset_left = 341.0
+offset_top = 250.0
+offset_right = 766.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_xtsi4")
+theme_override_font_sizes/font_size = 25
+text = "MOVIMIENTOS: WASD
+
+INTERACTUAR:    E 
+
+LINTERNA:       F
+
+PAUSA:        ESC
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="AudioSetting" type="Control" parent="."]
 anchors_preset = 0
 offset_top = 58.0

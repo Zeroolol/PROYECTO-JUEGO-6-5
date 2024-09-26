@@ -237,24 +237,16 @@ environment = SubResource("Environment_bjnqf")
 [node name="Colegio" parent="." instance=ExtResource("1_qj02i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9551, -0.292524, -1.60715)
 
-[node name="TechoGeneral" parent="Colegio" index="0"]
-visible = true
-
-[node name="TechoLab" parent="Colegio" index="1"]
-visible = true
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7048, 4.97862, 0)
 light_color = Color(0.875337, 0.619671, 0.109824, 1)
 light_energy = 1.792
 
 [node name="Player" parent="." instance=ExtResource("2_pbb50")]
-transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.38259, 0, 0.999886, 0, -0.015114, -19.8811, 0.410121, 12.8022)
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.51434, 0, 0.999886, 0, -0.015114, -19.8811, 0.410121, 12.8022)
+visible = false
 
 [node name="CharacterBody3D" parent="Player" index="0" groups=["player"]]
-
-[node name="MeshInstance3D" parent="Player/CharacterBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="UI" parent="." instance=ExtResource("3_3x1y6")]
 
@@ -350,10 +342,10 @@ shape = SubResource("BoxShape3D_i7mi0")
 transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -68.3812)
 
 [node name="Bisagra" parent="AnimacionBaño/Puertaintro" index="0"]
-transform = Transform3D(0.202787, 0, 0.979223, 0, 1, 0, -0.979223, 0, 0.202787, 1.19807, 2.45661, -3.8147e-06)
+transform = Transform3D(0.20279, 0, 0.979222, 0, 1, 0, -0.979222, 0, 0.20279, 1.19807, 2.45661, -3.8147e-06)
 
 [node name="CamaraBaño" type="Camera3D" parent="AnimacionBaño"]
-transform = Transform3D(-0.889416, 0, -0.457098, 0, 1, 0, 0.457098, 0, -0.889416, 8.94336, 2.38476, -68.1695)
+transform = Transform3D(-0.889417, 0, -0.457096, 0, 1, 0, 0.457096, 0, -0.889417, 8.94336, 2.38476, -68.1695)
 current = true
 
 [node name="Escena1" type="AnimationPlayer" parent="AnimacionBaño"]

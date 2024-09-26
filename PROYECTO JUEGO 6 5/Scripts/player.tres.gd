@@ -20,23 +20,31 @@ var speed = SPEED
 @onready var footstep_sound = $Caminar  # Nodo de sonido de pasos
 @onready var run_sound = $Correr  # Nodo de sonido de correr
 @onready var animation = $Cabeza/Camera3D/AnimationPlayer
+@onready var instruction_label = get_node("/root/" + get_tree().current_scene.name + "/UI/TextoObjetivos")  # Nodo de texto para las instrucciones
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var yaw = 0.0  
 var pitch = 0.0  
 
+var showed_instruction = false  # Controla si ya se mostró el texto de instrucciones
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	energy_bar = get_node("/root/" + get_tree().current_scene.name + "/UI/EnergyBar")  # Acceder al nodo root para encontrar la UI
+	instruction_label.visible = false  # Asegúrate de que el texto esté oculto al principio
 
-func _unhandled_input(event):
-	if event is InputEventMouseMotion:
-		yaw -= event.relative.x * MOUSE_SENSITIVITY
-		pitch -= event.relative.y * MOUSE_SENSITIVITY
-		pitch = clamp(pitch, -90, 90)
-		rotation_degrees.y = yaw
-		camera.rotation_degrees.x = pitch
+func show_instructions():
+	instruction_label.text = "Presione WASD para moverse"  # Mostrar la instrucción inicial
+	instruction_label.visible = true  # Hacer visible el texto
 
 func _process(delta):
+	# Verificar si el jugador presiona alguna de las teclas de movimiento
+	if not showed_instruction and (Input.is_action_pressed("avanzar") or Input.is_action_pressed("atras") or Input.is_action_pressed("izquierda") or Input.is_action_pressed("derecha")):
+		instruction_label.text = "¡Bien hecho!"  # Cambiar el texto cuando el jugador se mueva
+		await get_tree().create_timer(2.0).timeout  # Esperar 2 segundos
+		instruction_label.visible = false  # Ocultar el texto
+		showed_instruction = true
+
+
 	if speed == RUN_SPEED:
 		if footstep_sound.playing:
 			footstep_sound.stop()

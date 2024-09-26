@@ -14,7 +14,8 @@ points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607,
 
 [sub_resource type="Animation" id="Animation_idwsw"]
 resource_name = "CamaraCorrer"
-length = 0.8
+length = 0.9
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,10 +23,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.16629, 1.69082, 0), Vector3(0, 1.897, 0), Vector3(-0.372488, 1.59771, -4.65661e-10), Vector3(0.0066517, 1.81719, -4.51109e-10)]
+"values": [Vector3(0.16629, 1.69082, 0), Vector3(0, 1.897, 0), Vector3(-0.372488, 1.59771, -4.65661e-10), Vector3(0.0066517, 1.81719, -4.51109e-10), Vector3(0.352301, 1.63026, -0.00522475)]
 }
 
 [sub_resource type="Animation" id="Animation_gnatu"]
@@ -45,7 +46,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1xfv5"]
 resource_name = "animacion"
-length = 0.5
+length = 0.7
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,10 +55,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.69082, 0), Vector3(0, 1.77063, 0), Vector3(0, 1.61101, 0)]
+"values": [Vector3(0, 1.69082, 0), Vector3(0, 1.77063, 0), Vector3(0, 1.61101, 0), Vector3(0, 1.7681, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rv0m0"]
@@ -104,6 +106,7 @@ script = ExtResource("2_y3y1k")
 [node name="Toggle" type="AudioStreamPlayer3D" parent="CharacterBody3D/Cabeza/Camera3D/FlashLight"]
 stream = ExtResource("3_saa6l")
 volume_db = -1.0
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/Cabeza/Camera3D"]
 libraries = {
@@ -117,7 +120,9 @@ script = ExtResource("3_uwjih")
 [node name="Caminar" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
 stream = ExtResource("5_7uu1o")
 volume_db = -17.949
+bus = &"SFX"
 
 [node name="Correr" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
 stream = ExtResource("5_scwy0")
 volume_db = -20.0
+bus = &"SFX"

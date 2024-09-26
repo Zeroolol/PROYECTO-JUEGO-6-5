@@ -2,13 +2,14 @@ extends Node3D
 
 @onready var control_dialogos: Control = get_node("/root/Tutorial/Dialogos")
 @onready var label_dialogo: RichTextLabel = control_dialogos.get_node("Panel/DialogoTexto")
+@onready var player = get_node("/root/" + get_tree().current_scene.name + "/Player/CharacterBody3D")  # Obtener referencia al jugador
 
 var dialogos = [
 	"Profe, ¿puedo ir al baño? Me duele la cabeza.",
 	"No puede salir en horario de clase.",
 	"Por favor, me está reventando la cabeza.",
 	"Bueno, dale, pero vuelve rápido que me cagan a pedo si no.",
-	"Gracias profe."
+	"Gracias profe.",
 ]
 
 var indice_dialogo = 0
@@ -17,7 +18,6 @@ func _ready():
 	$AnimacionIntro.play("Introduccion")
 	$"Camara Intro".current = true
 	await get_tree().create_timer(20, false).timeout
-	var player = get_node("/root/" + get_tree().current_scene.name + "/Player/CharacterBody3D")
 	player.movable = true
 	player.get_node("Cabeza/Camera3D").current = true
 	$"Camara Intro".current = false
@@ -47,3 +47,4 @@ func mostrar_dialogo():
 		mostrar_dialogo()
 	else:
 		control_dialogos.visible = false  # Ocultar el panel después de todos los diálogos
+		player.show_instructions()  # Llamar a la función para mostrar las instrucciones en el jugador
