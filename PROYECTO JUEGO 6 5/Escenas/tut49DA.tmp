@@ -327,6 +327,7 @@ omni_range = 6.674
 [node name="VHS_shader" parent="." instance=ExtResource("9_lvmu4")]
 
 [node name="Dialogos" parent="." instance=ExtResource("10_tx5dm")]
+mouse_filter = 2
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(5.89, 0, 0, 0, 0.775, 0, 0, 0, 5.335, 4.48055, 0.0333574, -68.7364)
@@ -339,7 +340,7 @@ shape = SubResource("BoxShape3D_i7mi0")
 [node name="AnimacionBaño" type="Node3D" parent="."]
 
 [node name="Puertaintro" parent="AnimacionBaño" instance=ExtResource("4_o11gv")]
-transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -69.9143)
+transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -68.3812)
 
 [node name="Bisagra" parent="AnimacionBaño/Puertaintro" index="0"]
 transform = Transform3D(0.20279, 0, 0.979222, 0, 1, 0, -0.979222, 0, 0.20279, 1.19807, 2.45661, -3.8147e-06)

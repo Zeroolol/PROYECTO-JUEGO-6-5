@@ -23,6 +23,9 @@ func _ready():
 	$"Camara Intro".current = false
 	queue_free()
 
+	# Llamar a la función que indica que la cinemática ha terminado
+	player._on_cinematic_finished()
+
 	# Iniciar la secuencia de diálogos después de la animación
 	mostrar_dialogo()
 
@@ -47,4 +50,3 @@ func mostrar_dialogo():
 		mostrar_dialogo()
 	else:
 		control_dialogos.visible = false  # Ocultar el panel después de todos los diálogos
-		player.show_instructions()  # Llamar a la función para mostrar las instrucciones en el jugador
