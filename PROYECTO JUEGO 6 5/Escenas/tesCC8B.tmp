@@ -27,13 +27,12 @@ sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
 [sub_resource type="Environment" id="Environment_fqr8s"]
 background_mode = 2
 sky = SubResource("Sky_v5qp7")
+tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.104632, 0.106848, 0.106302, 1)
-fog_light_energy = 3.94
-fog_density = 0.0663
-fog_sky_affect = 0.564
-fog_height = 86.54
+fog_light_color = Color(0.244768, 0.268561, 0.305965, 1)
+fog_density = 0.017
+fog_sky_affect = 0.606
 
 [sub_resource type="Animation" id="Animation_0dijk"]
 length = 0.001

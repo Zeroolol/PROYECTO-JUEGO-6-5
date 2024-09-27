@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dwehjyj4c4ck4"]
 
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="1_qj02i"]
-[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="2_pbb50"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Scripts/player (1).tscn" id="2_pbb50"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
 [ext_resource type="Script" path="res://Scripts/AnimacionIntro.gd" id="4_0yoml"]
 [ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="4_o11gv"]
