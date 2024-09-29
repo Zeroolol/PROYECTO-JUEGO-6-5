@@ -21,7 +21,7 @@ func _ready():
 	# Inicialmente, el enemigo empieza deambulando
 	start_wandering()
 
-func _process(delta):
+func _physics_process(delta):
 	match current_state:
 		EnemyState.WANDER:
 			wander(delta)
@@ -29,6 +29,7 @@ func _process(delta):
 			chase_player(delta)
 		EnemyState.SEARCH:
 			search_for_player(delta)
+
 
 func start_wandering():
 	current_state = EnemyState.WANDER

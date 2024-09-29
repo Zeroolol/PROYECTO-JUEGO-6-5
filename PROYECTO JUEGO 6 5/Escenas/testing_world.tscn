@@ -27,11 +27,11 @@ sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
 [sub_resource type="Environment" id="Environment_fqr8s"]
 background_mode = 2
 sky = SubResource("Sky_v5qp7")
-glow_enabled = true
 fog_enabled = true
+fog_mode = 1
 fog_light_color = Color(0.104632, 0.106848, 0.106302, 1)
 fog_light_energy = 3.94
-fog_density = 0.0663
+fog_density = 1.0
 fog_sky_affect = 0.564
 fog_height = 86.54
 
@@ -170,7 +170,7 @@ libraries = {
 }
 
 [node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7624, 1.66143, -29.039)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7624, 1.66143, 13.0776)
 
 [node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
 floor_constant_speed = true
