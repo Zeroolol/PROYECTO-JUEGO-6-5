@@ -12,6 +12,7 @@ script = ExtResource("1_s2ytd")
 
 [node name="ModeloLinterna" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.497568, 0, 0.233013)
+layers = 3
 mesh = ExtResource("2_mnelx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

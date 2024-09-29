@@ -1,6 +1,5 @@
-[gd_scene load_steps=25 format=3 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=23 format=3 uid="uid://dtjviddtunp3j"]
 
-[ext_resource type="Texture2D" uid="uid://dvdr7fo441otx" path="res://Texturas/sky.jpg" id="1_2vvpm"]
 [ext_resource type="AudioStream" uid="uid://b33i1mhvhwym4" path="res://Sonidos/Tren.mp3" id="3_jaduy"]
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="5_1rkta"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="6_yj7ha"]
@@ -16,24 +15,18 @@
 [ext_resource type="PackedScene" uid="uid://86hx4480nwcb" path="res://Escenas/puertas_2.tscn" id="14_jd0cu"]
 [ext_resource type="Texture2D" uid="uid://c04b4x2kx8htn" path="res://Textures/RejaTextura.png" id="14_vftjx"]
 [ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="16_f55pm"]
+[ext_resource type="ArrayOccluder3D" uid="uid://dmuiql65q4kfh" path="res://Escenas/testing_world.occ" id="17_qknyh"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ld8r"]
-panorama = ExtResource("1_2vvpm")
-energy_multiplier = 0.5
-
-[sub_resource type="Sky" id="Sky_v5qp7"]
-sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
-
-[sub_resource type="Environment" id="Environment_fqr8s"]
-background_mode = 2
-sky = SubResource("Sky_v5qp7")
-glow_enabled = true
+[sub_resource type="Environment" id="Environment_46p6g"]
+ambient_light_color = Color(0.129558, 0.129559, 0.129558, 1)
+tonemap_mode = 3
+ssao_enabled = true
+ssao_radius = 4.53
+ssao_intensity = 2.51
+ssao_power = 1.17688
 fog_enabled = true
-fog_light_color = Color(0.104632, 0.106848, 0.106302, 1)
-fog_light_energy = 3.94
-fog_density = 0.0663
-fog_sky_affect = 0.564
-fog_height = 86.54
+fog_light_color = Color(0.310813, 0.338978, 0.383251, 1)
+fog_density = 0.04
 
 [sub_resource type="Animation" id="Animation_0dijk"]
 length = 0.001
@@ -107,7 +100,7 @@ uv1_triplanar = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70831, -0.54103, 1.92401)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fqr8s")
+environment = SubResource("Environment_46p6g")
 
 [node name="Ambient Sound" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1877, 0, -31.8457)
@@ -160,9 +153,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -17.72
 script = ExtResource("10_0xs08")
 
 [node name="camara escena" type="Camera3D" parent="Escena inicio"]
-current = true
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+cull_mask = 1047555
 fov = 68.6998
-far = 294.36
+near = 0.717
+far = 469.21
 
 [node name="animacion escena" type="AnimationPlayer" parent="Escena inicio"]
 libraries = {
@@ -170,11 +165,14 @@ libraries = {
 }
 
 [node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7624, 1.66143, -29.039)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.9667, 2.71523, -54.2501)
 
 [node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
 floor_constant_speed = true
 player = NodePath("../../Player/CharacterBody3D")
+
+[node name="NavigationAgent3D" parent="Enemy/CharacterBody3D" index="2"]
+simplify_path = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
 
@@ -242,7 +240,13 @@ transform = Transform3D(0.855947, 0, 0, 0, 1, 0, 0, 0, 1, -14.3863, 0.311114, -5
 [node name="StaticBody3D" parent="." instance=ExtResource("8_3em28")]
 transform = Transform3D(0.085, 0, 0, 0, 0.067, 0, 0, 0, 0.08, -17.7107, 1.86648, -31.1831)
 
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("17_qknyh")
+bake_mask = 4294966273
+
 [editable path="Player"]
 [editable path="Enemy"]
+[editable path="Mapa/Puertas"]
+[editable path="Mapa/Puertas2"]
 [editable path="Mapa/Colegio"]
 [editable path="Mapa/Colegio/NavigationRegion3D/colegio[1]"]

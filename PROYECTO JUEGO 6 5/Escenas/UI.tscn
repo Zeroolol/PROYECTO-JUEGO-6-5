@@ -28,7 +28,7 @@ theme_override_font_sizes/normal_font_size = 30
 text = "E para interactuar"
 
 [node name="EnergyBar" type="ProgressBar" parent="."]
-modulate = Color(0, 1, 0, 1)
+modulate = Color(0.894118, 0.839216, 0.109804, 1)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -37,8 +37,8 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -568.0
 offset_top = -631.0
-offset_right = -233.0
-offset_bottom = -622.0
+offset_right = -236.0
+offset_bottom = -626.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2

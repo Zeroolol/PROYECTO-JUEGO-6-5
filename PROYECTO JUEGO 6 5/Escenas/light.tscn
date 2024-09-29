@@ -12,8 +12,8 @@ mesh = ExtResource("1_80pcw")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.841802, 0)
-light_color = Color(0.683827, 0.848228, 0.992739, 1)
-light_energy = 1.618
+light_color = Color(0.66495, 0.853911, 0.991769, 1)
+light_energy = 2.588
 light_indirect_energy = 1.795
 light_volumetric_fog_energy = 1.473
 light_size = 0.151
