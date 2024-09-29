@@ -1,107 +1,96 @@
 extends CharacterBody3D
 
-@export var navigation_region: NodePath  # Ruta al NavigationRegion3D
-@export var patrol_speed: float = 4.0  # Velocidad de movimiento durante la patrulla
-@export var detection_range: float = 10.0  # Rango de detección del jugador
-@export var player: CharacterBody3D  # Referencia al jugador
-@export var kill_range: float = 2.0  # Rango en el que el enemigo mata al jugador
+# Estados del enemigo
+enum EnemyState {WANDER, CHASE, SEARCH}
+var current_state: EnemyState = EnemyState.WANDER
 
-var patrol_target: Vector3  # Posición a la que se moverá el enemigo durante la patrulla
-var chasing_player = false
+@export var patrol_speed: float = 2.0
+@export var chase_speed: float = 4.0
+@export var search_time: float = 5.0  # Tiempo que busca al jugador
+@export var player: CharacterBody3D
+var search_timer: float = 0.0
+var patrol_target: Vector3
+var searching = false
 
 func _ready():
-	# Obtener el nodo NavigationRegion3D
-	var region = get_node(navigation_region) as NavigationRegion3D
-	if region:
-		patrol_target = get_random_point_in_region(region)  # Obtener un punto aleatorio para patrullar
-		if $NavigationAgent3D:
-			$NavigationAgent3D.target_position = patrol_target
-		else:
-			print("NavigationAgent3D no está disponible")
-	else:
-		print("NavigationRegion3D no encontrado en la ruta especificada")
+	# Conectar señales de las Area3D
+	$JumpscareDetector.connect("body_entered", Callable(self, "_on_jumpscare_detector_body_entered"))
+	$Detector.connect("body_entered", Callable(self, "_on_detector_body_entered"))
+	$BiggerDetector.connect("body_entered", Callable(self, "_on_bigger_detector_body_entered"))
+
+	# Inicialmente, el enemigo empieza deambulando
+	start_wandering()
 
 func _process(delta):
-	if detect_player():
-		chasing_player = true
-		if $NavigationAgent3D:
-			$NavigationAgent3D.target_position = player.global_transform.origin
-	else:
-		chasing_player = false
+	match current_state:
+		EnemyState.WANDER:
+			wander(delta)
+		EnemyState.CHASE:
+			chase_player(delta)
+		EnemyState.SEARCH:
+			search_for_player(delta)
 
-	if chasing_player:
-		if $NavigationAgent3D:
-			$NavigationAgent3D.target_position = player.global_transform.origin
-			if is_within_kill_range():
-				print("Enemigo está dentro del rango de matar al jugador.")
-				kill_player()
-		else:
-			print("NavigationAgent3D no está disponible para perseguir al jugador")
-	else:
-		patrol(delta)
+func start_wandering():
+	current_state = EnemyState.WANDER
+	patrol_target = get_random_patrol_point()
 
-	# Mover al enemigo hacia el objetivo usando move_and_slide()
-	if $NavigationAgent3D:
-		var next_position = $NavigationAgent3D.get_next_path_position()
-		if next_position:
-			var direction = (next_position - global_transform.origin).normalized()
-			# Usa la propiedad 'velocity' de CharacterBody3D
-			velocity = direction * patrol_speed
-			move_and_slide()  # Llama a move_and_slide sin argumentos
-		else:
-			print("No se pudo obtener la próxima posición de la ruta")
+func wander(delta):
+	# Movimiento básico de deambular (puedes expandir esto)
+	move_towards(patrol_target, patrol_speed)
+	if is_at_patrol_point():
+		patrol_target = get_random_patrol_point()
 
-func patrol(delta):
-	if $NavigationAgent3D:
-		if $NavigationAgent3D.is_navigation_finished():
-			var region = get_node(navigation_region) as NavigationRegion3D
-			if region:
-				patrol_target = get_random_point_in_region(region)
-				$NavigationAgent3D.target_position = patrol_target
-			else:
-				print("NavigationRegion3D no encontrado para patrullar")
-
-func detect_player() -> bool:
+func chase_player(delta):
+	# Perseguir al jugador
 	if player:
-		var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
-		return distance_to_player <= detection_range
-	else:
-		print("Jugador no está asignado en detect_player")
-		return false
+		move_towards(player.global_transform.origin, chase_speed)
+		if is_in_jumpscare_range():
+			kill_player()
 
-func is_within_kill_range() -> bool:
-	if player:
-		var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
-		return distance_to_player <= kill_range
-	else:
-		print("Jugador no está asignado para verificar rango de muerte")
-		return false
+func search_for_player(delta):
+	# Buscar al jugador por un tiempo limitado
+	search_timer -= delta
+	if search_timer <= 0:
+		start_wandering()
 
-func get_random_point_in_region(region: NavigationRegion3D) -> Vector3:
-	var collision_shape = get_node("/root/TestingWorld/Enemy/CharacterBody3D/Colision_de_enemigo") as CollisionShape3D
+# Función para moverse hacia un objetivo
+func move_towards(target: Vector3, speed: float):
+	var direction = (target - global_transform.origin).normalized()
+	velocity = direction * speed
+	move_and_slide()
 
-	if collision_shape:
-		var shape = collision_shape.shape as BoxShape3D
-		if shape:
-			var extents = shape.extents
-			var center = collision_shape.global_transform.origin
-			var random_point = Vector3(
-				randf_range(center.x - extents.x, center.x + extents.x),
-				randf_range(center.y - extents.y, center.y + extents.y),
-				randf_range(center.z - extents.z, center.z + extents.z)
-			)
-			return random_point
-		else:
-			print("CollisionShape3D no tiene una BoxShape3D asociada")
-			return global_transform.origin
-	else:
-		print("CollisionShape3D no encontrado en la ruta especificada")
-		return global_transform.origin
+func is_in_jumpscare_range() -> bool:
+	# Verificar si el jugador está en el rango para el jumpscare
+	return global_transform.origin.distance_to(player.global_transform.origin) <= 2.0  # Cambia el rango según sea necesario
 
+func get_random_patrol_point() -> Vector3:
+	# Obtener un punto aleatorio dentro de la región de patrulla
+	return Vector3(randf_range(-10, 10), 0, randf_range(-10, 10))  # Cambia según la zona de patrullaje
+
+# Función para verificar si el enemigo está cerca del punto de patrullaje
+func is_at_patrol_point() -> bool:
+	# Verificar si la distancia entre el enemigo y el punto de patrullaje es pequeña (por ejemplo, 0.5 unidades)
+	return global_transform.origin.distance_to(patrol_target) < 0.5
+
+# Función para eliminar al jugador
 func kill_player():
-	if player:
-		# Cambiar a la pantalla de muerte
-		get_tree().change_scene_to_file("res://Escenas/PantallaMuerte.tscn")  # Cambia esto por la ruta correcta de tu escena de muerte
-		print("Jugador ha sido eliminado. Cambiando a la pantalla de muerte.")
-	else:
-		print("Jugador no está asignado para matar")
+	get_tree().change_scene_to_file("res://Escenas/PantallaMuerte.tscn")
+
+# Para verificar si el jugador está corriendo
+func player_is_running() -> bool:
+	# Esto dependerá de cómo implementaste el correr en el jugador.
+	return player.velocity.length() > player.walk_speed
+
+func _on_jumpscare_detector_body_entered(body: Node3D) -> void:
+	if body == player:
+		kill_player()
+
+func _on_bigger_detector_body_entered(body: Node3D) -> void:
+	if body == player:
+		current_state = EnemyState.CHASE
+
+func _on_detector_body_entered(body: Node3D) -> void:
+	if body == player and player.is_running():  # Asume que tienes un método para verificar si el jugador corre
+		current_state = EnemyState.SEARCH
+		search_timer = search_time
+		patrol_target = player.global_transform.origin  # Empieza a buscar donde escuchó el ruido

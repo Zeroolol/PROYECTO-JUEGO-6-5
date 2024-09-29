@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dvdr7fo441otx" path="res://Texturas/sky.jpg" id="1_2vvpm"]
 [ext_resource type="AudioStream" uid="uid://b33i1mhvhwym4" path="res://Sonidos/Tren.mp3" id="3_jaduy"]
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="5_1rkta"]
-[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Scripts/player (1).tscn" id="6_yj7ha"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="6_yj7ha"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="7_fu7ci"]
 [ext_resource type="PackedScene" uid="uid://2i1kadg4xro3" path="res://Escenas/LinternaTest.tscn" id="8_3em28"]
 [ext_resource type="AudioStream" uid="uid://bf0uwsafpkoxv" path="res://Sonidos/war-horn-horror-73771.mp3" id="9_qiefj"]
@@ -170,12 +170,10 @@ libraries = {
 }
 
 [node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -20.1073, 1.66143, -84.2126)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7624, 1.66143, -29.039)
 
 [node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
 floor_constant_speed = true
-navigation_region = NodePath("../../Mapa/Colegio/NavigationRegion3D")
-detection_range = 20.0
 player = NodePath("../../Player/CharacterBody3D")
 
 [node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
