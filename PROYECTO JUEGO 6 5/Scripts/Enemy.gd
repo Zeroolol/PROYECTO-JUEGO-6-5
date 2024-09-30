@@ -23,8 +23,12 @@ func _ready():
 	
 	start_wandering()
 
+<<<<<<< HEAD
 
 func _process(delta):
+=======
+func _physics_process(delta):
+>>>>>>> c022759e1fdd9104446256fd027eba7ea6549785
 	match current_state:
 		EnemyState.WANDER:
 			$JumpscareDetector.monitoring = false

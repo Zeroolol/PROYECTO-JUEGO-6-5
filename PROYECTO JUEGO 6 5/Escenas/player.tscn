@@ -14,7 +14,7 @@ size = Vector3(0.970947, 1.86313, 0.944397)
 
 [sub_resource type="Animation" id="Animation_idwsw"]
 resource_name = "CamaraCorrer"
-length = 0.9
+length = 1.17
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -23,10 +23,10 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4, 0.533333, 0.666667, 0.8, 0.933333, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.16629, 1.69082, 0), Vector3(0, 1.897, 0), Vector3(-0.372488, 1.59771, -4.65661e-10), Vector3(0.0066517, 1.81719, -4.51109e-10), Vector3(0.352301, 1.63026, -0.00522475)]
+"values": [Vector3(0.16629, 1.69082, 0), Vector3(0.000628332, 1.69793, 0.0025041), Vector3(-0.270607, 1.60971, 0.00660402), Vector3(-0.0112812, 1.67938, 0.00268412), Vector3(0.113019, 1.58746, 0.000805235), Vector3(-0.0168314, 1.65782, 0.00276801), Vector3(-0.166752, 1.56351, 0.00503417), Vector3(-0.00288832, 1.77035, 0.00255725), Vector3(0.0817009, 1.55113, 0.00127863)]
 }
 
 [sub_resource type="Animation" id="Animation_gnatu"]
@@ -46,7 +46,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_1xfv5"]
 resource_name = "animacion"
-length = 0.7
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
