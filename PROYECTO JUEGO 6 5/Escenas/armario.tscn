@@ -40,33 +40,6 @@ tracks/1/keys = {
 "values": [Vector3(0, 3.13869, 0), Vector3(0, 5.17141, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4jc44"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("armario/Cube_002:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("armario/Cube_001:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.3119, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_sjna2"]
 resource_name = "CerrarArmario"
 length = 0.3
@@ -93,6 +66,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 5.17141, 0), Vector3(0, 3.07702, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4jc44"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("armario/Cube_002:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("armario/Cube_001:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.3119, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mly7x"]
@@ -122,7 +122,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.635698, 1, 2, 14.6556)
 shape = SubResource("ConcavePolygonShape3D_kuo3g")
 
 [node name="Cube_001" parent="armario" index="2"]
-transform = Transform3D(0.256012, 0, -0.614518, 0, 1, 0, 0.966672, 0, 0.162748, 29, 2, 14.6556)
+transform = Transform3D(0.256013, 0, -0.614518, 0, 1, 0, 0.966672, 0, 0.162749, 29, 2, 14.6556)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="armario/Cube_001" index="0"]
 

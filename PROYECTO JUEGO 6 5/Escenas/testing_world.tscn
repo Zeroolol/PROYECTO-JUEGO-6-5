@@ -177,9 +177,9 @@ transform = Transform3D(-0.999514, 0.00721262, 0.0303284, 0.00700448, 0.999951, 
 
 [node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
 floor_constant_speed = true
-patrol_speed = null
-chase_speed = null
-search_time = null
+patrol_speed = 2.0
+chase_speed = 10.0
+search_time = 5.0
 player = NodePath("../../Player/CharacterBody3D")
 
 [node name="NavigationAgent3D" parent="Enemy/CharacterBody3D" index="2"]

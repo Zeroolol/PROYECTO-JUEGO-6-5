@@ -15,7 +15,7 @@ var current_state: EnemyState = EnemyState.WANDER
 var patrol_points: Array = []
 var current_patrol_index: int = 0
 var patrol_target: Vector3
-var search_timer: float = 0.0  # Declarar search_timer a nivel de clas
+var search_timer: float = 0.0  # Declarar search_timer a nivel de clase
 
 func _ready():
 	# Asegurarse de que patrol_points_parent tiene nodos hijos
@@ -41,12 +41,7 @@ func _ready():
 
 	start_wandering()
 
-<<<<<<< HEAD
-
 func _process(delta):
-=======
-func _physics_process(delta):
->>>>>>> c022759e1fdd9104446256fd027eba7ea6549785
 	match current_state:
 		EnemyState.WANDER:
 			$JumpscareDetector.monitoring = false
@@ -63,7 +58,6 @@ func _physics_process(delta):
 			$BiggerDetector.monitoring = false
 			$Detector.monitoring = true
 			search_for_player(delta)
-
 
 # Estados
 
@@ -104,7 +98,6 @@ func get_next_patrol_point() -> Vector3:
 	else:
 		print("No hay puntos de patrullaje definidos.")
 		return global_transform.origin  # Mantener la posición actual como fallback
-
 
 func is_at_patrol_point() -> bool:
 	return global_transform.origin.distance_to(patrol_target) < 0.5

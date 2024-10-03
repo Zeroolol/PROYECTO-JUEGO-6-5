@@ -21,9 +21,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.3103, 0, 0, 0, 1, 0, 0.316914, 0)
 script = ExtResource("1_rekue")
-patrol_speed = null
-chase_speed = null
-search_time = null
 
 [node name="Mounstro" type="MeshInstance3D" parent="CharacterBody3D"]
 transform = Transform3D(0.706234, 0, 0, 0, 0.523953, 0, 0, 0, 0.694224, 0, -1.00668, 0)
