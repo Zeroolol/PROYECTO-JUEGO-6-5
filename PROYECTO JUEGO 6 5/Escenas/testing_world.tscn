@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="16_f55pm"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dmuiql65q4kfh" path="res://Escenas/testing_world.occ" id="17_qknyh"]
 
+<<<<<<< HEAD
 [sub_resource type="Environment" id="Environment_46p6g"]
 background_mode = 1
 background_color = Color(0.0823529, 0, 0.101961, 1)
@@ -27,8 +28,32 @@ ssao_radius = 4.53
 ssao_intensity = 2.51
 ssao_power = 1.17688
 fog_enabled = true
+<<<<<<< HEAD
 fog_light_color = Color(0.0158888, 0.01923, 0.0252506, 1)
 fog_light_energy = 0.0
+=======
+fog_light_color = Color(0.310813, 0.338978, 0.383251, 1)
+fog_density = 0.04
+=======
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_4ld8r"]
+panorama = ExtResource("1_2vvpm")
+energy_multiplier = 0.5
+
+[sub_resource type="Sky" id="Sky_v5qp7"]
+sky_material = SubResource("PanoramaSkyMaterial_4ld8r")
+
+[sub_resource type="Environment" id="Environment_fqr8s"]
+background_mode = 2
+sky = SubResource("Sky_v5qp7")
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.104632, 0.106848, 0.106302, 1)
+fog_light_energy = 3.94
+fog_density = 1.0
+fog_sky_affect = 0.564
+fog_height = 86.54
+>>>>>>> c022759e1fdd9104446256fd027eba7ea6549785
+>>>>>>> 6e6656fedc9ad25b65a930b6a462094d4dd0c0ce
 
 [sub_resource type="Animation" id="Animation_0dijk"]
 length = 0.001
@@ -173,7 +198,15 @@ libraries = {
 }
 
 [node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
+<<<<<<< HEAD
 transform = Transform3D(-0.999514, 0.00721262, 0.0303284, 0.00700448, 0.999951, -0.00696347, -0.0303771, -0.00674765, -0.999516, -83.3292, 9.41387, -8.78041)
+=======
+<<<<<<< HEAD
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.9667, 2.71523, -54.2501)
+=======
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -11.7624, 1.66143, 13.0776)
+>>>>>>> c022759e1fdd9104446256fd027eba7ea6549785
+>>>>>>> 6e6656fedc9ad25b65a930b6a462094d4dd0c0ce
 
 [node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
 floor_constant_speed = true
