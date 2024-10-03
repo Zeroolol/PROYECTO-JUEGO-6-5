@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://dwehjyj4c4ck4"]
 
-[ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="1_qj02i"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="2_pbb50"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
 [ext_resource type="Script" path="res://Scripts/AnimacionIntro.gd" id="4_0yoml"]
 [ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="4_o11gv"]
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="8_84hwc"]
+[ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="9_a5apo"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="9_lvmu4"]
 [ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="10_tx5dm"]
 [ext_resource type="Script" path="res://Scripts/Area3D.gd" id="11_nj55y"]
@@ -32,7 +32,7 @@ tonemap_white = 3.67
 
 [sub_resource type="Animation" id="Animation_aupyr"]
 resource_name = "Introduccion"
-length = 20.0
+length = 20.0085
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,25 +57,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-37.4127, 2.16185, 11.4622), Vector3(-37.4127, 2.16185, 10.8637), Vector3(-37.4127, 2.67231, 10.4207), Vector3(-34.6828, 2.67231, 10.4207), Vector3(-33.16, 2.67231, 11.2034), Vector3(-31.6414, 2.67231, 12.0343), Vector3(-29.3816, 2.67231, 12.6045), Vector3(-27.6038, 2.74134, 12.8132)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Puertas/Bisagra:rotation")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(17.8, 18.6, 19.5, 20),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.64061, 0), Vector3(0, 1.64061, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.8, 4.1, 6.5, 9.8, 15.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
@@ -94,6 +82,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"mostrar_dialogo"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Puertas/Bisagra:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(17.8, 18.3, 19.5667, 19.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.63886, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bgfc3"]
@@ -234,9 +234,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340086, 0)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bjnqf")
 
-[node name="Colegio" parent="." instance=ExtResource("1_qj02i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9551, -0.292524, -1.60715)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.7048, 4.97862, 0)
 light_color = Color(0.875337, 0.619671, 0.109824, 1)
@@ -244,7 +241,6 @@ light_energy = 1.792
 
 [node name="Player" parent="." instance=ExtResource("2_pbb50")]
 transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.51434, 0, 0.999886, 0, -0.015114, -19.8811, 0.410121, 12.8022)
-visible = false
 
 [node name="CharacterBody3D" parent="Player" index="0" groups=["player"]]
 
@@ -261,9 +257,6 @@ transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, -37.41
 libraries = {
 "": SubResource("AnimationLibrary_8u7ra")
 }
-
-[node name="Puertas" parent="." instance=ExtResource("4_o11gv")]
-transform = Transform3D(-3.63201e-08, 0, 0.581635, 0, 0.830908, 0, -0.830908, 0, -2.54241e-08, -23.0971, -0.321772, 12.2264)
 
 [node name="Puertas3" parent="." instance=ExtResource("4_o11gv")]
 transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -61.0598)
@@ -344,6 +337,9 @@ transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, 
 [node name="Bisagra" parent="AnimacionBaño/Puertaintro" index="0"]
 transform = Transform3D(0.20279, 0, 0.979222, 0, 1, 0, -0.979222, 0, 0.20279, 1.19807, 2.45661, -3.8147e-06)
 
+[node name="PuertaAula" parent="AnimacionBaño/Puertaintro/Bisagra/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, 0, 0, 1, -3.85076, -0.371246, -0.186445)
+
 [node name="CamaraBaño" type="Camera3D" parent="AnimacionBaño"]
 transform = Transform3D(-0.889417, 0, -0.457096, 0, 1, 0, 0.457096, 0, -0.889417, 8.94336, 2.38476, -68.1695)
 current = true
@@ -353,13 +349,55 @@ libraries = {
 "": SubResource("AnimationLibrary_bssto")
 }
 
-[editable path="Colegio"]
-[editable path="Colegio/NavigationRegion3D/colegio[1]"]
+[node name="Colegio" parent="." instance=ExtResource("9_a5apo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.18206, -10.4784, -34.2549)
+
+[node name="Cube_021" parent="Colegio/NavigationRegion3D/Colegiooo" index="347"]
+visible = false
+
+[node name="Cube_022" parent="Colegio/NavigationRegion3D/Colegiooo" index="348"]
+visible = false
+
+[node name="Cube_030" parent="Colegio/NavigationRegion3D/Colegiooo" index="349"]
+visible = false
+
+[node name="Cube_032" parent="Colegio/NavigationRegion3D/Colegiooo" index="350"]
+visible = false
+
+[node name="Cube_033" parent="Colegio/NavigationRegion3D/Colegiooo" index="351"]
+visible = false
+
+[node name="Cube_034" parent="Colegio/NavigationRegion3D/Colegiooo" index="352"]
+visible = false
+
+[node name="Cube_168" parent="Colegio/NavigationRegion3D/Colegiooo" index="354"]
+visible = false
+
+[node name="Cube_169" parent="Colegio/NavigationRegion3D/Colegiooo" index="355"]
+visible = false
+
+[node name="Cube_170" parent="Colegio/NavigationRegion3D/Colegiooo" index="356"]
+visible = false
+
+[node name="Cube_179" parent="Colegio/NavigationRegion3D/Colegiooo" index="357"]
+visible = false
+
+[node name="Cube_180" parent="Colegio/NavigationRegion3D/Colegiooo" index="358"]
+visible = false
+
+[node name="Puertas" parent="." instance=ExtResource("4_o11gv")]
+transform = Transform3D(-4.37114e-08, 0, 0.7, 0, 1, 0, -1, 0, -3.0598e-08, -23.0159, -0.556328, 12.3007)
+
+[node name="PuertaAula" parent="Puertas/Bisagra/StaticBody3D" index="0"]
+transform = Transform3D(0.901174, 0, 0, 0, 0.791793, 0, -3.55271e-15, 0, 1, -3.75188, 0, -0.167435)
+
 [editable path="Player"]
-[editable path="Puertas"]
 [editable path="light"]
 [editable path="light5"]
 [editable path="light2"]
 [editable path="light3"]
 [editable path="light4"]
 [editable path="AnimacionBaño/Puertaintro"]
+[editable path="Colegio"]
+[editable path="Colegio/NavigationRegion3D/Colegiooo"]
+[editable path="Puertas"]

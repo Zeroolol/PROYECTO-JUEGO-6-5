@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c6mb50ys7npbl"
+path="res://.godot/imported/Mesa.Aulaobj.obj-62aeaa7d5337f8b8f7d4e3d2f4e5d246.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Mesa.Aulaobj.obj-62aeaa7d5337f8b8f7d4e3d2f4e5d246.mesh"]
+
+source_file="res://Modelos/Mesa/Mesa.Aulaobj.obj"
+dest_files=["res://.godot/imported/Mesa.Aulaobj.obj-62aeaa7d5337f8b8f7d4e3d2f4e5d246.mesh", "res://.godot/imported/Mesa.Aulaobj.obj-62aeaa7d5337f8b8f7d4e3d2f4e5d246.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

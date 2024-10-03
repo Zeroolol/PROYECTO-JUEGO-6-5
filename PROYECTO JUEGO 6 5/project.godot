@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*res://game_data.gd"
+DebugCam="*res://addons/debug_camera/scripts/DebugCamAutoload.gd"
 
 [display]
 

@@ -1,14 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://mjt0q6wr83ab"]
+[gd_scene load_steps=7 format=3 uid="uid://mjt0q6wr83ab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rekue"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_bdyq3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkk7v"]
-albedo_color = Color(1, 0, 0, 1)
+[ext_resource type="ArrayMesh" uid="uid://byprlogpqcddw" path="res://Modelos/bichofeo/Mounstro.obj" id="2_mjsqs"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkiew"]
-size = Vector3(1, 1.88281, 1)
+size = Vector3(1.95764, 3.54283, 1.3913)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_41sln"]
 height = 2.09842
@@ -26,27 +22,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
 transform = Transform3D(1, 0, 0, 0, 1.3103, 0, 0, 0, 1, 0, 0.316914, 0)
 script = ExtResource("1_rekue")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("CapsuleMesh_bdyq3")
-surface_material_override/0 = SubResource("StandardMaterial3D_xkk7v")
+[node name="Mounstro" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.706234, 0, 0, 0, 0.523953, 0, 0, 0, 0.694224, 0, -1.00668, 0)
+mesh = ExtResource("2_mjsqs")
+skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0195313, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130005, 0.729056, 0.268585)
 shape = SubResource("BoxShape3D_bkiew")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
 [node name="JumpscareDetector" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1.50584, 0, 0, 0, 1, 0, 0, 0, 1.35829, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/JumpscareDetector"]
 shape = SubResource("CylinderShape3D_41sln")
 
 [node name="BiggerDetector" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(2.43191, 0, 0, 0, 2.43191, 0, 0, 0, 2.43191, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/BiggerDetector"]
 shape = SubResource("CylinderShape3D_803i7")
 
 [node name="Detector" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(3.20084, 0, 0, 0, 1.51358, 0, 0, 0, 12.7786, -0.00433922, 0.232606, 6.98856)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Detector"]
 shape = SubResource("BoxShape3D_fwjyk")

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://byprlogpqcddw"
+path="res://.godot/imported/Mounstro.obj-d78cad8e4ea02b1d86c36e0abdbbb59d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Mounstro.obj-d78cad8e4ea02b1d86c36e0abdbbb59d.mesh"]
+
+source_file="res://Modelos/bichofeo/Mounstro.obj"
+dest_files=["res://.godot/imported/Mounstro.obj-d78cad8e4ea02b1d86c36e0abdbbb59d.mesh", "res://.godot/imported/Mounstro.obj-d78cad8e4ea02b1d86c36e0abdbbb59d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

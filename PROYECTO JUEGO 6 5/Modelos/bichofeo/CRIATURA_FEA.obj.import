@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bgdf82b4nmkgv"
+path="res://.godot/imported/CRIATURA_FEA.obj-a69321d579de7c57114ceb44b5b52acd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/CRIATURA_FEA.obj-a69321d579de7c57114ceb44b5b52acd.mesh"]
+
+source_file="res://Modelos/bichofeo/CRIATURA_FEA.obj"
+dest_files=["res://.godot/imported/CRIATURA_FEA.obj-a69321d579de7c57114ceb44b5b52acd.mesh", "res://.godot/imported/CRIATURA_FEA.obj-a69321d579de7c57114ceb44b5b52acd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

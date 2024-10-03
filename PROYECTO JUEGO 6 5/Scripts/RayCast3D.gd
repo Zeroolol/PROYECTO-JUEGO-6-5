@@ -4,14 +4,14 @@ var int_text
 
 func _ready():
 	int_text = get_node("/root/" + get_tree().current_scene.name + "/UI/interact_text")
-	
+
 func _process(delta):
 	if is_colliding():
 		var hit = get_collider()
 		if hit.has_method("interact"):
 			int_text.visible = true
 			if Input.is_action_just_pressed("Interact"):
-				hit.interact()
+				hit.interact()  # Llama al método interact() del armario
 		else:
 			int_text.visible = false
 	else:
