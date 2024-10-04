@@ -3,7 +3,6 @@ extends Control
 func _ready():
 	pass
 	
-	5
 
 
 func _on_inicio_pressed():

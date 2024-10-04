@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=21 format=3 uid="uid://dtjviddtunp3j"]
 
 [ext_resource type="AudioStream" uid="uid://b33i1mhvhwym4" path="res://Sonidos/Tren.mp3" id="3_jaduy"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="6_yj7ha"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="10_5fqsu"]
 [ext_resource type="PackedScene" uid="uid://mjt0q6wr83ab" path="res://Escenas/Enemy.tscn" id="11_u50ql"]
 [ext_resource type="PackedScene" uid="uid://bqrxw2naeb4hh" path="res://Escenas/Pausa.tscn" id="12_dqfwq"]
-[ext_resource type="PackedScene" uid="uid://dx1wgbmju48b1" path="res://Escenas/armario.tscn" id="13_8gx5b"]
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="13_g7aqq"]
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="14_elxmk"]
 [ext_resource type="Texture2D" uid="uid://c04b4x2kx8htn" path="res://Textures/RejaTextura.png" id="14_vftjx"]
@@ -148,7 +147,7 @@ volume_db = 10.0
 bus = &"Ambiente"
 
 [node name="Player" parent="." instance=ExtResource("6_yj7ha")]
-transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.40159, 0, 0.999886, 0, -0.015114, -89.7403, 9.18215, -48.3411)
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.40159, 0, 0.999886, 0, -0.015114, -117.547, 9.18215, -75.2697)
 
 [node name="MeshInstance3D" parent="Player/CharacterBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.691071, 0)
@@ -173,17 +172,12 @@ libraries = {
 }
 
 [node name="Enemy" parent="." instance=ExtResource("11_u50ql")]
-transform = Transform3D(-0.999514, 0.00721262, 0.0303284, 0.00700448, 0.999951, -0.00696347, -0.0303771, -0.00674765, -0.999516, -83.3292, 9.41387, -8.78041)
+transform = Transform3D(-0.999514, 0.00721262, 0.0303284, 0.00700448, 0.999951, -0.00696347, -0.0303771, -0.00674765, -0.999516, -53.0426, 9.41387, -4.16371)
 
-[node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player")]
+[node name="CharacterBody3D" parent="Enemy" index="0"]
+transform = Transform3D(1, -1.93249e-08, 4.65661e-08, 7.07223e-09, 1.3103, -3.25963e-09, 5.40167e-08, 3.25963e-08, 1, 30.6135, 0.677718, 16.811)
 floor_constant_speed = true
-patrol_speed = 2.0
-chase_speed = 10.0
-search_time = 5.0
-player = NodePath("../../Player/CharacterBody3D")
-
-[node name="NavigationAgent3D" parent="Enemy/CharacterBody3D" index="2"]
-simplify_path = true
+platform_floor_layers = 4294967041
 
 [node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
 
@@ -219,53 +213,80 @@ material = SubResource("StandardMaterial3D_kmaw5")
 occluder = ExtResource("17_qknyh")
 bake_mask = 4294966273
 
-[node name="PatrolPoints" type="Node3D" parent="."]
+[node name="PatrolPointsParents" type="Node3D" parent="."]
 
-[node name="Marker3D" type="Marker3D" parent="PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.778, 9.03258, -95.7734)
+[node name="Marker3D" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -110.435, 8.78845, 32.5832)
 
-[node name="Marker3D5" type="Marker3D" parent="PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.2334, 10.1364, -34.8905)
-gizmo_extents = 1.36
+[node name="Marker3D2" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3546, 8.78845, 32.5832)
 
-[node name="Marker3D4" type="Marker3D" parent="PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.3058, 9.07113, -85.3588)
+[node name="Marker3D3" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.5195, 8.78845, 33.4882)
 
-[node name="Marker3D2" type="Marker3D" parent="PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.5, 9.32108, 25.0943)
+[node name="Marker3D4" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.5195, 8.78845, 24.2482)
 
-[node name="Marker3D3" type="Marker3D" parent="PatrolPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.3983, 9.32108, 31.621)
+[node name="Marker3D5" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.07, 8.78845, 24.2482)
 
-[node name="Armario" parent="." instance=ExtResource("13_8gx5b")]
-transform = Transform3D(-7.82269e-09, 0, 0.25283, 0, 0.236335, 0, -0.178962, 0, -1.10515e-08, -84.9969, 8.4913, -43.3417)
+[node name="Marker3D6" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9135, 8.78845, 8.10139)
+
+[node name="Marker3D7" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9135, 8.78845, -9.91213)
+
+[node name="Marker3D8" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9135, 8.78845, -27.684)
+
+[node name="Marker3D9" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.4315, 8.78845, -46.9548)
+
+[node name="Marker3D10" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.7792, 8.78845, -63.7624)
+
+[node name="Marker3D11" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.4893, 8.78845, -89.7419)
+
+[node name="Marker3D12" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -81.42, 8.85692, -77.8947)
 
 [node name="light" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -84.1207, 13.845, -33.4226)
+visible = false
 
 [node name="light2" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -81.8039, 13.845, -33.4226)
+visible = false
 
 [node name="light7" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -84.1207, 13.845, -48.0871)
+visible = false
 
 [node name="light8" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -81.8039, 13.845, -48.0871)
+visible = false
+
+[node name="light9" parent="." instance=ExtResource("14_elxmk")]
+transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -118.565, 13.845, -75.2377)
 
 [node name="light3" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -84.1207, 13.845, -20.6281)
+visible = false
 
 [node name="light4" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -81.8039, 13.845, -20.6281)
+visible = false
 
 [node name="light5" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -84.1207, 13.845, -7.54426)
+visible = false
 
 [node name="light6" parent="." instance=ExtResource("14_elxmk")]
 transform = Transform3D(0.993865, 0, 0.110602, 0, 1, 0, -0.110602, 0, 0.993865, -81.8039, 13.845, -7.54426)
 
 [node name="StaticBody3D" parent="." instance=ExtResource("15_f2dcq")]
-transform = Transform3D(0.165305, 0, 0, 0, 0.131028, 0, 0, 0, 0.155458, -86.0226, 9.54595, -45.6362)
+transform = Transform3D(0.165305, 0, 0, 0, 0.131028, 0, 0, 0, 0.155458, -119.024, 10.3068, -74.9742)
 
 [editable path="Player"]
 [editable path="Enemy"]

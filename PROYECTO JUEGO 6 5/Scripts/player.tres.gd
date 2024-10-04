@@ -21,6 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var footstep_sound = $Caminar
 @onready var run_sound = $Correr
 @onready var animation = $Cabeza/Camera3D/AnimationPlayer
+@export var walk_speed: float = 4.0
 
 var ui_control = null
 var energy_bar = null
@@ -37,6 +38,9 @@ func _ready():
 func show_instructions(text: String):
 	if ui_control != null:
 		ui_control.update_mission(text)
+		
+func get_walk_speed() -> float:
+	return walk_speed
 
 func _on_cinematic_finished():
 	show_instructions("WASD para moverse")

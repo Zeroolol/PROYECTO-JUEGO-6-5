@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://mjt0q6wr83ab"]
+[gd_scene load_steps=9 format=3 uid="uid://mjt0q6wr83ab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rekue"]
 [ext_resource type="ArrayMesh" uid="uid://byprlogpqcddw" path="res://Modelos/bichofeo/Mounstro.obj" id="2_mjsqs"]
+[ext_resource type="Material" uid="uid://duxayo0a4vjjo" path="res://Assets/Material/Luces.tres" id="3_a84c5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkiew"]
 size = Vector3(1.95764, 3.54283, 1.3913)
@@ -15,11 +16,12 @@ radius = 8.56003
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwjyk"]
 
+[sub_resource type="SphereMesh" id="SphereMesh_4odge"]
+
 [node name="Enemy" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.3103, 0, 0, 0, 1, 0, 0.316914, 0)
 script = ExtResource("1_rekue")
 
 [node name="Mounstro" type="MeshInstance3D" parent="CharacterBody3D"]
@@ -30,8 +32,6 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130005, 0.729056, 0.268585)
 shape = SubResource("BoxShape3D_bkiew")
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
 [node name="JumpscareDetector" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1.50584, 0, 0, 0, 1, 0, 0, 0, 1.35829, 0, 0, 0)
@@ -50,6 +50,31 @@ transform = Transform3D(3.20084, 0, 0, 0, 1.51358, 0, 0, 0, 12.7786, -0.00433922
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Detector"]
 shape = SubResource("BoxShape3D_fwjyk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.0322972, 0, 0, 0, 0.0259571, 0, 0, 0, 0.0381143, -0.0842267, 2.26229, 0.772319)
+material_override = ExtResource("3_a84c5")
+mesh = SubResource("SphereMesh_4odge")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/MeshInstance3D"]
+transform = Transform3D(30.9624, 0, 0, 0, 29.4018, 0, 0, 0, 26.2369, 0, 0, 6.73138)
+light_color = Color(0.772549, 0, 0.0941176, 1)
+light_energy = 2.975
+omni_range = 5.74383
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.0322972, 0, 0, 0, 0.0259571, 0, 0, 0, 0.0381143, 0.0826005, 2.26229, 0.76558)
+material_override = ExtResource("3_a84c5")
+mesh = SubResource("SphereMesh_4odge")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D/MeshInstance3D2"]
+transform = Transform3D(30.9624, 0, 0, 0, 29.4018, 0, 0, 0, 26.2369, -0.301539, 0, 6.73138)
+light_color = Color(0.772549, 0, 0.0941176, 1)
+light_energy = 2.975
+omni_range = 5.79296
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 3.25401e-08, 1, 0, -1.43067, -1.49012e-08, 0, 2.29044, 0.63586)
 
 [connection signal="body_entered" from="CharacterBody3D/JumpscareDetector" to="CharacterBody3D" method="_on_jumpscare_detector_body_entered"]
 [connection signal="body_entered" from="CharacterBody3D/BiggerDetector" to="CharacterBody3D" method="_on_bigger_detector_body_entered"]
