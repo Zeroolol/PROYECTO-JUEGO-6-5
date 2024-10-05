@@ -4,7 +4,7 @@ extends CharacterBody3D
 enum EnemyState {WANDER, CHASE, SEARCH}
 var current_state: EnemyState = EnemyState.WANDER
 
-@export var patrol_speed: float = 2.0
+@export var patrol_speed: float = 15
 @export var chase_speed: float = 10.0
 @export var search_time: float = 5.0  # Tiempo que busca al jugador
 @export var player: CharacterBody3D
@@ -20,10 +20,15 @@ var search_timer: float = 0.0  # Declarar search_timer a nivel de clase
 # Umbral de proximidad para considerar que se ha alcanzado el punto de patrulla
 const PATROL_POINT_THRESHOLD = 2.0
 
+# Agente de navegación para evitar obstáculos
+var navigation_agent: NavigationAgent3D
+
 func _ready():
+	# Inicializar el NavigationAgent3D
+	navigation_agent = $NavigationAgent3D
+
 	# Asegurarse de que patrol_points_parent tiene nodos hijos
 	if patrol_points_parent:
-		# Obtener solo los nodos Marker3D
 		patrol_points = patrol_points_parent.get_children().filter(func(child):
 			return child is Marker3D
 		)
@@ -31,6 +36,7 @@ func _ready():
 		# Si hay puntos de patrullaje, establecer el primer objetivo
 		if patrol_points.size() > 0:
 			patrol_target = get_next_patrol_point()
+			navigation_agent.target_location = patrol_target  # Establecer el destino en el agente
 
 	# Conexiones para los detectores
 	$JumpscareDetector.connect("body_entered", Callable(self, "_on_jumpscare_detector_body_entered"))
@@ -53,17 +59,19 @@ func _process(delta):
 func start_wandering():
 	current_state = EnemyState.WANDER
 	patrol_target = get_next_patrol_point()
+	navigation_agent.target_location = patrol_target  # Actualiza el destino del agente
 
 func wander(delta):
 	if is_at_patrol_point():
-		print("Reached patrol point, selecting next target.")
 		patrol_target = get_next_patrol_point()  # Seleccionar un nuevo objetivo al llegar a uno
-	move_towards(patrol_target, patrol_speed)
+		navigation_agent.target_location = patrol_target  # Actualiza el destino del agente
+	move_with_navigation(delta, patrol_speed)
 
 func chase_player(delta):
 	if player:
 		var player_pos = player.global_transform.origin
-		move_towards(player_pos, chase_speed)
+		navigation_agent.target_location = player_pos  # Establecer el destino como el jugador
+		move_with_navigation(delta, chase_speed)
 		if is_in_jumpscare_range():
 			kill_player()
 
@@ -72,32 +80,53 @@ func search_for_player(delta):
 	if search_timer <= 0:
 		start_wandering()
 
-# Movimiento y Patrullaje
+# Movimiento con navegación
+# Movimiento con navegación
+func move_with_navigation(delta, speed: float):
+	if navigation_agent.is_navigation_finished() == false:
+		var direction = navigation_agent.get_next_path_position() - global_transform.origin
+		direction = direction.normalized()
+		
+		# Girar el enemigo hacia la dirección de movimiento
+		rotate_towards_direction(direction, delta)
+		
+		# Calcular la velocidad
+		velocity = direction * speed
+		move_and_slide()  # Mueve al enemigo usando la ruta calculada por el agente
 
-func move_towards(target: Vector3, speed: float):
-	var direction = (target - global_transform.origin).normalized()
-	velocity = direction * speed
-	move_and_slide()  # Mueve al enemigo
+# Función para girar suavemente hacia la dirección de movimiento
+func rotate_towards_direction(direction: Vector3, delta: float):
+	var current_rotation = global_transform.basis.get_euler()
+	var target_rotation = current_rotation
+
+	# Obtener la rotación hacia la dirección de movimiento (en el eje Y)
+	var look_at_rotation = global_transform.looking_at(global_transform.origin + direction, Vector3.UP).basis.get_euler()
+
+	# Invertir la rotación si el enemigo está girando hacia atrás (dependiendo de la orientación del modelo)
+	# Si el modelo está girando al revés, ajusta el eje Y de la rotación multiplicándolo por -1
+	look_at_rotation.y += PI  # Ajusta el ángulo Y sumando 180 grados (PI radianes)
+
+	# Interpolar suavemente la rotación en el eje Y
+	target_rotation.y = lerp_angle(current_rotation.y, look_at_rotation.y, 5.0 * delta)
+
+	# Aplicar la nueva rotación
+	global_transform.basis = Basis().from_euler(target_rotation)
+
 
 func get_next_patrol_point() -> Vector3:
-	if patrol_points.size() > 0:  # Verifica que haya puntos de patrullaje
+	if patrol_points.size() > 0:
 		var random_index: int
-		# Elegir un índice aleatorio diferente al último
 		random_index = randi() % patrol_points.size()
 		while random_index == last_patrol_index:
 			random_index = randi() % patrol_points.size()
 
-		last_patrol_index = random_index  # Actualizar el último índice patrullado
-		print("Next patrol point: ", patrol_points[random_index].global_transform.origin)
+		last_patrol_index = random_index
 		return patrol_points[random_index].global_transform.origin
 	else:
-		print("No hay puntos de patrullaje definidos.")
-		return global_transform.origin  # Mantener la posición actual como fallback
+		return global_transform.origin  # Fallback
 
 func is_at_patrol_point() -> bool:
-	var at_point = global_transform.origin.distance_to(patrol_target) < PATROL_POINT_THRESHOLD
-	print("At patrol point: ", at_point)
-	return at_point
+	return global_transform.origin.distance_to(patrol_target) < PATROL_POINT_THRESHOLD
 
 func is_in_jumpscare_range() -> bool:
 	return global_transform.origin.distance_to(player.global_transform.origin) <= 2.0
@@ -111,7 +140,6 @@ func player_is_running() -> bool:
 	return false
 
 # Detectores
-
 func _on_jumpscare_detector_body_entered(body: Node3D) -> void:
 	if body == player:
 		kill_player()

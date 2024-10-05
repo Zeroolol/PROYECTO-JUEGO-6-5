@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://1m0r4pnaq8he"
+path.s3tc="res://.godot/imported/Colegio_png textura matafuego.png-5f76b6c62eb895e186e08978eedf4219.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "40a893f0f93011c2cd8b1be04511e33c"
+}
+
+[deps]
+
+source_file="res://Modelos/Colegio/Colegio_png textura matafuego.png"
+dest_files=["res://.godot/imported/Colegio_png textura matafuego.png-5f76b6c62eb895e186e08978eedf4219.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

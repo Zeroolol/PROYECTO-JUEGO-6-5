@@ -1,0 +1,78 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6ck2shdyk67l"]
+
+[ext_resource type="PackedScene" uid="uid://mjt0q6wr83ab" path="res://Escenas/Enemy.tscn" id="1_ae5ef"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_b6kx3"]
+vertices = PackedVector3Array(-0.849899, 0.899865, 24.1373, -0.849899, 0.899865, 14.1373, -3.0999, 0.899865, 13.8873, -27.0999, 0.899865, 24.1373, -3.0999, 0.899865, -13.8627, 0.900101, 0.899865, -14.1127, 0.900101, 0.899865, -24.1127, -27.0999, 0.899865, -24.1127, 3.1501, 0.899865, -13.8627, 27.1501, 0.899865, -24.1127, 3.1501, 0.899865, 13.8873, 27.1501, 0.899865, 24.1373, -2.0999, 10.3999, -13.1127, -2.0999, 10.3999, 13.1373, 2.1501, 10.3999, 13.1373, 2.1501, 10.3999, -13.1127, -1.8499, 0.899865, -12.8627, -1.8499, 0.899865, 12.8873, 1.9001, 0.899865, 12.8873, 1.9001, 0.899865, -12.8627)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 7), PackedInt32Array(5, 6, 8), PackedInt32Array(8, 6, 9), PackedInt32Array(1, 10, 0), PackedInt32Array(0, 10, 11), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 17)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kotto"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lftes"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="MAPATESTEO ENEMIGO" type="Node3D"]
+
+[node name="Enemy" parent="." instance=ExtResource("1_ae5ef")]
+transform = Transform3D(2.41739, 0, 0, 0, 2.41739, 0, 0, 0, 2.41739, 21.8022, 3.10884, 0.136417)
+
+[node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("patrol_points_parent")]
+patrol_speed = 15.0
+patrol_points_parent = NodePath("../../patrol points parents")
+
+[node name="patrol points parents" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7631, 2.66715, 18.2403)
+
+[node name="Marker3D2" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.6456, 1.99545, 19.9108)
+
+[node name="Marker3D5" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5959, 1.99545, 19.9108)
+
+[node name="Marker3D6" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5959, 1.99545, -3.88589)
+
+[node name="Marker3D7" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.559782, 1.99545, -13.0006)
+
+[node name="Marker3D8" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25411, 1.99545, 0.424685)
+
+[node name="Marker3D9" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.25411, 1.99545, 14.6381)
+
+[node name="Marker3D3" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0667, 2.66715, -19.234)
+
+[node name="Marker3D4" type="Marker3D" parent="patrol points parents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8605, 2.66715, -19.234)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.993572, -0.113203, 0, 0.113203, 0.993572, 1, 4.34304e-08, -4.94827e-09, -3.92951, 43.3355, -0.40066)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_b6kx3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(55.1998, 0, 0, 0, 1.20027, 0, 0, 0, 49.2255, 0, 0, 0)
+mesh = SubResource("BoxMesh_kotto")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lftes")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(4.89427, 0, 0, 0, 9.9396, 0, 0, 0, 26.8968, 0, 4.99736, 0)
+mesh = SubResource("BoxMesh_kotto")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_lftes")
+
+[editable path="Enemy"]

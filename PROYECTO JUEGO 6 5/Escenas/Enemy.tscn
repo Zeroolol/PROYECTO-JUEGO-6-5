@@ -19,7 +19,7 @@ radius = 8.56003
 [sub_resource type="SphereMesh" id="SphereMesh_4odge"]
 
 [node name="Enemy" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
+transform = Transform3D(0.88624, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_rekue")
@@ -75,6 +75,8 @@ omni_range = 5.79296
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 3.25401e-08, 1, 0, -1.43067, -1.49012e-08, 0, 2.29044, 0.63586)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
 [connection signal="body_entered" from="CharacterBody3D/JumpscareDetector" to="CharacterBody3D" method="_on_jumpscare_detector_body_entered"]
 [connection signal="body_entered" from="CharacterBody3D/BiggerDetector" to="CharacterBody3D" method="_on_bigger_detector_body_entered"]
