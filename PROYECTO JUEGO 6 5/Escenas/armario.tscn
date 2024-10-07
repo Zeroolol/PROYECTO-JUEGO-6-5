@@ -1,79 +1,56 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx1wgbmju48b1"]
+[gd_scene load_steps=19 format=3 uid="uid://dx1wgbmju48b1"]
 
-[ext_resource type="PackedScene" uid="uid://bsri1jj211rv7" path="res://Modelos/Armario/armario.glb" id="1_ahvs6"]
-[ext_resource type="Script" path="res://Scripts/Armario.gd" id="1_v3e1i"]
+[ext_resource type="ArrayMesh" uid="uid://1embaquwbllr" path="res://Modelos/Armario/armariocuerpo.obj" id="1_x7hmr"]
+[ext_resource type="ArrayMesh" uid="uid://c5f4fu06owety" path="res://Modelos/Armario/puerta1.obj" id="2_ut1jg"]
+[ext_resource type="ArrayMesh" uid="uid://paykae8jmjcf" path="res://Modelos/Armario/puerta2.obj" id="3_5qg60"]
+[ext_resource type="Script" path="res://Scripts/Puerta 1.gd" id="3_lsce7"]
+[ext_resource type="Script" path="res://Scripts/Puerta2.gd" id="5_i2xmx"]
+[ext_resource type="Script" path="res://Scripts/AreaArmario.gd" id="6_arv2p"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vkdnd"]
-data = PackedVector3Array(-1, -1, 14, -1, 42, -1, -1, 42, 14, -1, -1, 14, -1, -1, -1, -1, 42, -1, -1, -1, -1, 29, 42, -1, -1, 42, -1, -1, -1, -1, 29, -1, -1, 29, 42, -1, 29, -1, -1, 29, 42, 14, 29, 42, -1, 29, -1, -1, 29, -1, 14, 29, 42, 14, -1, -1, -1, 29, -1, 14, 29, -1, -1, -1, -1, -1, -1, -1, 14, 29, -1, 14, 29, 42, -1, -1, 42, 14, -1, 42, -1, 29, 42, -1, 29, 42, 14, -1, 42, 14, 0.4996, 0.182, 12.7646, 0.4996, 41.2938, 0.8062, 0.4996, 41.2938, 12.7646, 0.4996, 0.182, 12.7646, 0.4996, 0.182, 0.8062, 0.4996, 41.2938, 0.8062, 0.4996, 0.182, 0.8062, 27.8523, 41.2938, 0.8062, 0.4996, 41.2938, 0.8062, 0.4996, 0.182, 0.8062, 27.8523, 0.182, 0.8062, 27.8523, 41.2938, 0.8062, 27.8523, 0.182, 0.8062, 27.8523, 41.2938, 12.7646, 27.8523, 41.2938, 0.8062, 27.8523, 0.182, 0.8062, 27.8523, 0.182, 12.7646, 27.8523, 41.2938, 12.7646, 0.4996, 0.182, 0.8062, 27.8523, 0.182, 12.7646, 27.8523, 0.182, 0.8062, 0.4996, 0.182, 0.8062, 0.4996, 0.182, 12.7646, 27.8523, 0.182, 12.7646, 27.8523, 41.2938, 0.8062, 0.4996, 41.2938, 12.7646, 0.4996, 41.2938, 0.8062, 27.8523, 41.2938, 0.8062, 27.8523, 41.2938, 12.7646, 0.4996, 41.2938, 12.7646, -1, 42, 14, 0.4996, 0.182, 12.7646, -1, -1, 14, -1, 42, 14, 0.4996, 41.2938, 12.7646, 0.4996, 0.182, 12.7646, 29, -1, 14, 0.4996, 0.182, 12.7646, 27.8523, 0.182, 12.7646, 29, -1, 14, -1, -1, 14, 0.4996, 0.182, 12.7646, 29, -1, 14, 27.8523, 41.2938, 12.7646, 29, 42, 14, 29, -1, 14, 27.8523, 0.182, 12.7646, 27.8523, 41.2938, 12.7646, -1, 42, 14, 27.8523, 41.2938, 12.7646, 0.4996, 41.2938, 12.7646, -1, 42, 14, 29, 42, 14, 27.8523, 41.2938, 12.7646)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_45r02"]
+data = PackedVector3Array(-0.0081, 43, 14, -0.0081, 0, 14, -0.0081, 43, -1, -0.0081, 43, -1, -0.0081, 0, 14, -0.0081, 0, -1, -0.0081, 43, -1, -0.0081, 0, -1, 29.9919, 43, -1, 29.9919, 43, -1, -0.0081, 0, -1, 29.9919, 0, -1, 29.9919, 43, -1, 29.9919, 0, -1, 29.9919, 43, 14, 29.9919, 43, 14, 29.9919, 0, -1, 29.9919, 0, 14, 29.9919, 0, -1, -0.0081, 0, -1, 29.9919, 0, 14, 29.9919, 0, 14, -0.0081, 0, -1, -0.0081, 0, 14, -0.0081, 43, -1, 29.9919, 43, -1, -0.0081, 43, 14, -0.0081, 43, 14, 29.9919, 43, -1, 29.9919, 43, 14, 1.4916, 1.182, 0.8062, 1.4916, 1.182, 12.7646, 1.4916, 42.2938, 0.8062, 1.4916, 42.2938, 0.8062, 1.4916, 1.182, 12.7646, 1.4916, 42.2938, 12.7646, 28.8443, 1.182, 0.8062, 1.4916, 1.182, 0.8062, 28.8443, 42.2938, 0.8062, 28.8443, 42.2938, 0.8062, 1.4916, 1.182, 0.8062, 1.4916, 42.2938, 0.8062, 28.8443, 1.182, 12.7646, 28.8443, 1.182, 0.8062, 28.8443, 42.2938, 12.7646, 28.8443, 42.2938, 12.7646, 28.8443, 1.182, 0.8062, 28.8443, 42.2938, 0.8062, 1.4916, 1.182, 12.7646, 1.4916, 1.182, 0.8062, 28.8443, 1.182, 12.7646, 28.8443, 1.182, 12.7646, 1.4916, 1.182, 0.8062, 28.8443, 1.182, 0.8062, 28.8443, 42.2938, 12.7646, 28.8443, 42.2938, 0.8062, 1.4916, 42.2938, 12.7646, 1.4916, 42.2938, 12.7646, 28.8443, 42.2938, 0.8062, 1.4916, 42.2938, 0.8062, -0.0081, 0, 14, -0.0081, 43, 14, 1.4916, 1.182, 12.7646, 1.4916, 1.182, 12.7646, -0.0081, 43, 14, 1.4916, 42.2938, 12.7646, 28.8443, 1.182, 12.7646, 29.9919, 0, 14, 1.4916, 1.182, 12.7646, 1.4916, 1.182, 12.7646, 29.9919, 0, 14, -0.0081, 0, 14, 29.9919, 43, 14, 29.9919, 0, 14, 28.8443, 42.2938, 12.7646, 28.8443, 42.2938, 12.7646, 29.9919, 0, 14, 28.8443, 1.182, 12.7646, 1.4916, 42.2938, 12.7646, -0.0081, 43, 14, 28.8443, 42.2938, 12.7646, 28.8443, 42.2938, 12.7646, -0.0081, 43, 14, 29.9919, 43, 14)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_kuo3g"]
-data = PackedVector3Array(-1, -2, 1, -1, 41, -1, -1, 41, 1, -1, -2, 1, -1, -2, -1, -1, 41, -1, -1, -2, -1, 14, 41, -1, -1, 41, -1, -1, -2, -1, 14, -2, -1, 14, 41, -1, 14, -2, -1, 14, 41, 1, 14, 41, -1, 14, -2, -1, 14, -2, 1, 14, 41, 1, 14, -2, 1, -1, 41, 1, 14, 41, 1, 14, -2, 1, -1, -2, 1, -1, 41, 1, -1, -2, -1, 14, -2, 1, 14, -2, -1, -1, -2, -1, -1, -2, 1, 14, -2, 1, 14, 41, -1, -1, 41, 1, -1, 41, -1, 14, 41, -1, 14, 41, 1, -1, 41, 1)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6o2c4"]
+data = PackedVector3Array(30.0018, 43, 14.0228, 30.0018, 0, 14.0228, 29.9979, 43, 15.2942, 29.9979, 43, 15.2942, 30.0018, 0, 14.0228, 29.9979, 0, 15.2942, 29.9979, 43, 15.2942, 29.9979, 0, 15.2942, 14.9982, 43, 15.2506, 14.9982, 43, 15.2506, 29.9979, 0, 15.2942, 14.9982, 0, 15.2506, 14.9982, 43, 15.2506, 14.9982, 0, 15.2506, 15.0019, 43, 13.9792, 15.0019, 43, 13.9792, 14.9982, 0, 15.2506, 15.0019, 0, 13.9792, 15.0019, 43, 13.9792, 15.0019, 0, 13.9792, 30.0018, 43, 14.0228, 30.0018, 43, 14.0228, 15.0019, 0, 13.9792, 30.0018, 0, 14.0228, 14.9982, 0, 15.2506, 29.9979, 0, 15.2942, 15.0019, 0, 13.9792, 15.0019, 0, 13.9792, 29.9979, 0, 15.2942, 30.0018, 0, 14.0228, 29.9979, 43, 15.2942, 14.9982, 43, 15.2506, 30.0018, 43, 14.0228, 30.0018, 43, 14.0228, 14.9982, 43, 15.2506, 15.0019, 43, 13.9792)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vp2gp"]
-data = PackedVector3Array(-1, -2, 1, -1, 41, -1, -1, 41, 1, -1, -2, 1, -1, -2, -1, -1, 41, -1, -1, -2, -1, 14, 41, -1, -1, 41, -1, -1, -2, -1, 14, -2, -1, 14, 41, -1, 14, -2, -1, 14, 41, 1, 14, 41, -1, 14, -2, -1, 14, -2, 1, 14, 41, 1, 14, -2, 1, -1, 41, 1, 14, 41, 1, 14, -2, 1, -1, -2, 1, -1, 41, 1, -1, -2, -1, 14, -2, 1, 14, -2, -1, -1, -2, -1, -1, -2, 1, 14, -2, 1, 14, 41, -1, -1, 41, 1, -1, 41, -1, 14, 41, -1, 14, 41, 1, -1, 41, 1)
-
-[sub_resource type="Animation" id="Animation_aa6wf"]
-resource_name = "AbrirArmario"
-length = 0.3
+[sub_resource type="Animation" id="Animation_jq2it"]
+resource_name = "AbrirPuerta1"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("armario/Cube_002:rotation")
+tracks/0/path = NodePath("../..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -1.8326, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("armario/Cube_001:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 3.13869, 0), Vector3(0, 5.17141, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_sjna2"]
-resource_name = "CerrarArmario"
-length = 0.3
+[sub_resource type="Animation" id="Animation_m0pxe"]
+resource_name = "CerrarPuerta1"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("armario/Cube_002:rotation")
+tracks/0/path = NodePath("../..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, -1.8326, 0), Vector3(0, -2.32924e-08, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("armario/Cube_001:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 5.17141, 0), Vector3(0, 3.07702, 0)]
+"values": [Vector3(0, 1.5708, 0), Vector3(0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_4jc44"]
+[sub_resource type="Animation" id="Animation_ilbf5"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("armario/Cube_002:rotation")
+tracks/0/path = NodePath("../..:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,56 +59,128 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("armario/Cube_001:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iplwg"]
+_data = {
+"AbrirPuerta1": SubResource("Animation_jq2it"),
+"CerrarPuerta1": SubResource("Animation_m0pxe"),
+"RESET": SubResource("Animation_ilbf5")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nltxj"]
+data = PackedVector3Array(0, 43, 15.2913, 0, 0, 15.2913, 0, 43, 14.0199, 0, 43, 14.0199, 0, 0, 15.2913, 0, 0, 14.0199, 0, 43, 14.0199, 0, 0, 14.0199, 15, 43, 14.0199, 15, 43, 14.0199, 0, 0, 14.0199, 15, 0, 14.0199, 15, 43, 14.0199, 15, 0, 14.0199, 15, 43, 15.2913, 15, 43, 15.2913, 15, 0, 14.0199, 15, 0, 15.2913, 15, 43, 15.2913, 15, 0, 15.2913, 0, 43, 15.2913, 0, 43, 15.2913, 15, 0, 15.2913, 0, 0, 15.2913, 15, 0, 14.0199, 0, 0, 14.0199, 15, 0, 15.2913, 15, 0, 15.2913, 0, 0, 14.0199, 0, 0, 15.2913, 0, 43, 14.0199, 15, 43, 14.0199, 0, 43, 15.2913, 0, 43, 15.2913, 15, 43, 14.0199, 15, 43, 15.2913)
+
+[sub_resource type="Animation" id="Animation_mmbx3"]
+resource_name = "AbrirPuerta2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fk1o3"]
+resource_name = "CerrarPuerta2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -1.5708, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jfco3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -1.3119, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mly7x"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5wth4"]
 _data = {
-"AbrirArmario": SubResource("Animation_aa6wf"),
-"CerrarArmario": SubResource("Animation_sjna2"),
-"RESET": SubResource("Animation_4jc44")
+"AbrirPuerta2": SubResource("Animation_mmbx3"),
+"CerrarPuerta2": SubResource("Animation_fk1o3"),
+"RESET": SubResource("Animation_jfco3")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l48c0"]
+size = Vector3(29, 42, 14)
 
 [node name="Armario" type="Node3D"]
-script = ExtResource("1_v3e1i")
 
-[node name="armario" parent="." instance=ExtResource("1_ahvs6")]
-transform = Transform3D(0.4275, 0, 0, 0, 0.4114, 0, 0, 0, 0.319872, 0, 0, -5)
+[node name="Armariocuerpo" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -14)
+mesh = ExtResource("1_x7hmr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="armario/Cube" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Armariocuerpo"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="armario/Cube/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_vkdnd")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armariocuerpo/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_45r02")
 
-[node name="Cube_002" parent="armario" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.635698, 1, 2, 14.6556)
+[node name="Puertas" type="Node3D" parent="."]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="armario/Cube_002" index="0"]
+[node name="Bisagra 1" type="Node3D" parent="Puertas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 21, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="armario/Cube_002/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_kuo3g")
+[node name="Puerta1" type="MeshInstance3D" parent="Puertas/Bisagra 1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -21, -14)
+mesh = ExtResource("2_ut1jg")
+skeleton = NodePath("../../..")
 
-[node name="Cube_001" parent="armario" index="2"]
-transform = Transform3D(0.256013, 0, -0.614518, 0, 1, 0, 0.966672, 0, 0.162749, 29, 2, 14.6556)
+[node name="StaticBody3D" type="StaticBody3D" parent="Puertas/Bisagra 1/Puerta1"]
+script = ExtResource("3_lsce7")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="armario/Cube_001" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puertas/Bisagra 1/Puerta1/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_6o2c4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="armario/Cube_001/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_vp2gp")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Puertas/Bisagra 1/Puerta1/StaticBody3D"]
 libraries = {
-"": SubResource("AnimationLibrary_mly7x")
+"": SubResource("AnimationLibrary_iplwg")
 }
 
-[editable path="armario"]
+[node name="Bisagra 2" type="Node3D" parent="Puertas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, 0)
+
+[node name="Puerta2" type="MeshInstance3D" parent="Puertas/Bisagra 2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -21, -14)
+mesh = ExtResource("3_5qg60")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Puertas/Bisagra 2/Puerta2"]
+script = ExtResource("5_i2xmx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Puertas/Bisagra 2/Puerta2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nltxj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Puertas/Bisagra 2/Puerta2/StaticBody3D"]
+libraries = {
+"": SubResource("AnimationLibrary_5wth4")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("6_arv2p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 21.5, -7.5)
+shape = SubResource("BoxShape3D_l48c0")

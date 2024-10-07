@@ -4,9 +4,10 @@ extends CharacterBody3D
 enum EnemyState {WANDER, CHASE, SEARCH}
 var current_state: EnemyState = EnemyState.WANDER
 
-@export var patrol_speed: float = 15
-@export var chase_speed: float = 10.0
+@export var patrol_speed: float = 6
+@export var chase_speed: float = 13.0
 @export var search_time: float = 5.0  # Tiempo que busca al jugador
+@export var lost_sight_time: float = 15.0  # Tiempo para perder de vista al jugador
 @export var player: CharacterBody3D
 
 # Nodos de puntos de patrullaje
@@ -16,12 +17,17 @@ var patrol_points: Array = []
 var last_patrol_index: int = -1  # Para recordar el último índice patrullado
 var patrol_target: Vector3
 var search_timer: float = 0.0  # Declarar search_timer a nivel de clase
+var lost_sight_timer: float = 0.0  # Temporizador para perder de vista al jugador
+var has_lost_sight: bool = false  # Indica si ha perdido la vista del jugador
 
 # Umbral de proximidad para considerar que se ha alcanzado el punto de patrulla
 const PATROL_POINT_THRESHOLD = 2.0
 
 # Agente de navegación para evitar obstáculos
 var navigation_agent: NavigationAgent3D
+
+# Variable para el AnimationPlayer
+@onready var animation_player = $"CollisionShape3D/CRIATURA_FEA (1)/AnimationPlayer"  # Ajusta según tu estructura de nodos
 
 func _ready():
 	# Inicializar el NavigationAgent3D
@@ -68,12 +74,25 @@ func wander(delta):
 	move_with_navigation(delta, patrol_speed)
 
 func chase_player(delta):
-	if player:
+	if player and not player.get_meta("hidden", false):  # Continuar persiguiendo si el jugador es visible
 		var player_pos = player.global_transform.origin
 		navigation_agent.target_location = player_pos  # Establecer el destino como el jugador
 		move_with_navigation(delta, chase_speed)
+
 		if is_in_jumpscare_range():
 			kill_player()
+
+		# Reiniciar el temporizador de pérdida de vista si el jugador está a la vista
+		lost_sight_timer = lost_sight_time
+		has_lost_sight = false
+	else:
+		# Comenzar a contar hacia abajo si el jugador no está a la vista
+		has_lost_sight = true
+		lost_sight_timer -= delta
+
+		# Si el jugador ha estado fuera de la vista durante el tiempo completo, volver a patrullar
+		if lost_sight_timer <= 0:
+			start_wandering()
 
 func search_for_player(delta):
 	search_timer -= delta
@@ -81,18 +100,23 @@ func search_for_player(delta):
 		start_wandering()
 
 # Movimiento con navegación
-# Movimiento con navegación
 func move_with_navigation(delta, speed: float):
-	if navigation_agent.is_navigation_finished() == false:
+	if not navigation_agent.is_navigation_finished():
 		var direction = navigation_agent.get_next_path_position() - global_transform.origin
 		direction = direction.normalized()
-		
+
 		# Girar el enemigo hacia la dirección de movimiento
 		rotate_towards_direction(direction, delta)
-		
+
 		# Calcular la velocidad
 		velocity = direction * speed
 		move_and_slide()  # Mueve al enemigo usando la ruta calculada por el agente
+
+		# Reproducir animación de caminar si se está moviendo
+		if direction.length() > 0:  # Si hay movimiento
+			animation_player.play("ArmatureAction")  # Asegúrate de que esta animación exista
+		else:
+			animation_player.stop()  # Detener la animación si no hay movimiento
 
 # Función para girar suavemente hacia la dirección de movimiento
 func rotate_towards_direction(direction: Vector3, delta: float):
@@ -103,7 +127,6 @@ func rotate_towards_direction(direction: Vector3, delta: float):
 	var look_at_rotation = global_transform.looking_at(global_transform.origin + direction, Vector3.UP).basis.get_euler()
 
 	# Invertir la rotación si el enemigo está girando hacia atrás (dependiendo de la orientación del modelo)
-	# Si el modelo está girando al revés, ajusta el eje Y de la rotación multiplicándolo por -1
 	look_at_rotation.y += PI  # Ajusta el ángulo Y sumando 180 grados (PI radianes)
 
 	# Interpolar suavemente la rotación en el eje Y
@@ -111,7 +134,6 @@ func rotate_towards_direction(direction: Vector3, delta: float):
 
 	# Aplicar la nueva rotación
 	global_transform.basis = Basis().from_euler(target_rotation)
-
 
 func get_next_patrol_point() -> Vector3:
 	if patrol_points.size() > 0:

@@ -17,6 +17,9 @@ var yaw = 0.0
 var pitch = 0.0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
+var is_hidden = false  # Variable para controlar si el jugador está oculto
+@onready var armario = null  # Variable para referenciar el armario
+
 @onready var camera = $Cabeza/Camera3D
 @onready var footstep_sound = $Caminar
 @onready var run_sound = $Correr
@@ -35,10 +38,11 @@ func _ready():
 	else:
 		energy_bar = ui_control.get_node("EnergyBar")
 		energy_bar.visible = false 
+
 func show_instructions(text: String):
 	if ui_control != null:
 		ui_control.update_mission(text)
-		
+
 func get_walk_speed() -> float:
 	return walk_speed
 
@@ -53,9 +57,19 @@ func _unhandled_input(event):
 		rotation_degrees.y = yaw
 		camera.rotation_degrees.x = pitch
 
+func hide_in_armario():
+	is_hidden = true
+	$MeshInstance.visible = false  # Ocultar visualmente al jugador
+	velocity = Vector3.ZERO  # Detener el movimiento
+	print("Jugador está oculto en el armario")
+
+func exit_armario():
+	is_hidden = false
+	$MeshInstance.visible = true  # Hacer visible al jugador de nuevo
+	print("Jugador salió del armario")
+
 func _process(delta):
 	if speed == RUN_SPEED:
-		
 		if footstep_sound.playing:
 			footstep_sound.stop()
 		energy_bar.value -= RUN_ENERGY_COST * delta
@@ -85,13 +99,15 @@ func _process(delta):
 			if footstep_sound.volume_db <= -80:
 				footstep_sound.stop()
 
-func _physics_process(delta):
 	if not movable or cinematic_active:
 		return
+	
 	if ui_control != null:
 		ui_control.update_mission("")
+	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
+	
 	var input_dir = Input.get_vector("atras", "avanzar", "izquierda", "derecha")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
@@ -125,5 +141,12 @@ func _physics_process(delta):
 			run_sound.stop()
 		if footstep_sound.playing:
 			footstep_sound.stop()
+
+	# Verificar si el jugador quiere entrar o salir del armario
+	if Input.is_action_just_pressed("interact"):  # Asume que "interact" es la acción para interactuar
+		if armario and is_hidden == false:  # Si no está oculto
+			hide_in_armario()  # Ocultarse en el armario
+		elif is_hidden:  # Si está oculto
+			exit_armario()  # Salir del armario
 
 	move_and_slide()

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bxl65rhjcb8ba"
+path="res://.godot/imported/Tele.obj-3d1453e5f7425955389863e0d902c453.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Tele.obj-3d1453e5f7425955389863e0d902c453.mesh"]
+
+source_file="res://Modelos/Tele/Tele.obj"
+dest_files=["res://.godot/imported/Tele.obj-3d1453e5f7425955389863e0d902c453.mesh", "res://.godot/imported/Tele.obj-3d1453e5f7425955389863e0d902c453.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

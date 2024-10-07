@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dwehjyj4c4ck4"]
+[gd_scene load_steps=20 format=3 uid="uid://dwehjyj4c4ck4"]
 
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="2_pbb50"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="4_o11gv"]
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="8_84hwc"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="9_lvmu4"]
+[ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="9_xc8ak"]
 [ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="10_tx5dm"]
 [ext_resource type="Script" path="res://Scripts/Area3D.gd" id="11_nj55y"]
 
@@ -354,6 +355,24 @@ transform = Transform3D(-4.37114e-08, 0, 0.7, 0, 1, 0, -1, 0, -3.0598e-08, -23.0
 [node name="PuertaAula" parent="Puertas/Bisagra/StaticBody3D" index="0"]
 transform = Transform3D(0.901174, 0, 0, 0, 0.791793, 0, -3.55271e-15, 0, 1, -3.75188, 0, -0.167435)
 
+[node name="Colegio" parent="." instance=ExtResource("9_xc8ak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37304, -0.524242, -33.3973)
+
+[node name="TechoLab" parent="Colegio" index="1"]
+transform = Transform3D(94.6766, 0, 0, 0, 0.100253, 0, 0, 0, 58.9291, 10.8899, 5.4322, 45.3145)
+
+[node name="Cube_020" parent="Colegio/NavigationRegion3D/Colegiooo" index="343"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4443, -0.00292078, 0)
+
+[node name="Cube_168" parent="Colegio/NavigationRegion3D/Colegiooo" index="351"]
+visible = false
+
+[node name="Cube_181" parent="Colegio/NavigationRegion3D/Colegiooo" index="356"]
+transform = Transform3D(1, 0, 0, 0, 0.113023, 0, 0, 0, 1, 4.7515, -0.0372675, 15.0565)
+
+[node name="Cube_182" parent="Colegio/NavigationRegion3D/Colegiooo" index="357"]
+transform = Transform3D(1.05588, 0, 0, 0, 0.19988, 0, 0, 0, 1, -28.2695, -0.102754, 45.294)
+
 [editable path="Player"]
 [editable path="light"]
 [editable path="light5"]
@@ -362,3 +381,5 @@ transform = Transform3D(0.901174, 0, 0, 0, 0.791793, 0, -3.55271e-15, 0, 1, -3.7
 [editable path="light4"]
 [editable path="AnimacionBaño/Puertaintro"]
 [editable path="Puertas"]
+[editable path="Colegio"]
+[editable path="Colegio/NavigationRegion3D/Colegiooo"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://mjt0q6wr83ab"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_rekue"]
-[ext_resource type="ArrayMesh" uid="uid://byprlogpqcddw" path="res://Modelos/bichofeo/Mounstro.obj" id="2_mjsqs"]
+[ext_resource type="PackedScene" uid="uid://b2hskujhty338" path="res://Modelos/bichofeo/CRIATURA_FEA (1).glb" id="2_txtfo"]
 [ext_resource type="Material" uid="uid://duxayo0a4vjjo" path="res://Assets/Material/Luces.tres" id="3_a84c5"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bkiew"]
-size = Vector3(1.95764, 3.54283, 1.3913)
+[sub_resource type="BoxShape3D" id="BoxShape3D_336kt"]
+size = Vector3(4.96448, 6.69711, 3.51659)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_41sln"]
 height = 2.09842
@@ -15,6 +15,7 @@ radius = 1.07039
 radius = 8.56003
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwjyk"]
+size = Vector3(1, 1, 0.756958)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4odge"]
 
@@ -24,14 +25,27 @@ transform = Transform3D(0.88624, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00214, 0)
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_rekue")
 
-[node name="Mounstro" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.706234, 0, 0, 0, 0.523953, 0, 0, 0, 0.694224, 0, -1.00668, 0)
-mesh = ExtResource("2_mjsqs")
-skeleton = NodePath("../..")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0130005, 0.729056, 0.268585)
-shape = SubResource("BoxShape3D_bkiew")
+transform = Transform3D(0.648556, 0, 0, 0, 0.525519, 0, 0, 0, 0.604903, 0.000280382, 0.715507, 0.232887)
+shape = SubResource("BoxShape3D_336kt")
+
+[node name="CRIATURA_FEA (1)" parent="CharacterBody3D/CollisionShape3D" instance=ExtResource("2_txtfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999973, 0.048035, -3.26848, -0.166387)
+
+[node name="Skeleton3D" parent="CharacterBody3D/CollisionShape3D/CRIATURA_FEA (1)/Armature" index="0"]
+bones/3/rotation = Quaternion(0.239226, -0.00238556, 0.0158185, 0.970832)
+bones/8/rotation = Quaternion(-0.264325, -0.00350374, -0.63444, 0.726365)
+bones/9/rotation = Quaternion(0.170907, -0.0331221, -0.0147248, 0.98462)
+bones/14/rotation = Quaternion(-0.101537, 0.18238, 0.558597, 0.802743)
+bones/15/rotation = Quaternion(0.346345, 0.0224226, 0.0697809, 0.93524)
+bones/19/rotation = Quaternion(-0.163339, 0.0506916, 0.983724, -0.0551242)
+bones/20/rotation = Quaternion(-0.388864, -0.0851176, -0.139099, 0.906748)
+bones/21/rotation = Quaternion(0.507391, -0.0202441, 0.0878847, 0.856983)
+bones/22/rotation = Quaternion(0.374465, -0.0323607, -0.0431736, 0.92567)
+bones/23/rotation = Quaternion(-0.124296, -0.163347, 0.973028, 0.105289)
+bones/24/rotation = Quaternion(-0.456148, -0.15631, 0.054716, 0.874358)
+bones/25/rotation = Quaternion(0.386217, 0.0153274, -0.0789951, 0.918891)
+bones/26/rotation = Quaternion(0.702729, 0.0539413, 0.057835, 0.707048)
 
 [node name="JumpscareDetector" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1.50584, 0, 0, 0, 1, 0, 0, 0, 1.35829, 0, 0, 0)
@@ -49,10 +63,11 @@ shape = SubResource("CylinderShape3D_803i7")
 transform = Transform3D(3.20084, 0, 0, 0, 1.51358, 0, 0, 0, 12.7786, -0.00433922, 0.232606, 6.98856)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.121521)
 shape = SubResource("BoxShape3D_fwjyk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.0322972, 0, 0, 0, 0.0259571, 0, 0, 0, 0.0381143, -0.0842267, 2.26229, 0.772319)
+transform = Transform3D(0.0322972, 0, 0, 0, 0.0259571, 0, 0, 0, 0.0381143, -0.0488015, 2.27711, 0.802596)
 material_override = ExtResource("3_a84c5")
 mesh = SubResource("SphereMesh_4odge")
 
@@ -63,7 +78,7 @@ light_energy = 2.975
 omni_range = 5.74383
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(0.0322972, 0, 0, 0, 0.0259571, 0, 0, 0, 0.0381143, 0.0826005, 2.26229, 0.76558)
+transform = Transform3D(0.0322972, 0, 0, 0, 0.0259571, 0, 0, 0, 0.0381143, 0.101367, 2.27743, 0.797111)
 material_override = ExtResource("3_a84c5")
 mesh = SubResource("SphereMesh_4odge")
 
@@ -74,10 +89,12 @@ light_energy = 2.975
 omni_range = 5.79296
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 3.25401e-08, 1, 0, -1.43067, -1.49012e-08, 0, 2.29044, 0.63586)
+transform = Transform3D(1, 0, 0, 0, 3.25401e-08, 1, 0, -1.43067, -1.49012e-08, 0.0465029, 2.29044, 0.550058)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
 
 [connection signal="body_entered" from="CharacterBody3D/JumpscareDetector" to="CharacterBody3D" method="_on_jumpscare_detector_body_entered"]
 [connection signal="body_entered" from="CharacterBody3D/BiggerDetector" to="CharacterBody3D" method="_on_bigger_detector_body_entered"]
 [connection signal="body_entered" from="CharacterBody3D/Detector" to="CharacterBody3D" method="_on_detector_body_entered"]
+
+[editable path="CharacterBody3D/CollisionShape3D/CRIATURA_FEA (1)"]
