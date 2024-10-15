@@ -11,7 +11,7 @@ func _process(delta):
 		if hit.has_method("interact"):
 			int_text.visible = true
 			if Input.is_action_just_pressed("Interact"):
-				hit.interact()  # Llama al método interact() del armario
+				hit.interact() 
 		else:
 			int_text.visible = false
 	else:

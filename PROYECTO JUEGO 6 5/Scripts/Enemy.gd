@@ -93,6 +93,7 @@ func chase_player(delta):
 		# Si el jugador ha estado fuera de la vista durante el tiempo completo, volver a patrullar
 		if lost_sight_timer <= 0:
 			start_wandering()
+			
 
 func search_for_player(delta):
 	search_timer -= delta
@@ -114,7 +115,7 @@ func move_with_navigation(delta, speed: float):
 
 		# Reproducir animación de caminar si se está moviendo
 		if direction.length() > 0:  # Si hay movimiento
-			animation_player.play("ArmatureAction")  # Asegúrate de que esta animación exista
+			animation_player.play("Patrullaje")  # Asegúrate de que esta animación exista
 		else:
 			animation_player.stop()  # Detener la animación si no hay movimiento
 

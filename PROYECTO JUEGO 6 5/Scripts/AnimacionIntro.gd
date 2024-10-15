@@ -1,52 +1,74 @@
-extends Node3D
+extends Node3D 
 
-@onready var control_dialogos: Control = get_node("/root/Tutorial/Dialogos")
-@onready var label_dialogo: RichTextLabel = control_dialogos.get_node("Panel/DialogoTexto")
-@onready var player = get_node("/root/" + get_tree().current_scene.name + "/Player/CharacterBody3D")  # Obtener referencia al jugador
+@onready var player = get_node("/root/" + get_tree().current_scene.name + "/Player/CharacterBody3D")
+@onready var anim_player: AnimationPlayer = $"Escena 0"
+@onready var dialogos = get_node("/root/" + get_tree().current_scene.name + "/Dialogos")
+@onready var mensaje_label = get_node("/root/" + get_tree().current_scene.name + "/UI/MissionLabel")  # Nodo Label para el mensaje
 
-var dialogos = [
-	"Profe, ¿puedo ir al baño? Me duele la cabeza.",
-	"No puede salir en horario de clase.",
-	"Por favor, me está reventando la cabeza.",
-	"Bueno, dale, pero vuelve rápido que me cagan a pedo si no.",
-	"Gracias profe.",
-]
+var mensaje_visible: bool = false
+var puede_ocultar_mensaje: bool = false  # Variable para controlar cuándo se puede ocultar el mensaje
+var animacion_terminada: bool = false  # Nueva variable para indicar si la animación ha terminado
+var wasd_message_shown = false
+var wasd_input_detected = false
 
-var indice_dialogo = 0
 
 func _ready():
-	$AnimacionIntro.play("Introduccion")
+	if anim_player == null:
+		print("Error: El nodo AnimacionIntro no se ha encontrado.")
+		return
+
+	player.movable = false
+	anim_player.play("Introduccion")
 	$"Camara Intro".current = true
-	await get_tree().create_timer(20, false).timeout
-	player.movable = true
-	player.get_node("Cabeza/Camera3D").current = true
-	$"Camara Intro".current = false
-	queue_free()
+	
+	# Conectar la señal al final de la animación usando Callable
+	anim_player.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
-	# Llamar a la función que indica que la cinemática ha terminado
-	player._on_cinematic_finished()
+# Función que se ejecuta al terminar la animación
+func _on_cinematic_finished():
+	if not wasd_message_shown:
+		show_instructions("Presione WASD para moverse")
+		wasd_message_shown = true  # El mensaje se ha mostrado una vez
 
-	# Iniciar la secuencia de diálogos después de la animación
-	mostrar_dialogo()
 
-func mostrar_dialogo():
-	if indice_dialogo < dialogos.size():
-		control_dialogos.visible = true
-		label_dialogo.text = dialogos[indice_dialogo]
+# Función para mostrar el mensaje
+func mostrar_mensaje(texto: String):
+	if mensaje_label != null and not mensaje_visible:
+		mensaje_label.text = texto
+		mensaje_label.visible = true  # Hacemos visible el Label
+		mensaje_visible = true
+		puede_ocultar_mensaje = false  # No permitir ocultar inmediatamente
+		print("Mensaje mostrado: ", texto)
 		
-		# Determinar el tiempo de espera para el último diálogo
-		var tiempo_espera: float
-		if indice_dialogo == dialogos.size() - 1:
-			tiempo_espera = 2.0  # 2 segundos para el último
-		else:
-			tiempo_espera = 5.0  # 5 segundos para los demás
+		# Añadir un pequeño retraso antes de permitir ocultar el mensaje
+		await get_tree().create_timer(1.0).timeout  # Esperar 1 segundo
+		puede_ocultar_mensaje = true  # Ahora se puede ocultar el mensaje
+		print("Se puede ocultar el mensaje ahora")
 
-		# Esperar antes de ocultar el diálogo
-		await get_tree().create_timer(tiempo_espera, false).timeout
-		
-		indice_dialogo += 1
-		
-		# Llamar de nuevo a mostrar_dialogo para el siguiente diálogo
-		mostrar_dialogo()
-	else:
-		control_dialogos.visible = false  # Ocultar el panel después de todos los diálogos
+# Función para ocultar el mensaje
+func ocultar_mensaje():
+	if mensaje_label != null and mensaje_visible:
+		mensaje_label.visible = false
+		mensaje_visible = false
+		print("Mensaje ocultado")
+
+# Función para verificar las teclas presionadas
+func _process(delta):
+	if wasd_message_shown and not wasd_input_detected:
+		# Si se detecta entrada de movimiento, ocultar el mensaje
+		if Input.is_action_pressed("avanzar") or Input.is_action_pressed("atras") or 
+		   Input.is_action_pressed("izquierda") or Input.is_action_pressed("derecha"):
+			hide_instructions()  # Ocultar el mensaje
+			wasd_input_detected = true
+
+# Función para mostrar diálogos
+func mostrar_dialogo(texto: String):
+	dialogos.mostrar_dialogo(texto)
+
+# Función para ocultar diálogos
+func ocultar_dialogo():
+	dialogos.ocultar_dialogo()
+
+func hide_instructions():
+	if ui_control != null:
+		ui_control.update_mission("")  # Deja el mensaje vacío para ocultarlo

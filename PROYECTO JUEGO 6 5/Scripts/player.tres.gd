@@ -143,7 +143,7 @@ func _process(delta):
 			footstep_sound.stop()
 
 	# Verificar si el jugador quiere entrar o salir del armario
-	if Input.is_action_just_pressed("interact"):  # Asume que "interact" es la acción para interactuar
+	if Input.is_action_just_pressed("Interact"):  # Asume que "interact" es la acción para interactuar
 		if armario and is_hidden == false:  # Si no está oculto
 			hide_in_armario()  # Ocultarse en el armario
 		elif is_hidden:  # Si está oculto

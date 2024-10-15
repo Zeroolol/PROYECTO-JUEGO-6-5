@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://k7em1hj3swim"]
+
+[ext_resource type="Script" path="res://Scripts/inventario.gd" id="1_8oa6l"]
+[ext_resource type="Texture2D" uid="uid://bd17ko0paf0mt" path="res://Assets/Images/fondo inventario.png" id="1_nbt25"]
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="2_848t2"]
+
+[node name="Inventario" type="Control"]
+modulate = Color(1, 1, 1, 0.972549)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 585.0
+offset_top = 35.0
+offset_right = -49.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8oa6l")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 516.0
+offset_bottom = 562.0
+texture = ExtResource("1_nbt25")
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 32.0
+offset_right = 504.0
+offset_bottom = 523.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_848t2")
+theme_override_font_sizes/font_size = 30
+text = "INVENTARIO"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Background/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 50
+columns = 4

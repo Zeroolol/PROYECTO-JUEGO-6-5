@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://dwehjyj4c4ck4"]
+[gd_scene load_steps=27 format=4 uid="uid://dwehjyj4c4ck4"]
 
+[ext_resource type="PackedScene" uid="uid://i13bvug2pbhn" path="res://Escenas/Dialogos.tscn" id="1_2k1c5"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="2_pbb50"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
 [ext_resource type="Script" path="res://Scripts/AnimacionIntro.gd" id="4_0yoml"]
@@ -7,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="8_84hwc"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="9_lvmu4"]
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="9_xc8ak"]
-[ext_resource type="PackedScene" uid="uid://d2ots3rtyq6sp" path="res://Escenas/Dialogos.tscn" id="10_tx5dm"]
+[ext_resource type="ArrayMesh" uid="uid://bwqltmytra2jr" path="res://Textures/PuertaLab.obj" id="10_qbli0"]
+[ext_resource type="Texture2D" uid="uid://d4k3epp0gdqp" path="res://Modelos/Colegio/Colegiooo_TexturaPuerta.png" id="11_28q3l"]
 [ext_resource type="Script" path="res://Scripts/Area3D.gd" id="11_nj55y"]
+[ext_resource type="ArrayMesh" uid="uid://danusx2juu8rh" path="res://Textures/PuertaBaño.obj" id="12_7k1oj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftbl1"]
 sky_top_color = Color(0.407843, 0.337255, 0.854902, 1)
@@ -32,7 +35,7 @@ tonemap_white = 3.67
 
 [sub_resource type="Animation" id="Animation_aupyr"]
 resource_name = "Introduccion"
-length = 20.0085
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -55,45 +58,57 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 12.6, 13, 15.2, 16.3, 17.8, 19.3, 20),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-37.4127, 2.16185, 11.4622), Vector3(-37.4127, 2.16185, 10.8637), Vector3(-37.4127, 2.67231, 10.4207), Vector3(-34.6828, 2.67231, 10.4207), Vector3(-33.16, 2.67231, 11.2034), Vector3(-31.6414, 2.67231, 12.0343), Vector3(-29.3816, 2.67231, 12.6045), Vector3(-27.6038, 2.74134, 12.8132)]
+"values": [Vector3(-37.4127, 2.16185, 11.4622), Vector3(-37.4127, 2.16185, 10.8637), Vector3(-37.4127, 2.67231, 10.4207), Vector3(-34.6828, 2.67231, 10.4207), Vector3(-33.16, 2.67231, 11.2034), Vector3(-31.6414, 2.67231, 12.0343), Vector3(-29.3816, 2.67231, 12.6045), Vector3(-27.6038, 2.09412, 12.8648)]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
+tracks/2/path = NodePath("../Puertas/Bisagra:rotation")
+tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.8, 4.1, 6.5, 9.8, 15.1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"mostrar_dialogo"
-}, {
-"args": [],
-"method": &"mostrar_dialogo"
-}, {
-"args": [],
-"method": &"mostrar_dialogo"
-}, {
-"args": [],
-"method": &"mostrar_dialogo"
-}, {
-"args": [],
-"method": &"mostrar_dialogo"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Puertas/Bisagra:rotation")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(17.8, 18.3, 19.5667, 19.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, -1.63886, 0), Vector3(0, -1.5708, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.03333, 3.6, 6.2, 9.63333, 14.3667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": ["Profe puedo ir al baño ? me duele mucho la cabeza"],
+"method": &"mostrar_dialogo"
+}, {
+"args": ["No puede salir en horario de clase"],
+"method": &"mostrar_dialogo"
+}, {
+"args": ["Por favor, no doy mas del dolor"],
+"method": &"mostrar_dialogo"
+}, {
+"args": ["Esta bien, pero volve rapido que me cagan a pedos si no"],
+"method": &"mostrar_dialogo"
+}, {
+"args": ["Muchas gracias profe"],
+"method": &"mostrar_dialogo"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Dialogos:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.03333, 18),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_bgfc3"]
@@ -133,6 +148,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Dialogos:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8u7ra"]
@@ -228,8 +255,60 @@ _data = {
 "RESET": SubResource("Animation_25i8e")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h82m7"]
+resource_name = "TexturaPuerta.004"
+cull_mode = 2
+albedo_texture = ExtResource("11_28q3l")
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sarh6"]
+_surfaces = [{
+"aabb": AABB(2.866, -0.099189, -5, 2.4, 0.198378, 5),
+"format": 34896613377,
+"index_count": 300,
+"index_data": PackedByteArray("AAADAAEAAAACAAMAJAASABQAEgAIAAkAEgAfAAgAJAAfABIAJAAeAB8AJwAeACQAHAALAB0AJQAeACcAEAAlACYAAwATABEAAwAQABMACgAGAAcACwAGAAoAAgAQAAMAAgAlABAAHAAGAAsAAgAeACUAHgAGABwAHgACAAYAEAAkABQAEAAmACQAHwALAAgAHwAdAAsAFQADABEAAwAKAAcACgASAAkAFQAKAAMAFQASAAoABgAFAAcABgAEAAUAGQABABYABAAPAAUADgAgACEABAAOAA8AGQAAAAEAKAAYACkAGAAAABkABAAgAA4ABAAiACAAKAAAABgAKgAAACgAAAAiAAQAIwAMAA0AKgAiAAAAFwArABoAKwAiACoAIwAXAAwAKwAjACIAIwArABcAGgApABgAGgArACkAIQANAA4AIQAjAA0AGwAMABcADAAFAA8ABQAWAAEAGwAFAAwAGwAWAAUAAgAEAAYAAgAAAAQABwABAAMABwAFAAEADQAJAAgADQAMAAkACgAOAAsACgAPAA4ACwANAAgACwAOAA0ADAAKAAkADAAPAAoAGAATABAAGAAZABMAFwAVABsAEgAaABQAFwASABUAFwAaABIAFAAYABAAFAAaABgAFgATABkAEQAbABUAFgARABMAFgAbABEAIgAfAB4AIgAjAB8AHQAgABwAHQAhACAAHAAiAB4AHAAgACIAIwAdAB8AIwAhAB0AKAAmACUAKAApACYAJAAqACcAJAArACoAJwAoACUAJwAqACgAKQAkACYAKQArACQA"),
+"name": "TexturaPuerta.004",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("AAD/////AAAAAP//AAAAAAAAAAD//wAAAAAAAAAAAAD///////8AAP////8AAAAA//8AAP//AAD//wAAAAAAAOWFAAABRwAA5YUAAGgbAAD01AAAaBsAAPTUAAABRwAA5YX//2gbAADlhf//AUcAAPTU//8BRwAA9NT//2gbAABjKwAAqEYAAGF2AAA7GAAAcXoAABAZAABjKwAAOxgAAHF6AACoRgAAcXoAADsYAABhdv//OxgAAHF6//8QGQAAYyv//6hGAABjK///OxgAAHF6//+oRgAAcXr//zsYAAB71AAA93EAAHvUAAAsTAAAbYUAAPdxAABthQAALEwAAHvU///3cQAAe9T//yxMAABthf//93EAAG2F//8sTAAA2HoAAE1LAADKKwAAGHEAAMorAABNSwAA2HoAABhxAADKK///GHEAAMor//9NSwAA2Hr//xhxAADYev//TUsAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_o1fmp"]
+resource_name = "Colegiooo_Cube_035"
+_surfaces = [{
+"aabb": AABB(2.866, -0.099189, -5, 2.4, 0.198378, 5),
+"attribute_data": PackedByteArray("PbUb1P////9iheKAYNFNz/3/AIAYheKAPbUV9IT/j/9ihWWEYNFH74X//38YhWWEFtUb1Et//P+zzd7Rh7FNz0p//39Lzd7RFtUV9N5/j/+zzTPVh7FH795/AYBLzTPVZrMI38C8YaPFr1Tuw8bf8cC8qI2fz1Tu6abl0VWVqI1I7dvuP9MC/1WVYqNuzdvuw8bf8ay8tI2fz4DxZrMI36y8gKPFr4DxP9MC/+6UgKNuza/r6abl0e6Us41I7a/rxKcl0OLpNaPFr1TuQtHzv33EEox2wn2MnNbb7njv87/i6RKMn89U7p3HHvB2wjWjVbfb7p/P+Z92whKMLtfb7kLR8795xB2MbsKIjJzWr+vEpyXQLepUo8WvgPF47/O/LOodjJ/PgPGdxx7wbsJUo1W3r+ufz/mfbsIdjC7Xr+vs0OH4kZXKuG7N2+5uvMfZkZX1pUjt2+4SsefY/LzJuMWvVO5H3MH5/Lz0pZ/PVO7s0OH4K5X6uG7Nr+tuvMfZK5UVpkjtr+sSsefY6bz6uMWvgPFH3MH56bwVpp/PgPGfz4bUQ8KFpS7XYfASsefYrulauMWvzux474D0r+mFpZ/Pzuzs0OH4Q8JauFW3YfASsefY+emMuMWv+u9474D0+emmpZ/P+u/s0OH4O8KLuFW3Ne2fz4bUO8KmpS7XNe0="),
+"format": 34896613399,
+"index_count": 300,
+"index_data": PackedByteArray("AgALAAUAAgAIAAsAaQA1ADsANQAZABwANQBaABkAaQBaADUAaQBXAFoAcgBXAGkAUQAiAFQAbABXAHIAMQBsAG8ACgA4ADQACgAxADgAHwATABYAIgATAB8ABwAxAAoABwBsADEAUQATACIABwBXAGwAVwATAFEAVwAHABMAMQBpADsAMQBvAGkAWgAiABkAWgBUACIAPgAKADQACgAfABYAHwA1ABwAPgAfAAoAPgA1AB8AFAARABcAFAAOABEASAAEAEEADQAuABAAKwBdAGAADQArAC4ASAABAAQAdQBFAHgARQABAEgADQBdACsADQBjAF0AdQABAEUAewABAHUAAQBjAA0AZgAlACgAewBjAAEAQgB+AEsAfgBjAHsAZgBCACUAfgBmAGMAZgB+AEIASwB4AEUASwB+AHgAYAAoACsAYABmACgATgAlAEIAJQAQAC4AEABBAAQATgAQACUATgBBABAABgAMABIABgAAAAwAFQADAAkAFQAPAAMAKQAdABoAKQAmAB0AIAAsACMAIAAvACwAIQAnABgAIQAqACcAJAAeABsAJAAtAB4ARgA5ADIARgBJADkAQwA/AE8ANgBMADwAQwA2AD8AQwBMADYAOgBEADAAOgBKAEQAQAA3AEcAMwBNAD0AQAAzADcAQABNADMAZABbAFgAZABnAFsAVQBeAFIAVQBhAF4AUABiAFYAUABcAGIAZQBTAFkAZQBfAFMAdgBwAG0AdgB5AHAAagB8AHMAagB/AHwAcQB0AGsAcQB6AHQAdwBoAG4AdwB9AGgA"),
+"material": SubResource("StandardMaterial3D_h82m7"),
+"name": "TexturaPuerta.004",
+"primitive": 3,
+"uv_scale": Vector4(2.0094, 2.00144, 0, 0),
+"vertex_count": 128,
+"vertex_data": PackedByteArray("AAD/////AIAAAP////8AAAAA//////+/AAD//wAA//8AAP//AAAAAAAA//8AAP+/AAAAAP//AIAAAAAA/////wAAAAD///+/AAAAAAAA//8AAAAAAAD//wAAAAAAAP+/////////AID///////8AAP///////wAA/////wAA////////AAAAAP////8AAAAA//8AAP//AID//wAA////////AAD//wAA//8AAAAA/////wAAAAD/////AAAAAAAA5YUAAAFH///lhQAAAUf//+WFAAABR/8/5YUAAGgb/n/lhQAAaBv//+WFAABoG/8/9NQAAGgb/n/01AAAaBv///TUAABoGwAA9NQAAAFH///01AAAAUf///TUAAABRwAA5YX//2gb/n/lhf//aBsAAOWF//9oG/8/5YX//wFH///lhf//AUcAAOWF//8BR/8/9NT//wFH///01P//AUcAAPTU//8BRwAA9NT//2gb/n/01P//aBsAAPTU//9oGwAAYysAAKhG//9jKwAAqEb//2MrAACoRv8/YXYAADsY/n9hdgAAOxj//3F6AAAQGf//cXoAABAZAABjKwAAOxj+f2MrAAA7GP//YysAADsY/z9xegAAqEb//3F6AACoRvn/cXoAAKhGAABxegAAOxj+f3F6AAA7GP//cXoAADsYAABhdv//Oxj+f2F2//87GAAAcXr//xAZAABxev//EBkAAGMr//+oRv//Yyv//6hGAABjK///qEb/P2Mr//87GP5/Yyv//zsYAABjK///Oxj/P3F6//+oRv//cXr//6hGAABxev//qEYAAHF6//87GP5/cXr//zsYAABxev//OxgAAHvUAAD3cf//e9QAAPdx//971AAA93EAAHvUAAAsTP5/e9QAACxM//971AAALEwAAG2FAAD3cf//bYUAAPdx//9thQAA93H/P22FAAAsTP5/bYUAACxM//9thQAALEz/P3vU///3cf//e9T///dxAAB71P//93EAAHvU//8sTP5/e9T//yxMAAB71P//LEwAAG2F///3cf//bYX///dxAABthf//93H/P22F//8sTP5/bYX//yxMAABthf//LEz/P9h6AABNS/5/2HoAAE1L///YegAATUsAAMorAAAYcf//yisAABhx///KKwAAGHH/P8orAABNS/5/yisAAE1L///KKwAATUv/P9h6AAAYcf//2HoAABhx///YegAAGHEAAMor//8Ycf//yiv//xhxAADKK///GHH/P8or//9NS/5/yiv//01LAADKK///TUv/P9h6//8Ycf//2Hr//xhxAADYev//GHEAANh6//9NS/5/2Hr//01LAADYev//TUsAAP9/////vwAA/3////9/////vwAA/3////9/////v////3////9/////v////3////9/////vwAA/7//f/9/////vwAA/7//f/9/////v////7//f/9/////v////7//f////3//v////38AAP9/////v////38AAP9/////v////z//f////3//v////z//f/9/////vwAA/38AAP///3//vwAA/38AAP///3//vwAA/z//f/9/////vwAA/z//f////3//v////38AAP9/////v////7////8//3//f////7////9/AAD///9/+n8CQP8//3//f////7////8//3//f////78AAP+/AAD/P/9/////f/+/AAD/fwAA/3////+/AAD/fwAA////f/9//7//P/9//3////+/AAD/P/9/////f/+/////P/9//3////+/////P/9/////f/+/////fwAA/3////+/////fwAA////f/+/AAD/P/9//3///wDAAgD/P/9/////f/+/AAD/fwAA/3////+/AAD/fwAA/3////+/////P/9/////f/+/////fwAA/3////9//z//fwAA////f/+/////P/9/////f/+/AAD/fwAA/3////+/AAD/fwAA////f/+/AAD/P/9//3////+/AAD/P/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_sarh6")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bluta"]
+data = PackedVector3Array(2.866, 0.0992, 0, 2.866, -0.0992, -5, 2.866, 0.0992, -5, 2.866, 0.0992, 0, 2.866, -0.0992, 0, 2.866, -0.0992, -5, 4.0177, -0.0992, -3.5293, 4.0139, -0.0992, -4.5105, 4.0139, -0.0992, -3.62, 4.0139, -0.0992, -4.5105, 4.1213, -0.0992, -3.6132, 4.1213, -0.0992, -4.4647, 4.0139, -0.0992, -4.5105, 4.1169, -0.0992, -3.5122, 4.1213, -0.0992, -3.6132, 4.0177, -0.0992, -3.5293, 4.1169, -0.0992, -3.5122, 4.0139, -0.0992, -4.5105, 4.0177, -0.0992, -3.5293, 4.1169, -0.0992, -2.7741, 4.1169, -0.0992, -3.5122, 4.0177, -0.0992, -2.7911, 4.1169, -0.0992, -2.7741, 4.0177, -0.0992, -3.5293, 4.858, -0.0992, -2.7741, 4.8625, -0.0992, -3.6132, 4.858, -0.0992, -3.5122, 3.2765, -0.0992, -2.7911, 4.1169, -0.0992, -2.7741, 4.0177, -0.0992, -2.7911, 3.2728, -0.0992, -3.62, 3.2765, -0.0992, -2.7911, 3.2765, -0.0992, -3.5293, 2.866, -0.0992, -5, 3.2728, -0.0992, -4.5267, 3.9758, -0.0992, -4.5267, 2.866, -0.0992, -5, 3.2728, -0.0992, -3.62, 3.2728, -0.0992, -4.5267, 4.8625, -0.0992, -4.4647, 5.266, -0.0992, 0, 5.266, -0.0992, -5, 4.8625, -0.0992, -3.6132, 5.266, -0.0992, 0, 4.8625, -0.0992, -4.4647, 2.866, -0.0992, 0, 3.2728, -0.0992, -3.62, 2.866, -0.0992, -5, 2.866, -0.0992, 0, 3.2765, -0.0992, -2.7911, 3.2728, -0.0992, -3.62, 4.858, -0.0992, -2.7741, 5.266, -0.0992, 0, 4.8625, -0.0992, -3.6132, 2.866, -0.0992, 0, 4.1169, -0.0992, -2.7741, 3.2765, -0.0992, -2.7911, 4.1169, -0.0992, -2.7741, 5.266, -0.0992, 0, 4.858, -0.0992, -2.7741, 4.1169, -0.0992, -2.7741, 2.866, -0.0992, 0, 5.266, -0.0992, 0, 3.2728, -0.0992, -3.62, 4.0177, -0.0992, -3.5293, 4.0139, -0.0992, -3.62, 3.2728, -0.0992, -3.62, 3.2765, -0.0992, -3.5293, 4.0177, -0.0992, -3.5293, 4.1169, -0.0992, -3.5122, 4.8625, -0.0992, -3.6132, 4.1213, -0.0992, -3.6132, 4.1169, -0.0992, -3.5122, 4.858, -0.0992, -3.5122, 4.8625, -0.0992, -3.6132, 4.0139, -0.0992, -4.5267, 2.866, -0.0992, -5, 3.9758, -0.0992, -4.5267, 2.866, -0.0992, -5, 4.8625, -0.0992, -4.4647, 5.266, -0.0992, -5, 4.8625, -0.0992, -4.4647, 4.0139, -0.0992, -4.5105, 4.1213, -0.0992, -4.4647, 4.0139, -0.0992, -4.5267, 4.8625, -0.0992, -4.4647, 2.866, -0.0992, -5, 4.0139, -0.0992, -4.5267, 4.0139, -0.0992, -4.5105, 4.8625, -0.0992, -4.4647, 5.266, -0.0992, 0, 5.266, 0.0992, -5, 5.266, -0.0992, -5, 5.266, -0.0992, 0, 5.266, 0.0992, 0, 5.266, 0.0992, -5, 3.2728, 0.0992, -4.5267, 2.866, 0.0992, -5, 3.9758, 0.0992, -4.5267, 5.266, 0.0992, 0, 4.8625, 0.0992, -4.4647, 5.266, 0.0992, -5, 4.8625, 0.0992, -3.6132, 4.858, 0.0992, -2.7741, 4.858, 0.0992, -3.5122, 5.266, 0.0992, 0, 4.8625, 0.0992, -3.6132, 4.8625, 0.0992, -4.4647, 3.2728, 0.0992, -4.5267, 2.866, 0.0992, 0, 2.866, 0.0992, -5, 3.2765, 0.0992, -2.7911, 3.2728, 0.0992, -3.62, 3.2765, 0.0992, -3.5293, 3.2728, 0.0992, -3.62, 2.866, 0.0992, 0, 3.2728, 0.0992, -4.5267, 5.266, 0.0992, 0, 4.858, 0.0992, -2.7741, 4.8625, 0.0992, -3.6132, 5.266, 0.0992, 0, 4.1169, 0.0992, -2.7741, 4.858, 0.0992, -2.7741, 3.2765, 0.0992, -2.7911, 2.866, 0.0992, 0, 3.2728, 0.0992, -3.62, 4.0177, 0.0992, -2.7911, 2.866, 0.0992, 0, 3.2765, 0.0992, -2.7911, 2.866, 0.0992, 0, 4.1169, 0.0992, -2.7741, 5.266, 0.0992, 0, 4.1169, 0.0992, -3.5122, 4.1213, 0.0992, -4.4647, 4.1213, 0.0992, -3.6132, 4.0177, 0.0992, -2.7911, 4.1169, 0.0992, -2.7741, 2.866, 0.0992, 0, 4.0139, 0.0992, -4.5105, 4.0177, 0.0992, -3.5293, 4.0139, 0.0992, -3.62, 4.0177, 0.0992, -3.5293, 4.1169, 0.0992, -2.7741, 4.0177, 0.0992, -2.7911, 4.1169, 0.0992, -3.5122, 4.0139, 0.0992, -4.5105, 4.1213, 0.0992, -4.4647, 4.0177, 0.0992, -3.5293, 4.1169, 0.0992, -3.5122, 4.1169, 0.0992, -2.7741, 4.1169, 0.0992, -3.5122, 4.0177, 0.0992, -3.5293, 4.0139, 0.0992, -4.5105, 4.0139, 0.0992, -3.62, 3.2765, 0.0992, -3.5293, 3.2728, 0.0992, -3.62, 4.0139, 0.0992, -3.62, 4.0177, 0.0992, -3.5293, 3.2765, 0.0992, -3.5293, 4.858, 0.0992, -3.5122, 4.1213, 0.0992, -3.6132, 4.8625, 0.0992, -3.6132, 4.858, 0.0992, -3.5122, 4.1169, 0.0992, -3.5122, 4.1213, 0.0992, -3.6132, 4.0139, 0.0992, -4.5267, 4.1213, 0.0992, -4.4647, 4.0139, 0.0992, -4.5105, 4.1213, 0.0992, -4.4647, 5.266, 0.0992, -5, 4.8625, 0.0992, -4.4647, 5.266, 0.0992, -5, 3.9758, 0.0992, -4.5267, 2.866, 0.0992, -5, 4.0139, 0.0992, -4.5267, 5.266, 0.0992, -5, 4.1213, 0.0992, -4.4647, 4.0139, 0.0992, -4.5267, 3.9758, 0.0992, -4.5267, 5.266, 0.0992, -5, 2.866, -0.0992, 0, 5.266, 0.0992, 0, 5.266, -0.0992, 0, 2.866, -0.0992, 0, 2.866, 0.0992, 0, 5.266, 0.0992, 0, 5.266, -0.0992, -5, 2.866, 0.0992, -5, 2.866, -0.0992, -5, 5.266, -0.0992, -5, 5.266, 0.0992, -5, 2.866, 0.0992, -5, 4.1213, 0.0992, -3.6132, 4.1213, -0.0992, -4.4647, 4.1213, -0.0992, -3.6132, 4.1213, 0.0992, -3.6132, 4.1213, 0.0992, -4.4647, 4.1213, -0.0992, -4.4647, 4.8625, -0.0992, -4.4647, 4.8625, 0.0992, -3.6132, 4.8625, -0.0992, -3.6132, 4.8625, -0.0992, -4.4647, 4.8625, 0.0992, -4.4647, 4.8625, 0.0992, -3.6132, 4.8625, -0.0992, -3.6132, 4.1213, 0.0992, -3.6132, 4.1213, -0.0992, -3.6132, 4.8625, -0.0992, -3.6132, 4.8625, 0.0992, -3.6132, 4.1213, 0.0992, -3.6132, 4.1213, 0.0992, -4.4647, 4.8625, -0.0992, -4.4647, 4.1213, -0.0992, -4.4647, 4.1213, 0.0992, -4.4647, 4.8625, 0.0992, -4.4647, 4.8625, -0.0992, -4.4647, 3.2728, 0.0992, -3.62, 3.2728, -0.0992, -4.5267, 3.2728, -0.0992, -3.62, 3.2728, 0.0992, -3.62, 3.2728, 0.0992, -4.5267, 3.2728, -0.0992, -4.5267, 4.0139, 0.0992, -4.5105, 4.0139, -0.0992, -4.5267, 4.0139, 0.0992, -4.5267, 4.0139, -0.0992, -4.5105, 4.0139, 0.0992, -3.62, 4.0139, -0.0992, -3.62, 4.0139, 0.0992, -4.5105, 4.0139, -0.0992, -4.5105, 4.0139, -0.0992, -4.5267, 4.0139, 0.0992, -4.5105, 4.0139, 0.0992, -3.62, 4.0139, -0.0992, -4.5105, 4.0139, -0.0992, -3.62, 3.2728, 0.0992, -3.62, 3.2728, -0.0992, -3.62, 4.0139, -0.0992, -3.62, 4.0139, 0.0992, -3.62, 3.2728, 0.0992, -3.62, 3.9758, 0.0992, -4.5267, 3.2728, -0.0992, -4.5267, 3.2728, 0.0992, -4.5267, 3.9758, -0.0992, -4.5267, 4.0139, 0.0992, -4.5267, 4.0139, -0.0992, -4.5267, 3.9758, 0.0992, -4.5267, 3.9758, -0.0992, -4.5267, 3.2728, -0.0992, -4.5267, 3.9758, 0.0992, -4.5267, 4.0139, 0.0992, -4.5267, 3.9758, -0.0992, -4.5267, 4.1169, 0.0992, -2.7741, 4.1169, -0.0992, -3.5122, 4.1169, -0.0992, -2.7741, 4.1169, 0.0992, -2.7741, 4.1169, 0.0992, -3.5122, 4.1169, -0.0992, -3.5122, 4.858, -0.0992, -3.5122, 4.858, 0.0992, -2.7741, 4.858, -0.0992, -2.7741, 4.858, -0.0992, -3.5122, 4.858, 0.0992, -3.5122, 4.858, 0.0992, -2.7741, 4.858, -0.0992, -2.7741, 4.1169, 0.0992, -2.7741, 4.1169, -0.0992, -2.7741, 4.858, -0.0992, -2.7741, 4.858, 0.0992, -2.7741, 4.1169, 0.0992, -2.7741, 4.1169, 0.0992, -3.5122, 4.858, -0.0992, -3.5122, 4.1169, -0.0992, -3.5122, 4.1169, 0.0992, -3.5122, 4.858, 0.0992, -3.5122, 4.858, -0.0992, -3.5122, 3.2765, 0.0992, -2.7911, 3.2765, -0.0992, -3.5293, 3.2765, -0.0992, -2.7911, 3.2765, 0.0992, -2.7911, 3.2765, 0.0992, -3.5293, 3.2765, -0.0992, -3.5293, 4.0177, -0.0992, -3.5293, 4.0177, 0.0992, -2.7911, 4.0177, -0.0992, -2.7911, 4.0177, -0.0992, -3.5293, 4.0177, 0.0992, -3.5293, 4.0177, 0.0992, -2.7911, 4.0177, -0.0992, -2.7911, 3.2765, 0.0992, -2.7911, 3.2765, -0.0992, -2.7911, 4.0177, -0.0992, -2.7911, 4.0177, 0.0992, -2.7911, 3.2765, 0.0992, -2.7911, 3.2765, 0.0992, -3.5293, 4.0177, -0.0992, -3.5293, 3.2765, -0.0992, -3.5293, 3.2765, 0.0992, -3.5293, 4.0177, 0.0992, -3.5293, 4.0177, -0.0992, -3.5293)
+
 [node name="Tutorial" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.340086, 0)
+
+[node name="Dialogos" parent="." instance=ExtResource("1_2k1c5")]
+visible = false
+
+[node name="Panel" parent="Dialogos" index="0"]
+offset_top = 435.0
+offset_bottom = 631.0
+
+[node name="TextoDialogo" parent="Dialogos/Panel" index="0"]
+justification_flags = 3
+uppercase = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bjnqf")
@@ -240,7 +319,7 @@ light_color = Color(0.875337, 0.619671, 0.109824, 1)
 light_energy = 1.792
 
 [node name="Player" parent="." instance=ExtResource("2_pbb50")]
-transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.51434, 0, 0.999886, 0, -0.015114, -19.8811, 0.410121, 12.8022)
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.50768, 0, 0.999886, 0, -0.015114, -20.5453, -0.457716, 12.5396)
 
 [node name="CharacterBody3D" parent="Player" index="0" groups=["player"]]
 
@@ -253,73 +332,12 @@ script = ExtResource("4_0yoml")
 [node name="Camara Intro" type="Camera3D" parent="AnimacionIntro"]
 transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, -37.4127, 2.16185, 11.4622)
 
-[node name="AnimacionIntro" type="AnimationPlayer" parent="AnimacionIntro"]
+[node name="Escena 0" type="AnimationPlayer" parent="AnimacionIntro"]
 libraries = {
 "": SubResource("AnimationLibrary_8u7ra")
 }
 
-[node name="Puertas3" parent="." instance=ExtResource("4_o11gv")]
-transform = Transform3D(-3.54033e-08, 0, -0.695734, 0, 0.66232, 0, 0.809935, 0, -3.04115e-08, 7.6907, -0.13132, -61.0598)
-
-[node name="light" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -36.3579, 4.89009, 7.7197)
-
-[node name="LucesTecho" parent="light" index="0"]
-transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
-
-[node name="OmniLight3D" parent="light" index="1"]
-light_color = Color(0.835404, 0.94866, 0.596878, 1)
-light_energy = 2.293
-light_indirect_energy = 1.646
-light_volumetric_fog_energy = 2.455
-omni_range = 6.674
-
-[node name="light5" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -31.0885, 4.89009, 7.7197)
-
-[node name="LucesTecho" parent="light5" index="0"]
-transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
-
-[node name="OmniLight3D" parent="light5" index="1"]
-light_color = Color(0.835404, 0.94866, 0.596878, 1)
-light_energy = 2.293
-light_indirect_energy = 1.646
-light_volumetric_fog_energy = 2.455
-omni_range = 6.674
-
-[node name="light2" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -26.9121, 4.89009, 7.7197)
-
-[node name="OmniLight3D" parent="light2" index="1"]
-light_color = Color(0.835404, 0.94866, 0.596878, 1)
-light_energy = 2.293
-light_indirect_energy = 1.646
-light_volumetric_fog_energy = 2.455
-omni_range = 6.674
-
-[node name="light3" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, -15.1711, 4.92011, 12.3122)
-
-[node name="OmniLight3D" parent="light3" index="1"]
-light_color = Color(0.835404, 0.94866, 0.596878, 1)
-light_energy = 2.293
-light_indirect_energy = 1.646
-light_volumetric_fog_energy = 2.455
-omni_range = 6.674
-
-[node name="light4" parent="." instance=ExtResource("8_84hwc")]
-transform = Transform3D(0.999231, 0, 0.0392075, 0, 1, 0, -0.0392075, 0, 0.999231, 6.16267, 4.92011, 12.3122)
-
-[node name="OmniLight3D" parent="light4" index="1"]
-light_color = Color(0.835404, 0.94866, 0.596878, 1)
-light_energy = 2.293
-light_indirect_energy = 1.646
-light_volumetric_fog_energy = 2.455
-omni_range = 6.674
-
 [node name="VHS_shader" parent="." instance=ExtResource("9_lvmu4")]
-
-[node name="Dialogos" parent="." instance=ExtResource("10_tx5dm")]
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(5.89, 0, 0, 0, 0.775, 0, 0, 0, 5.335, 4.48055, 0.0333574, -68.7364)
@@ -361,6 +379,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37304, -0.524242, -33.3973
 [node name="TechoLab" parent="Colegio" index="1"]
 transform = Transform3D(94.6766, 0, 0, 0, 0.100253, 0, 0, 0, 58.9291, 10.8899, 5.4322, 45.3145)
 
+[node name="PuertaLab" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cubo_007/StaticBody3D" index="1"]
+transform = Transform3D(-2.24631e-08, 0, -0.942302, 0, 0.328165, 0, 0.513895, 0, -4.11893e-08, -11.6812, 0.127754, 12.9272)
+mesh = ExtResource("10_qbli0")
+
+[node name="PuertaLab2" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cubo_007/StaticBody3D" index="2"]
+transform = Transform3D(-0.70827, 0, 8.23786e-08, 0, 0.328165, 0, -6.19189e-08, 0, -0.942301, -4.64368, 0.127754, 31.5748)
+mesh = ExtResource("10_qbli0")
+
+[node name="PuertaLab3" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cubo_007/StaticBody3D" index="3"]
+transform = Transform3D(-0.585715, 0, 8.23786e-08, 0, 0.328165, 0, -5.12048e-08, 0, -0.942301, 12.5088, 0.127754, 31.5748)
+mesh = ExtResource("10_qbli0")
+
+[node name="PuertaLab4" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cubo_007/StaticBody3D" index="4"]
+transform = Transform3D(-0.534037, 0, 8.23786e-08, 0, 0.328165, 0, -4.66869e-08, 0, -0.9423, 14.0355, 0.127754, 31.5748)
+mesh = ExtResource("10_qbli0")
+
 [node name="Cube_020" parent="Colegio/NavigationRegion3D/Colegiooo" index="343"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4443, -0.00292078, 0)
 
@@ -373,13 +407,672 @@ transform = Transform3D(1, 0, 0, 0, 0.113023, 0, 0, 0, 1, 4.7515, -0.0372675, 15
 [node name="Cube_182" parent="Colegio/NavigationRegion3D/Colegiooo" index="357"]
 transform = Transform3D(1.05588, 0, 0, 0, 0.19988, 0, 0, 0, 1, -28.2695, -0.102754, 45.294)
 
+[node name="Cube_004" parent="Colegio/NavigationRegion3D/Colegiooo" index="364"]
+transform = Transform3D(-0.000395918, 1, 8.74896e-08, 9.12464e-08, 1.19209e-07, -0.734296, -0.76543, -0.000517249, -8.75802e-08, 3.69065, 0, -24.8537)
+
+[node name="Cube_268" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="365"]
+transform = Transform3D(-0.000446686, 1.00007, 8.74896e-08, 1.02947e-07, 1.19217e-07, -0.734296, -0.863581, -0.000517283, -8.75802e-08, 3.69065, 0, -6.51846)
+mesh = SubResource("ArrayMesh_o1fmp")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_268"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_268/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="Cube_269" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="366"]
+transform = Transform3D(-0.000446686, 1.00007, 8.74896e-08, 1.02947e-07, 1.19217e-07, -0.734296, -0.863581, -0.000517283, -8.75802e-08, 3.69065, 0, 7.91641)
+mesh = SubResource("ArrayMesh_o1fmp")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_269"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_269/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="Cube_270" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="367"]
+transform = Transform3D(-0.000446686, 1.00007, 8.74896e-08, 1.02947e-07, 1.19217e-07, -0.734296, -0.863581, -0.000517283, -8.75802e-08, 3.69065, 0, -42.4448)
+mesh = SubResource("ArrayMesh_o1fmp")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="PuertaBaño" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
+transform = Transform3D(0.529288, 6.47625e-08, -0.000517214, 0.000317019, 1.99317e-07, 1.15808, 7.42564e-08, -0.990681, 1.87948e-07, 32.4771, 0.066256, -0.115892)
+mesh = ExtResource("12_7k1oj")
+
+[node name="PuertaBaño2" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
+transform = Transform3D(-0.542806, 2.13021e-07, 0.000517066, -0.000325142, 1.22369e-07, -1.15808, -7.61531e-08, -0.990681, -1.87948e-07, 30.3705, 0.0653162, -0.115893)
+mesh = ExtResource("12_7k1oj")
+
+[node name="PuertaBaño3" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
+transform = Transform3D(-0.0912204, 1.62942e-07, -1.14216, 0.543986, 1.17192e-07, -0.191349, 7.553e-08, -1.42652, -1.91196e-07, 20.1536, -20.7967, -0.115898)
+mesh = ExtResource("12_7k1oj")
+
+[node name="PuertaBaño4" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
+transform = Transform3D(-0.0522873, 2.65085e-07, 1.1531, -0.563246, 3.32729e-07, -0.107222, -9.87768e-08, -1.42652, 1.44254e-07, 26.0467, -25.4901, -0.115898)
+mesh = ExtResource("12_7k1oj")
+
+[node name="Cube_271" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="368"]
+transform = Transform3D(-0.000525426, 1.00016, 1.00985e-07, 1.21094e-07, 1.19228e-07, -0.847566, -1.01581, -0.00051733, -1.0109e-07, 11.6995, 0, -26.6283)
+mesh = SubResource("ArrayMesh_o1fmp")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_271"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_271/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="Cube_219" parent="Colegio/NavigationRegion3D/Colegiooo" index="372"]
+visible = false
+
+[node name="Cube_220" parent="Colegio/NavigationRegion3D/Colegiooo" index="373"]
+visible = false
+
+[node name="Cube_221" parent="Colegio/NavigationRegion3D/Colegiooo" index="374"]
+visible = false
+
+[node name="Cube_222" parent="Colegio/NavigationRegion3D/Colegiooo" index="375"]
+visible = false
+
+[node name="Luces" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300997, 2.06536)
+
+[node name="light" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -36.3579, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.748844, 0.311325, -1.92671)
+
+[node name="OmniLight3D" parent="Luces/light" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light2" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -35.0053, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light2" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.74884, 0.311325, -1.92671)
+
+[node name="OmniLight3D" parent="Luces/light2" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light3" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -28.6474, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light3" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.74884, 0.311325, -1.92671)
+
+[node name="OmniLight3D" parent="Luces/light3" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light4" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -27.2949, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light4" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.748848, 0.311325, -1.92671)
+
+[node name="OmniLight3D" parent="Luces/light4" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light5" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -19.0916, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light5" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light5" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light6" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -17.7391, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light6" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light6" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light7" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -9.62895, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light7" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light7" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light8" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -8.27639, 4.89009, 7.7197)
+
+[node name="LucesTecho" parent="Luces/light8" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light8" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light9" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 2.16598, 4.89009, 8.01292)
+
+[node name="LucesTecho" parent="Luces/light9" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light9" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light10" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 3.51855, 4.89009, 8.01292)
+
+[node name="LucesTecho" parent="Luces/light10" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light10" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light11" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, 8.01292)
+
+[node name="LucesTecho" parent="Luces/light11" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light11" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light12" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, 8.01292)
+
+[node name="LucesTecho" parent="Luces/light12" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light12" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light13" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -4.13924)
+
+[node name="LucesTecho" parent="Luces/light13" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light13" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light14" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -4.13924)
+
+[node name="LucesTecho" parent="Luces/light14" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light14" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light15" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -13.4096)
+
+[node name="LucesTecho" parent="Luces/light15" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light15" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light16" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -13.4096)
+
+[node name="LucesTecho" parent="Luces/light16" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light16" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light17" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -27.2243)
+
+[node name="LucesTecho" parent="Luces/light17" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light17" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light18" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -27.2243)
+
+[node name="LucesTecho" parent="Luces/light18" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light18" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light19" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -37.0215)
+
+[node name="LucesTecho" parent="Luces/light19" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light19" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light20" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -37.0215)
+
+[node name="LucesTecho" parent="Luces/light20" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light20" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light21" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -46.2679)
+
+[node name="LucesTecho" parent="Luces/light21" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light21" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light22" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -46.2679)
+
+[node name="LucesTecho" parent="Luces/light22" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light22" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light23" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -56.028)
+
+[node name="LucesTecho" parent="Luces/light23" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light23" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light24" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -56.028)
+
+[node name="LucesTecho" parent="Luces/light24" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light24" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light25" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -68.0335)
+
+[node name="LucesTecho" parent="Luces/light25" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light25" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light26" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -68.0335)
+
+[node name="LucesTecho" parent="Luces/light26" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light26" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light41" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 1.22897, 4.89009, -68.9376)
+
+[node name="LucesTecho" parent="Luces/light41" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.746571, 0.311325, -1.91434)
+
+[node name="OmniLight3D" parent="Luces/light41" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light42" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 2.58153, 4.89009, -68.9376)
+
+[node name="LucesTecho" parent="Luces/light42" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.746571, 0.311325, -1.91434)
+
+[node name="OmniLight3D" parent="Luces/light42" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light27" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -78.1165)
+
+[node name="LucesTecho" parent="Luces/light27" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light27" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light28" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -78.1165)
+
+[node name="LucesTecho" parent="Luces/light28" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light28" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light29" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -89.5981)
+
+[node name="LucesTecho" parent="Luces/light29" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light29" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light30" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -89.5981)
+
+[node name="LucesTecho" parent="Luces/light30" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light30" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light31" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 10.6288, 4.89009, -103.684)
+
+[node name="LucesTecho" parent="Luces/light31" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light31" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light32" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 11.9814, 4.89009, -103.684)
+
+[node name="LucesTecho" parent="Luces/light32" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light32" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light33" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 1.04196, 4.89009, -103.684)
+
+[node name="LucesTecho" parent="Luces/light33" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light33" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light34" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 2.39452, 4.89009, -103.684)
+
+[node name="LucesTecho" parent="Luces/light34" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light34" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light35" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 1.04196, 4.89009, -110.131)
+
+[node name="LucesTecho" parent="Luces/light35" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light35" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light36" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 2.39452, 4.89009, -110.131)
+
+[node name="LucesTecho" parent="Luces/light36" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.358234, 0.311325, 0.1978)
+
+[node name="OmniLight3D" parent="Luces/light36" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light37" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 1.04196, 4.89009, -95.1116)
+
+[node name="LucesTecho" parent="Luces/light37" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.613371, 0.311325, -1.18989)
+
+[node name="OmniLight3D" parent="Luces/light37" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light38" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, 2.39452, 4.89009, -95.1116)
+
+[node name="LucesTecho" parent="Luces/light38" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.613371, 0.311325, -1.18989)
+
+[node name="OmniLight3D" parent="Luces/light38" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light39" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -8.14632, 4.89009, -95.2302)
+
+[node name="LucesTecho" parent="Luces/light39" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.613373, 0.311325, -1.18987)
+
+[node name="OmniLight3D" parent="Luces/light39" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[node name="light40" parent="Luces" instance=ExtResource("8_84hwc")]
+transform = Transform3D(0.983515, 0, 0.180828, 0, 1, 0, -0.180828, 0, 0.983515, -6.79376, 4.89009, -95.2302)
+
+[node name="LucesTecho" parent="Luces/light40" index="0"]
+transform = Transform3D(0.15466, 0, -0.00773908, 0, 0.101302, 0, 0.0238928, 0, 0.0500955, 0.613373, 0.311325, -1.18988)
+
+[node name="OmniLight3D" parent="Luces/light40" index="1"]
+light_color = Color(0.835404, 0.94866, 0.596878, 1)
+light_energy = 2.293
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 2.455
+omni_range = 6.674
+
+[editable path="Dialogos"]
 [editable path="Player"]
-[editable path="light"]
-[editable path="light5"]
-[editable path="light2"]
-[editable path="light3"]
-[editable path="light4"]
+[editable path="UI"]
 [editable path="AnimacionBaño/Puertaintro"]
 [editable path="Puertas"]
 [editable path="Colegio"]
 [editable path="Colegio/NavigationRegion3D/Colegiooo"]
+[editable path="Luces/light"]
+[editable path="Luces/light2"]
+[editable path="Luces/light3"]
+[editable path="Luces/light4"]
+[editable path="Luces/light5"]
+[editable path="Luces/light6"]
+[editable path="Luces/light7"]
+[editable path="Luces/light8"]
+[editable path="Luces/light9"]
+[editable path="Luces/light10"]
+[editable path="Luces/light11"]
+[editable path="Luces/light12"]
+[editable path="Luces/light13"]
+[editable path="Luces/light14"]
+[editable path="Luces/light15"]
+[editable path="Luces/light16"]
+[editable path="Luces/light17"]
+[editable path="Luces/light18"]
+[editable path="Luces/light19"]
+[editable path="Luces/light20"]
+[editable path="Luces/light21"]
+[editable path="Luces/light22"]
+[editable path="Luces/light23"]
+[editable path="Luces/light24"]
+[editable path="Luces/light25"]
+[editable path="Luces/light26"]
+[editable path="Luces/light41"]
+[editable path="Luces/light42"]
+[editable path="Luces/light27"]
+[editable path="Luces/light28"]
+[editable path="Luces/light29"]
+[editable path="Luces/light30"]
+[editable path="Luces/light31"]
+[editable path="Luces/light32"]
+[editable path="Luces/light33"]
+[editable path="Luces/light34"]
+[editable path="Luces/light35"]
+[editable path="Luces/light36"]
+[editable path="Luces/light37"]
+[editable path="Luces/light38"]
+[editable path="Luces/light39"]
+[editable path="Luces/light40"]

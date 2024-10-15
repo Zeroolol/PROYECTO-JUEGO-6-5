@@ -73,8 +73,6 @@ transform = Transform3D(-0.015114, 0, -0.999886, 0, 1, 0, 0.999886, 0, -0.015114
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(0.797605, 0, 1.86265e-09, 0, 1, 0, 0, 0, 0.802441, 0, 0, 0)
-collision_layer = 3
-collision_mask = 3
 script = ExtResource("1_8e347")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
@@ -104,7 +102,6 @@ light_indirect_energy = 2.0
 light_volumetric_fog_energy = 2.0
 light_size = 0.379
 spot_range = 103.222
-spot_attenuation = 0.65
 spot_angle = 46.68
 spot_angle_attenuation = 0.784584
 script = ExtResource("2_y3y1k")
