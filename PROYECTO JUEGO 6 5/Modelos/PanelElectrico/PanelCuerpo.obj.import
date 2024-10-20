@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://beum2arwduqya"
+path="res://.godot/imported/PanelCuerpo.obj-ac6be7b4f27cd0db08d132c61d3e9e88.mesh"
+
+[deps]
+
+files=["res://.godot/imported/PanelCuerpo.obj-ac6be7b4f27cd0db08d132c61d3e9e88.mesh"]
+
+source_file="res://Modelos/PanelElectrico/PanelCuerpo.obj"
+dest_files=["res://.godot/imported/PanelCuerpo.obj-ac6be7b4f27cd0db08d132c61d3e9e88.mesh", "res://.godot/imported/PanelCuerpo.obj-ac6be7b4f27cd0db08d132c61d3e9e88.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

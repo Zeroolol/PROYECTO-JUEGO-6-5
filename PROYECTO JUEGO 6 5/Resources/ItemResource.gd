@@ -1,4 +1,4 @@
-extends Resource
+extends Resource #ItemResource
 class_name ItemResource  # Esto permite que el tipo sea reconocido globalmente
 
 # Propiedades del item
@@ -6,5 +6,3 @@ class_name ItemResource  # Esto permite que el tipo sea reconocido globalmente
 @export var quantity: int = 1
 @export var texture: Texture2D
 @export var description: String
-
-# Puedes agregar más propiedades según sea necesario, como efectos o tipos

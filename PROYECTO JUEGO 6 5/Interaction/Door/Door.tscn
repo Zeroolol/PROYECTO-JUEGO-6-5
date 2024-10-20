@@ -8,15 +8,10 @@ points = PackedVector3Array(0.102385, 0.741756, 0.66025, 0.0582336, -0.00859904,
 
 [node name="Door" instance=ExtResource("1_u2wj4")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-key_name = "Th"
-locked_message = "The door is Locked"
-open_message = "The door is now open"
-locking_open_message = "Close it first!!!"
+key_name = "LlaveTest"
+locked_message = "La puerta esta cerrada"
+open_message = "Abriste la puerta"
 on_lock_message = "You locked the door."
-wrong_item_message = "It won't open the door"
-affected_prop = "rotation_degrees"
-affected_axis = "y"
-max_offset = 90.0
 is_locked = true
 
 [node name="MeshInstance3D" parent="." index="0"]

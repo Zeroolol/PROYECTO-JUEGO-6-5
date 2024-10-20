@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddbaca0gygh7p"
+path="res://.godot/imported/PanelPuertita.obj-42e07ab2d237fb46dc2486ff25d8c344.mesh"
+
+[deps]
+
+files=["res://.godot/imported/PanelPuertita.obj-42e07ab2d237fb46dc2486ff25d8c344.mesh"]
+
+source_file="res://Modelos/PanelElectrico/PanelPuertita.obj"
+dest_files=["res://.godot/imported/PanelPuertita.obj-42e07ab2d237fb46dc2486ff25d8c344.mesh", "res://.godot/imported/PanelPuertita.obj-42e07ab2d237fb46dc2486ff25d8c344.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

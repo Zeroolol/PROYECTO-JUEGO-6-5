@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://fo3ghjmtdb1u"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://fo3ghjmtdb1u"]
 
 [ext_resource type="Script" path="res://Resources/ItemResource.gd" id="1_3q3fe"]
+[ext_resource type="Texture2D" uid="uid://dhl7yn2ic8c8p" path="res://Assets/Images/LinternaIcon.png" id="2_8ka6p"]
 
 [resource]
 script = ExtResource("1_3q3fe")
 item_name = "Linterna"
 quantity = 1
+texture = ExtResource("2_8ka6p")
 description = "Linterna: Sive para alumbrar en las areas mas oscuras. Tendras que recargarlas con pilas"

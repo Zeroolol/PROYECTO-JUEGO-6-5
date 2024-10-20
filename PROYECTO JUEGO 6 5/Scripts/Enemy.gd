@@ -1,6 +1,10 @@
 extends CharacterBody3D
 
-# Estados del enemigo
+# Nodos de AudioStreamPlayer para los sonidos
+@onready var walk_sound_player = $"CaminarMonster"  # Asegúrate de tener este nodo en la escena
+@onready var run_sound_player = $"CorrerMonster"  # Asegúrate de tener este nodo en la escena
+
+# Otros atributos del enemigo
 enum EnemyState {WANDER, CHASE, SEARCH}
 var current_state: EnemyState = EnemyState.WANDER
 
@@ -27,7 +31,7 @@ const PATROL_POINT_THRESHOLD = 2.0
 var navigation_agent: NavigationAgent3D
 
 # Variable para el AnimationPlayer
-@onready var animation_player = $"CollisionShape3D/CRIATURA_FEA (1)/AnimationPlayer"  # Ajusta según tu estructura de nodos
+@onready var animation_player = $"CollisionShape3D/CRIATURA_FEA (3)/AnimationPlayer"  # Ajusta según tu estructura de nodos
 
 func _ready():
 	# Inicializar el NavigationAgent3D
@@ -66,6 +70,8 @@ func start_wandering():
 	current_state = EnemyState.WANDER
 	patrol_target = get_next_patrol_point()
 	navigation_agent.target_location = patrol_target  # Actualiza el destino del agente
+	animation_player.play("Patrullaje")  # Reproducir animación de caminar
+	play_walk_sound()
 
 func wander(delta):
 	if is_at_patrol_point():
@@ -78,6 +84,8 @@ func chase_player(delta):
 		var player_pos = player.global_transform.origin
 		navigation_agent.target_location = player_pos  # Establecer el destino como el jugador
 		move_with_navigation(delta, chase_speed)
+		animation_player.play("Correr")  # Reproducir animación de correr
+		play_run_sound()
 
 		if is_in_jumpscare_range():
 			kill_player()
@@ -93,7 +101,6 @@ func chase_player(delta):
 		# Si el jugador ha estado fuera de la vista durante el tiempo completo, volver a patrullar
 		if lost_sight_timer <= 0:
 			start_wandering()
-			
 
 func search_for_player(delta):
 	search_timer -= delta
@@ -115,9 +122,29 @@ func move_with_navigation(delta, speed: float):
 
 		# Reproducir animación de caminar si se está moviendo
 		if direction.length() > 0:  # Si hay movimiento
-			animation_player.play("Patrullaje")  # Asegúrate de que esta animación exista
+			animation_player.play("")  # Asegúrate de que esta animación exista
 		else:
 			animation_player.stop()  # Detener la animación si no hay movimiento
+
+# Reproducir sonido de caminar
+func play_walk_sound():
+	if not walk_sound_player.is_playing():
+		walk_sound_player.play()
+
+# Detener sonido de caminar
+func stop_walk_sound():
+	if walk_sound_player.is_playing():
+		walk_sound_player.stop()
+
+# Reproducir sonido de correr
+func play_run_sound():
+	if not run_sound_player.is_playing():
+		run_sound_player.play()
+
+# Detener sonido de correr
+func stop_run_sound():
+	if run_sound_player.is_playing():
+		run_sound_player.stop()
 
 # Función para girar suavemente hacia la dirección de movimiento
 func rotate_towards_direction(direction: Vector3, delta: float):

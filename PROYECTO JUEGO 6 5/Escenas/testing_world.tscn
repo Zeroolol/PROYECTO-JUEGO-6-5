@@ -10,9 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/Area3DLAB1.gd" id="11_53r82"]
 [ext_resource type="PackedScene" uid="uid://bqrxw2naeb4hh" path="res://Escenas/Pausa.tscn" id="12_dqfwq"]
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="13_g7aqq"]
-[ext_resource type="PackedScene" uid="uid://mjt0q6wr83ab" path="res://Escenas/Enemy.tscn" id="14_7vwqo"]
 [ext_resource type="Texture2D" uid="uid://c04b4x2kx8htn" path="res://Textures/RejaTextura.png" id="14_vftjx"]
 [ext_resource type="PackedScene" uid="uid://k7em1hj3swim" path="res://Escenas/inventario.tscn" id="15_qbjln"]
+[ext_resource type="PackedScene" uid="uid://snuy104ppvmg" path="res://Escenas/llave.tscn" id="16_55mrr"]
 [ext_resource type="PackedScene" uid="uid://2i1kadg4xro3" path="res://Escenas/LinternaTest.tscn" id="16_anedx"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dmuiql65q4kfh" path="res://Escenas/testing_world.occ" id="17_qknyh"]
 
@@ -411,21 +411,16 @@ transform = Transform3D(0.999999, -0.00171042, 0, 0.00171042, 0.999999, 0, 0, 0,
 [node name="Marker3D20" type="Marker3D" parent="PatrolPointsParents"]
 transform = Transform3D(0.999999, -0.00171042, 0, 0.00171042, 0.999999, 0, 0, 0, 1, -90.8671, 0.963341, -89.6869)
 
-[node name="Enemy" parent="." instance=ExtResource("14_7vwqo")]
-transform = Transform3D(0.88624, 0, 0, 0, 1, 0, 0, 0, 1, -88.7357, 1.51886, -90.8862)
-
-[node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player", "patrol_points_parent")]
-player = NodePath("../../Player/CharacterBody3D")
-patrol_points_parent = NodePath("../../PatrolPointsParents")
-
 [node name="Inventario" parent="." instance=ExtResource("15_qbjln")]
 
 [node name="StaticBody3D" parent="." instance=ExtResource("16_anedx")]
 transform = Transform3D(0.114427, 0, 0, 0, 0.0968804, 0, 0, 0, 0.0680523, -72.1249, 1.8748, -62.1767)
 
+[node name="Llave" parent="." instance=ExtResource("16_55mrr")]
+transform = Transform3D(-0.000683713, 0.00727742, 0.0310692, -0.0447917, -0.0104492, -0.000219143, 0.00481323, -0.096206, 0.002374, -72.8971, 2.92126, -62.2072)
+
 [connection signal="body_entered" from="Mapa/Area3DLAB1" to="Mapa/Area3DLAB1" method="_on_body_entered"]
 
 [editable path="Player"]
 [editable path="UI"]
-[editable path="Enemy"]
-[editable path="Enemy/CharacterBody3D/CollisionShape3D/CRIATURA_FEA (1)"]
+[editable path="Llave"]

@@ -24,10 +24,15 @@ var is_hidden = false  # Variable para controlar si el jugador está oculto
 @onready var footstep_sound = $Caminar
 @onready var run_sound = $Correr
 @onready var animation = $Cabeza/Camera3D/AnimationPlayer
+@onready var llave_modelo = $Llaves  # Nodo del modelo de la llave en la cámara
+
 @export var walk_speed: float = 4.0
 
 var ui_control = null
 var energy_bar = null
+var inventario = []  # Lista para almacenar los ítems recogidos
+var llave_en_inventario = false  # Indica si la llave está en el inventario
+var item_seleccionado = ""  # Variable para almacenar el ítem actualmente seleccionado
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -39,15 +44,42 @@ func _ready():
 		energy_bar = ui_control.get_node("EnergyBar")
 		energy_bar.visible = false 
 
+	llave_modelo.visible = false  # La llave no será visible hasta que el jugador la recoja
+
+# Función para recoger la llave
+func recoger_llave():
+	inventario.append("LlaveTest")  # Agrega la llave al inventario
+	llave_en_inventario = true
+	llave_modelo.visible = true  # Muestra el modelo de la llave
+	print("Llave recogida y agregada al inventario")
+
+# Función para seleccionar un ítem del inventario
+func seleccionar_item(item: String):
+	item_seleccionado = item  # Actualiza el ítem seleccionado
+	if item == "LlaveTest":
+		llave_en_inventario = true
+		mostrar_llave()
+	else:
+		llave_en_inventario = false
+		ocultar_llave()
+
+# Muestra la llave en la mano del jugador
+func mostrar_llave():
+	if llave_en_inventario:
+		llave_modelo.visible = true  # Muestra la llave
+	else:
+		llave_modelo.visible = false  # Oculta la llave si no está seleccionada
+
+# Oculta la llave
+func ocultar_llave():
+	llave_modelo.visible = false
+
 func show_instructions(text: String):
 	if ui_control != null:
 		ui_control.update_mission(text)
 
 func get_walk_speed() -> float:
 	return walk_speed
-
-func _on_cinematic_finished():
-	show_instructions("WASD para moverse")
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
@@ -104,7 +136,7 @@ func _process(delta):
 	
 	if ui_control != null:
 		ui_control.update_mission("")
-	
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	
@@ -150,3 +182,8 @@ func _process(delta):
 			exit_armario()  # Salir del armario
 
 	move_and_slide()
+	
+	# Asumiendo que tienes un inventario visual y el jugador selecciona la llave
+func _input(event):
+	if event.is_action_pressed("Aceptar"):  # "Aceptar" es la acción de interacción
+		seleccionar_item("LlaveTest")

@@ -1,12 +1,19 @@
-extends TextureRect
+extends TextureRect  # Assuming each slot is a TextureRect node
 
-@export var item_texture: Texture2D  # Usa Texture2D
-@onready var icon = $Icon  # Asegúrate de que el nodo 'Icon' sea un TextureRect
+var item_data: ItemResource
 
+# Function to set the item in the slot
 func set_item(item: ItemResource):
-	if icon and item.texture:
-		print("Assigning texture: ", item.texture)
-		icon.texture = item.texture  # Asigna la textura del ítem
-		print("Texture assigned to icon: ", icon.texture)
+	item_data = item
+	# Assuming there is a TextureRect for the icon in the slot
+	var icon = $Icono  # Ensure the child is called 'Icono'
+	if icon and item_data.texture:
+		icon.texture = item_data.texture
 	else:
-		print("Icon or texture is not valid.")
+		print("Error: No icon found or item data has no texture.")
+
+# Function to get the name of the item in the slot
+func get_item_name() -> String:
+	if item_data:
+		return item_data.item_name
+	return ""

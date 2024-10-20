@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dn3uh0vv5ak5r"]
+[gd_scene load_steps=15 format=3 uid="uid://dn3uh0vv5ak5r"]
 
 [ext_resource type="Script" path="res://Scripts/player.tres.gd" id="1_8e347"]
 [ext_resource type="Script" path="res://Scripts/FlashLight.gd" id="2_y3y1k"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/RayCast3D.gd" id="3_uwjih"]
 [ext_resource type="AudioStream" uid="uid://cde8kxqq375pq" path="res://Sonidos/PasoJugador.mp3" id="5_7uu1o"]
 [ext_resource type="AudioStream" uid="uid://cf518li35dl0b" path="res://Sonidos/CorrerJugador.mp3" id="5_scwy0"]
+[ext_resource type="ArrayMesh" uid="uid://c37h3o6ruoi8" path="res://Modelos/Llave/Llaves.obj" id="7_0adi3"]
+[ext_resource type="ArrayMesh" uid="uid://b4tdmugqwj0e" path="res://Modelos/Linterna/ModeloLinterna.obj" id="8_ipp1r"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vexrq"]
 
@@ -93,7 +95,7 @@ near = 0.635
 far = 76.47
 
 [node name="FlashLight" type="SpotLight3D" parent="CharacterBody3D/Cabeza/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16442, 0)
+transform = Transform3D(1, 0, 9.31323e-10, 0, 1, 0, 0, 0, 1, 0.843608, -0.448488, -1.69103)
 visible = false
 layers = 3
 light_color = Color(0.677029, 0.979152, 0.960909, 1)
@@ -117,7 +119,7 @@ libraries = {
 }
 
 [node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D/Cabeza"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.58289, -0.425309)
+transform = Transform3D(1.00756, -1.86265e-09, -5.55112e-17, 0, -6.55646e-08, -1, -9.31323e-10, 1.49994, -4.37114e-08, 9.31323e-10, 1.58289, -0.425309)
 collision_mask = 3
 script = ExtResource("3_uwjih")
 
@@ -130,3 +132,15 @@ bus = &"SFX"
 stream = ExtResource("5_scwy0")
 volume_db = -20.0
 bus = &"SFX"
+
+[node name="Llaves" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.0400837, -0.00179208, 0.0518466, -0.0542826, -3.42733e-09, 0.0243618, -0.000625889, -0.11339, -0.000809565, 0.811179, 1.426, -0.857384)
+visible = false
+mesh = ExtResource("7_0adi3")
+skeleton = NodePath("../..")
+
+[node name="ModeloLinterna" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(0.126782, 0.0084732, 0.0568511, -0.0578884, -2.70865e-09, 0.124987, 0.00784759, -0.136889, 0.00351899, 0.943, 1.274, -0.425)
+visible = false
+mesh = ExtResource("8_ipp1r")
+skeleton = NodePath("../..")
