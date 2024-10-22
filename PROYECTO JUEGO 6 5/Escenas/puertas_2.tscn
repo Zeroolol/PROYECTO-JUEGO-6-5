@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://86hx4480nwcb"]
+[gd_scene load_steps=8 format=3 uid="uid://86hx4480nwcb"]
 
 [ext_resource type="Script" path="res://Scripts/PuertaGrande.gd" id="1_b5nb2"]
-[ext_resource type="Script" path="res://Scripts/DoorParents.gd" id="1_s1axe"]
 [ext_resource type="ArrayMesh" uid="uid://danusx2juu8rh" path="res://Textures/PuertaBaño.obj" id="1_uewh8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ie0i4"]
@@ -96,7 +95,6 @@ _data = {
 }
 
 [node name="Puertas2" type="Node3D"]
-script = ExtResource("1_s1axe")
 
 [node name="Bisagra" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85373, 2.38952, -0.279206)

@@ -1,7 +1,9 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://n3prxt8nhnf2"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://n3prxt8nhnf2"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_4g2k5"]
+resource_name = "Reverb"
 
 [resource]
-bus/0/send = &"Ambiente"
 bus/1/name = &"Ambiente"
 bus/1/solo = false
 bus/1/mute = false
@@ -14,3 +16,11 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = &"Master"
+bus/3/name = &"MonsterSounds"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_4g2k5")
+bus/3/effect/0/enabled = true

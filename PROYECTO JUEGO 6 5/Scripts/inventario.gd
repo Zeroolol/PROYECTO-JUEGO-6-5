@@ -7,9 +7,13 @@ var template_inv_slot = preload("res://Templates/inventoryslots.tscn")
 var inventory: Dictionary = {}
 var slots = []
 var selected_index = 0
+var jugador = null  # Referencia al jugador para llamar a seleccionar_item
 
 func _ready():
 	inventory_container.visible = false
+	jugador = get_tree().root.get_node("TestingWorld/Player/CharacterBody3D")  # Referencia al nodo del jugador
+	if not jugador:
+		print("No se encontró el nodo del jugador.")
 
 # Función para agregar un ítem al inventario
 func add_item(item_data: ItemResource):
@@ -54,10 +58,20 @@ func _input(event):
 	elif event.is_action_pressed("Fabajo"):
 		selected_index = min(slots.size() - 1, selected_index + 1)
 		highlight_selected_item()
-		# When the player presses "Aceptar"
 	elif event.is_action_pressed("Aceptar"):
-		var selected_item_name = slots[selected_index].get_item_name()  # Retrieve item name from the slot
+		# Verifica si hay ítems en el inventario
+		if slots.size() == 0:
+			print("No hay ítems en el inventario.")
+			return  # No hace nada si no hay ítems
+		
+		# Solo se ejecutará si hay ítems en el inventario
+		var selected_item_name = slots[selected_index].get_item_name()  # Obtener el nombre del ítem seleccionado
 		var selected_item = inventory[selected_item_name]
 		print("Selected item: ", selected_item.item_name)
+
+		# Llama a la función del jugador para seleccionar el ítem
+		if jugador and jugador.has_method("seleccionar_item"):
+			jugador.seleccionar_item(selected_item.item_name)
+
 	if event.is_action_pressed("Inventario"):
 		inventory_container.visible = not inventory_container.visible

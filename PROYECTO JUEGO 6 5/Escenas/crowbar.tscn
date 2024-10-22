@@ -1,0 +1,28 @@
+[gd_scene load_steps=7 format=3 uid="uid://xxtq0duc6tqc"]
+
+[ext_resource type="Texture2D" uid="uid://bp40e20vgvtyl" path="res://Textures/Crowbar_baseColor.png" id="1_wi3sn"]
+[ext_resource type="ArrayMesh" uid="uid://c4jlq8e52453p" path="res://Modelos/CrowBar/Crowbar.obj" id="2_wim4w"]
+[ext_resource type="Script" path="res://Scripts/crowbar.gd" id="3_n4gku"]
+[ext_resource type="Resource" uid="uid://dbnifnspfhf4e" path="res://Resources/Crowbar.tres" id="4_p28i0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v6ufq"]
+size = Vector3(0.916748, 0.120804, 0.282791)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij0ui"]
+albedo_texture = ExtResource("1_wi3sn")
+
+[node name="Crowbar" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.372956, 0, 1.1966)
+script = ExtResource("3_n4gku")
+item_resource = ExtResource("4_p28i0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0106201, 0.034584, -0.0363694)
+shape = SubResource("BoxShape3D_v6ufq")
+
+[node name="Crowbar" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = SubResource("StandardMaterial3D_ij0ui")
+mesh = ExtResource("2_wim4w")
+skeleton = NodePath("../..")

@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://dt7lgt7m0c3yj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dky8grbr10vdj" path="res://Textures/PuertaAula.obj" id="1_atqij"]
+[ext_resource type="Script" path="res://Scripts/puertallave.gd" id="1_ox4at"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c3g8n"]
+size = Vector3(2.43338, 5.00903, 0.27063)
+
+[sub_resource type="Animation" id="Animation_7ebaw"]
+resource_name = "Abrir"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bisagra:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.65883, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b05bi"]
+resource_name = "Cerrar"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bisagra:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.65883, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jctnx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bisagra:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rny7v"]
+_data = {
+"Abrir": SubResource("Animation_7ebaw"),
+"Cerrar": SubResource("Animation_b05bi"),
+"RESET": SubResource("Animation_jctnx")
+}
+
+[node name="Puerta con llave" type="Node3D" groups=["doors"]]
+
+[node name="bisagra" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54997, 1.27283, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="bisagra" groups=["doors"]]
+transform = Transform3D(0.48, 0, 0, 0, 0.5, 0, 0, 0, 0.72, -1.45003, -1.27283, 0)
+script = ExtResource("1_ox4at")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bisagra/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06956, 2.49841, 0.00384522)
+shape = SubResource("BoxShape3D_c3g8n")
+
+[node name="PuertaAula" type="MeshInstance3D" parent="bisagra/StaticBody3D"]
+mesh = ExtResource("1_atqij")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bisagra/StaticBody3D"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_rny7v")
+}

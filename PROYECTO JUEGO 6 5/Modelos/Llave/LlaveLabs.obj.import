@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cnpwefik17nwl"
+path="res://.godot/imported/LlaveLabs.obj-165e781511bbd6c86936d745963edd57.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LlaveLabs.obj-165e781511bbd6c86936d745963edd57.mesh"]
+
+source_file="res://Modelos/Llave/LlaveLabs.obj"
+dest_files=["res://.godot/imported/LlaveLabs.obj-165e781511bbd6c86936d745963edd57.mesh", "res://.godot/imported/LlaveLabs.obj-165e781511bbd6c86936d745963edd57.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

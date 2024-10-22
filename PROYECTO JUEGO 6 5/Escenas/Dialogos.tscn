@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://i13bvug2pbhn"]
+[gd_scene load_steps=4 format=3 uid="uid://i13bvug2pbhn"]
 
 [ext_resource type="Script" path="res://Scripts/dialogos.gd" id="1_a75xy"]
 [ext_resource type="FontFile" uid="uid://clq45pcdoglc7" path="res://Assets/Handjet/Handjet-VariableFont_ELGR,ELSH,wght.ttf" id="1_tkpmm"]
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="3_onyav"]
 
 [node name="Dialogos" type="Control"]
 layout_mode = 3
@@ -28,3 +29,11 @@ offset_bottom = 180.0
 theme_override_fonts/font = ExtResource("1_tkpmm")
 theme_override_font_sizes/font_size = 40
 autowrap_mode = 3
+
+[node name="MensajeMission" type="Label" parent="."]
+layout_mode = 0
+offset_left = 904.0
+offset_top = 6.0
+offset_right = 1144.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("3_onyav")

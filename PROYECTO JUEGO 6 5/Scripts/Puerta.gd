@@ -3,7 +3,7 @@ extends StaticBody3D
 var interactable =  true
 var opened = false
 
-func interact():
+func interact(jugador):
 	if interactable == true:
 		interactable == false
 		opened = !opened
