@@ -3,8 +3,8 @@ extends StaticBody3D
 
 var interactable = true
 var opened = false
-var key_item_name = "LlaveTest"  # Nombre de la llave requerida
-@export var required_key: String = "LlaveTest"  # Nombre de la llave requerida
+var key_item_name = "Llaves Aula"  # Nombre de la llave requerida
+@export var required_key: String = "Llaves Aula"  # Nombre de la llave requerida
 
 func interact(jugador):
 	if jugador.has_key(required_key):  # Verifica si el jugador tiene la llave

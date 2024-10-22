@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm1qx76i0evom"]
+
+[ext_resource type="Script" path="res://Scripts/LlaveAulas.gd" id="1_hyvpx"]
+[ext_resource type="ArrayMesh" uid="uid://b06asbuisi604" path="res://Modelos/Llave/LlaveAulas.obj" id="1_utl1r"]
+[ext_resource type="Resource" uid="uid://twhd0dn3wdod" path="res://Resources/LlaveAula.tres" id="2_oer2r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_66yfu"]
+size = Vector3(14.9987, 1, 6.4259)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(0.251839, 0, 0, 0, 0.361631, 0, 0, 0, 0.24, -4, 0, 0)
+script = ExtResource("1_hyvpx")
+item_resource = ExtResource("2_oer2r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999989, 1.93145, 0, 0.0347268)
+shape = SubResource("BoxShape3D_66yfu")
+
+[node name="LlaveAulas" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("1_utl1r")
+skeleton = NodePath("../..")

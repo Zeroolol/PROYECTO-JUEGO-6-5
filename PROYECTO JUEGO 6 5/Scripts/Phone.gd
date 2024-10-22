@@ -14,10 +14,8 @@ func _input(event):
 		if is_in_range():
 			interact(jugador)  # Pasar el jugador como argumento
 
-
 func is_in_range() -> bool:
 	# Comprueba si el jugador está lo suficientemente cerca del objeto
-	# Asumiendo que el jugador tiene un nodo llamado "Player"
 	var player = get_node("/root/TestingWorld/Player")  # Cambia la ruta si es necesario
 	return position.distance_to(player.position) < 2.0  # Cambia 2.0 a la distancia deseada
 
@@ -32,17 +30,21 @@ func interact(jugador):
 	
 	# Ocultar el diálogo y mostrar el mensaje de misión
 	ocultar_dialogo()
-	mostrar_mision("Busca una forma de restablecer la corriente")
-
+	mostrar_mision("BUSCA UNA FORMA DE RECONECTAR LA CORRIENTEA")
 
 func mostrar_dialogo(texto: String):
-	dialog_label.text = texto  # Cambia el texto del Label para mostrar el diálogo
-	dialog_label.get_parent().visible = true  # Asegúrate de que el panel esté visible
+	if dialog_label:
+		dialog_label.text = texto  # Cambia el texto del Label para mostrar el diálogo
+		dialog_label.get_parent().visible = true  # Asegúrate de que el panel esté visible
 
 func ocultar_dialogo():
-	dialog_label.get_parent().visible = false  # Oculta el panel de diálogo
-	dialog_label.text = ""  # Limpia el texto del diálogo
+	if dialog_label:
+		dialog_label.get_parent().visible = false  # Oculta el panel de diálogo
+		dialog_label.text = ""  # Limpia el texto del diálogo
 
 func mostrar_mision(texto: String):
-	mission_label.text = texto  # Cambia el texto del Label de misión
-	mission_label.get_parent().visible = true  # Asegúrate de que el Label de misión esté visible
+	if mission_label:
+		mission_label.text = texto  # Cambia el texto del Label de misión
+		mission_label.get_parent().visible = true  # Asegúrate de que el Label de misión esté visible
+	else:
+		print("Mission label no encontrado")

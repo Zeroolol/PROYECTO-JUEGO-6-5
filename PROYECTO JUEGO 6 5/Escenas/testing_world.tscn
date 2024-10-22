@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=40 format=4 uid="uid://dtjviddtunp3j"]
 
 [ext_resource type="AudioStream" uid="uid://g4bo48rtk5y5" path="res://Sonidos/Lluvia.mp3" id="1_6pqp4"]
 [ext_resource type="Script" path="res://Scripts/Phone.gd" id="1_bkcf4"]
@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dhvjnrroib6h" path="res://Sonidos/CorteLuz.mp3" id="4_a4il5"]
 [ext_resource type="ArrayMesh" uid="uid://babmrxwv85daj" path="res://Modelos/Celular/Telefono.obj" id="5_limr4"]
 [ext_resource type="PackedScene" uid="uid://86hx4480nwcb" path="res://Escenas/puertas_2.tscn" id="6_p5w5k"]
-[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="6_yj7ha"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="6_yj7ha"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="7_fu7ci"]
 [ext_resource type="Script" path="res://Scripts/Escena inicio.gd" id="10_0xs08"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="10_5fqsu"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://i13bvug2pbhn" path="res://Escenas/Dialogos.tscn" id="19_g01mg"]
 [ext_resource type="Script" path="res://Scripts/Tabla.gd" id="19_ogfrp"]
 [ext_resource type="Texture2D" uid="uid://ybxinwtna5gx" path="res://Modelos/Colegio/Colegiooo_MaderaBarricaa.png" id="19_p0hny"]
+[ext_resource type="PackedScene" uid="uid://dm1qx76i0evom" path="res://Escenas/LlaveAula.tscn" id="23_i2ajv"]
 
 [sub_resource type="Environment" id="Environment_46p6g"]
 background_color = Color(0.00504526, 0, 0.126841, 1)
@@ -180,7 +181,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.66956, 4.20129, 4.10706)
 shape = SubResource("BoxShape3D_61nsr")
 
 [node name="Telefono" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("5_limr4")
 skeleton = NodePath("../../Sounds")
 
@@ -431,25 +431,6 @@ transform = Transform3D(1, 6.98492e-10, 1.45519e-11, 0, 1, 0, 0, 4.76837e-07, 1,
 mesh = SubResource("ArrayMesh_f0lnd")
 skeleton = NodePath("")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
-
-[node name="Inventario" parent="." instance=ExtResource("15_qbjln")]
-
-[node name="Dialogos" parent="." instance=ExtResource("19_g01mg")]
-mouse_filter = 2
-
-[node name="Panel" parent="Dialogos" index="0"]
-mouse_filter = 2
-
-[node name="MensajeMission" parent="Dialogos" index="1"]
-visible = false
-
-[node name="VHS_shader" parent="." instance=ExtResource("10_5fqsu")]
-metadata/_edit_use_anchors_ = true
-
-[node name="UI" parent="." instance=ExtResource("7_fu7ci")]
-metadata/_edit_use_anchors_ = true
-
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("17_qknyh")
 
@@ -466,6 +447,12 @@ transform = Transform3D(0.999731, 0, 0.0231933, 0, 1, 0, -0.0231933, 0, 0.999731
 
 [node name="light4" parent="Lights" instance=ExtResource("10_ibikv")]
 transform = Transform3D(0.999731, 0, 0.0231933, 0, 1, 0, -0.0231933, 0, 0.999731, -65.8374, 5.34153, -61.2647)
+
+[node name="light45" parent="Lights" instance=ExtResource("10_ibikv")]
+transform = Transform3D(0.999731, 0, 0.0231933, 0, 1, 0, -0.0231933, 0, 0.999731, -57.4329, 5.34153, -60.4135)
+
+[node name="light46" parent="Lights" instance=ExtResource("10_ibikv")]
+transform = Transform3D(0.999731, 0, 0.0231933, 0, 1, 0, -0.0231933, 0, 0.999731, -56.1497, 5.34153, -60.2847)
 
 [node name="light19" parent="Lights" instance=ExtResource("10_ibikv")]
 transform = Transform3D(0.999731, 0, 0.0231933, 0, 1, 0, -0.0231933, 0, 0.999731, -67.1206, 5.34153, -45.3038)
@@ -587,17 +574,41 @@ transform = Transform3D(0.999941, 0, 0.0108906, 0, 1, 0, -0.0108906, 0, 0.999941
 [node name="light18" parent="Lights" instance=ExtResource("10_ibikv")]
 transform = Transform3D(0.999941, 0, 0.0108906, 0, 1, 0, -0.0108906, 0, 0.999941, -79.7842, 5.34153, -79.2092)
 
+[node name="LlavesAula" parent="." instance=ExtResource("23_i2ajv")]
+transform = Transform3D(-1.55458e-08, -1.22952e-15, 0.4, 0.343528, 0.0796518, 1.68888e-08, -0.092048, 0.297264, -4.52533e-09, -57.3141, 5.03743, -65.0311)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("12_dqfwq")]
+
+[node name="Inventario" parent="." instance=ExtResource("15_qbjln")]
+
+[node name="Dialogos" parent="." instance=ExtResource("19_g01mg")]
+mouse_filter = 2
+
+[node name="Panel" parent="Dialogos" index="0"]
+mouse_filter = 2
+
+[node name="MensajeMission" parent="Dialogos" index="1"]
+visible = false
+
+[node name="VHS_shader" parent="." instance=ExtResource("10_5fqsu")]
+metadata/_edit_use_anchors_ = true
+
+[node name="UI" parent="." instance=ExtResource("7_fu7ci")]
+metadata/_edit_use_anchors_ = true
+
 [editable path="Player"]
 [editable path="Llave"]
 [editable path="Crowbar"]
 [editable path="Puertas/puertalab4"]
-[editable path="CanvasLayer"]
-[editable path="Dialogos"]
-[editable path="UI"]
 [editable path="Lights/light"]
 [editable path="Lights/light3"]
 [editable path="Lights/light2"]
 [editable path="Lights/light4"]
+[editable path="Lights/light45"]
+[editable path="Lights/light46"]
 [editable path="Lights/light19"]
 [editable path="Lights/light20"]
 [editable path="Lights/light28"]
+[editable path="CanvasLayer"]
+[editable path="Dialogos"]
+[editable path="UI"]

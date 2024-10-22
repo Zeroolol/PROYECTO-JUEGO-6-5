@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://dn3uh0vv5ak5r"]
+[gd_scene load_steps=21 format=3 uid="uid://dn3uh0vv5ak5r"]
 
 [ext_resource type="Script" path="res://Scripts/player.tres.gd" id="1_8e347"]
 [ext_resource type="Script" path="res://Scripts/FlashLight.gd" id="2_y3y1k"]
 [ext_resource type="AudioStream" uid="uid://vleevdnyhgh3" path="res://Sonidos/sonido linterna.mp3" id="3_saa6l"]
 [ext_resource type="Script" path="res://Scripts/RayCast3D.gd" id="3_uwjih"]
+[ext_resource type="ArrayMesh" uid="uid://b06asbuisi604" path="res://Modelos/Llave/LlaveAulas.obj" id="4_462ik"]
 [ext_resource type="AudioStream" uid="uid://cde8kxqq375pq" path="res://Sonidos/PasoJugador.mp3" id="5_7uu1o"]
 [ext_resource type="AudioStream" uid="uid://cf518li35dl0b" path="res://Sonidos/CorrerJugador.mp3" id="5_scwy0"]
 [ext_resource type="ArrayMesh" uid="uid://c37h3o6ruoi8" path="res://Modelos/Llave/Llaves.obj" id="7_0adi3"]
@@ -126,6 +127,12 @@ bus = &"SFX"
 libraries = {
 "": SubResource("AnimationLibrary_rv0m0")
 }
+
+[node name="LlaveAulas" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
+transform = Transform3D(0.021336, -0.0257622, 0.0705967, -0.0778238, 0.00368366, 0.0206728, -0.00701673, -0.119192, -0.0146199, 0.588, -0.176, -0.797)
+visible = false
+mesh = ExtResource("4_462ik")
+skeleton = NodePath("../..")
 
 [node name="Llaves" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
 transform = Transform3D(0.031971, -0.00142937, 0.0413531, -0.0542826, -3.42733e-09, 0.0243618, -0.000502239, -0.0909888, -0.000649628, 0.647001, -0.26482, -0.688)
