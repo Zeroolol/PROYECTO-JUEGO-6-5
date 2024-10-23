@@ -161,6 +161,13 @@ skeleton = NodePath("../../../..")
 
 [node name="LlaveLabs" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
 transform = Transform3D(0.0202065, -0.00235772, 0.0564459, -0.0563153, 0.00393795, 0.0203243, -0.00450334, -0.0598242, -0.000886726, 0.563, -0.071, -0.672)
+visible = false
+mesh = ExtResource("9_5a1ke")
+skeleton = NodePath("../../../..")
+
+[node name="LlaveLab0" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
+transform = Transform3D(0.0202065, -0.00235772, 0.0564459, -0.0563153, 0.00393795, 0.0203243, -0.00450334, -0.0598242, -0.000886726, 0.563, -0.071, -0.672)
+visible = false
 mesh = ExtResource("9_5a1ke")
 skeleton = NodePath("../../../..")
 

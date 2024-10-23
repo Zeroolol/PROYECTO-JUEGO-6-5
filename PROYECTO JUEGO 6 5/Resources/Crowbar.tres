@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://dbnifnspfhf4e"]
 
 [ext_resource type="Script" path="res://Resources/ItemResource.gd" id="1_lue0r"]
-[ext_resource type="Texture2D" uid="uid://b8h38r4s4m3su" path="res://Assets/Images/Crowbar-wm.webp" id="2_y5vdx"]
+[ext_resource type="Texture2D" uid="uid://rilar17d55lf" path="res://Assets/items/crowbar.png" id="2_dx307"]
 
 [resource]
 script = ExtResource("1_lue0r")
 item_name = "Palanca"
 quantity = 1
-texture = ExtResource("2_y5vdx")
+texture = ExtResource("2_dx307")
 description = ""

@@ -43,7 +43,8 @@ var keys : Array = []  # Llaves que tiene el jugador
 	"Linterna": $Cabeza/Camera3D/Linterna,
 	"Palanca": $Cabeza/Camera3D/Crowbar,
 	"Llaves Aula": $Cabeza/Camera3D/LlaveAulas,
-	"Llaves Labs": $Cabeza/Camera3D/LlaveLabs
+	"Llaves Labs": $Cabeza/Camera3D/LlaveLabs,
+	"LlaveLab0": $Cabeza/Camera3D/LlaveLab0
 }
 
 # Configuración del RayCast para interacción
@@ -76,10 +77,15 @@ func seleccionar_item(item: String):
 # Muestra el ítem seleccionado en la mano del jugador
 func mostrar_item_seleccionado(item: String):
 	for item_name in items_visibles.keys():
-		if item_name == item:
-			items_visibles[item_name].visible = true  # Muestra el ítem seleccionado
+		var item_node = items_visibles[item_name]  # Obtener el nodo del diccionario
+		if item_node != null:  # Verificar que no sea null
+			if item_name == item:
+				item_node.visible = true  # Muestra el ítem seleccionado
+			else:
+				item_node.visible = false  # Oculta los otros ítems
 		else:
-			items_visibles[item_name].visible = false  # Oculta los otros ítems
+			print("Advertencia: El nodo ", item_name, " no se encontró.")
+
 
 # Oculta todos los ítems
 func ocultar_todos_los_items():

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://fosdu1s6646i"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://fosdu1s6646i"]
 
 [ext_resource type="Script" path="res://Resources/ItemResource.gd" id="1_4vedq"]
+[ext_resource type="Texture2D" uid="uid://dfptytk5eilma" path="res://Assets/items/llave_4.png" id="2_b0f4f"]
 
 [resource]
 script = ExtResource("1_4vedq")
 item_name = "Llaves Labs"
 quantity = 1
+texture = ExtResource("2_b0f4f")
 description = ""
