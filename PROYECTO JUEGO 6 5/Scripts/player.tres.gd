@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+# Constantes de configuración del jugador
 const PLAYER_SPEED = 4.0
 const PLAYER_RUN_SPEED = 6.0
 const PLAYER_JUMP_VELOCITY = 4.5
@@ -8,6 +9,7 @@ const PLAYER_MAX_ENERGY = 100
 const PLAYER_RUN_ENERGY_COST = 25.0
 const PLAYER_ENERGY_RECOVERY_RATE = 15.0
 
+# Variables del jugador
 var movable = true
 var is_cinematic_active = false
 var current_energy = PLAYER_MAX_ENERGY
@@ -20,6 +22,7 @@ var player_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_player_hidden = false
 @onready var wardrobe = null
 
+# Referencias a la cámara y sonido
 @onready var player_camera = $Cabeza/Camera3D
 @onready var sound_footsteps = $Caminar
 @onready var sound_run = $Correr
@@ -27,11 +30,12 @@ var is_player_hidden = false
 
 @export var player_walk_speed: float = 4.0
 
+# UI y elementos del inventario
 var ui_control = null
 var energy_bar = null
 var inventario = []  # Inventario del jugador
 var selected_item = ""  # Ítem seleccionado
-var keys : Array = []  # Array para almacenar las llaves que tiene el jugador
+var keys : Array = []  # Llaves que tiene el jugador
 
 # Diccionario para almacenar referencias a los nodos 3D de los ítems
 @onready var items_visibles = {
@@ -39,8 +43,11 @@ var keys : Array = []  # Array para almacenar las llaves que tiene el jugador
 	"Linterna": $Cabeza/Camera3D/Linterna,
 	"Palanca": $Cabeza/Camera3D/Crowbar,
 	"Llaves Aula": $Cabeza/Camera3D/LlaveAulas,
-	"Fusible": $Cabeza/Camera3D/Fusible
+	"Llaves Labs": $Cabeza/Camera3D/LlaveLabs
 }
+
+# Configuración del RayCast para interacción
+@onready var raycast = $RayCast3D  # Asegúrate de tener un RayCast3D en tu escena
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -83,6 +90,7 @@ func ocultar_todos_los_items():
 func is_item_selected(item_name: String) -> bool:
 	return selected_item == item_name  # Devuelve true si el ítem está seleccionado
 
+# Movimiento y cámara
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
 		camera_yaw -= event.relative.x * PLAYER_MOUSE_SENSITIVITY
@@ -91,6 +99,7 @@ func _unhandled_input(event):
 		rotation_degrees.y = camera_yaw
 		player_camera.rotation_degrees.x = camera_pitch
 
+# Función de actualización del jugador
 func _process(delta):
 	if movable and not is_cinematic_active:
 		# Control de energía y velocidad al correr
@@ -109,12 +118,12 @@ func _process(delta):
 		# Control del sonido de pasos
 		step_timer -= delta
 		if is_on_floor() and velocity.length() > 0.1 and step_timer <= 0:
-			if not sound_footsteps.playing:
+			if not sound_footsteps.is_playing():
 				sound_footsteps.volume_db = -10
 				sound_footsteps.play()
 			step_timer = 0.5
 		elif velocity.length() <= 0.1:
-			if sound_footsteps.playing:
+			if sound_footsteps.is_playing():
 				sound_footsteps.stop()
 
 		# Movimiento y animación
@@ -137,26 +146,33 @@ func _process(delta):
 			if anim_player.is_playing():
 				anim_player.stop()
 
+		# Control de correr
 		if Input.is_action_just_pressed("Correr"):
 			player_speed = PLAYER_RUN_SPEED
-			if not sound_run.playing:
+			if not sound_run.is_playing():
 				sound_run.play()
 
 		if Input.is_action_just_released("Correr"):
 			player_speed = PLAYER_SPEED
-			if sound_run.playing:
+			if sound_run.is_playing():
 				sound_run.stop()
 
 	move_and_slide()
 
-# Método para recoger la llave
+	# Interacción con puertas usando raycast
+	if Input.is_action_just_pressed("interactuar"):  # Tecla de interacción
+		var resultado = raycast.get_collider()  # Obtener el objeto que el RayCast detecta
+		if resultado and resultado.is_in_group("puertas"):  # Si es una puerta
+			resultado.interact(self)  # Llamar a la función interact de la puerta
+
+# Método para recoger una llave
 func collect_key(key_name: String):
-	keys.append(key_name)  # Método para recoger la llave
+	keys.append(key_name)  # Agregar llave al inventario
 
 # Función para verificar si el jugador tiene una llave
 func has_key(key_name: String) -> bool:
-	return keys.has(key_name)  # Devuelve true si tiene la llave, de lo contrario false
+	return keys.has(key_name)  # Devolver true si tiene la llave, false si no
 
 # Función para verificar si la llave está seleccionada
 func is_key_selected() -> bool:
-	return selected_item == "LlaveTest"  # Cambia "LlaveTest" por el nombre de tu ítem llave
+	return selected_item == "LlaveTest"  # Cambiar "LlaveTest" por el nombre de la llave correspondiente

@@ -11,11 +11,12 @@ var current_state: EnemyState = EnemyState.WANDER
 @export var patrol_speed: float = 6
 @export var chase_speed: float = 13.0
 @export var search_time: float = 5.0  # Tiempo que busca al jugador
-@export var lost_sight_time: float = 15.0  # Tiempo para perder de vista al jugador
+@export var lost_sight_time: float = 10.0  # Tiempo para perder de vista al jugador
 @export var player: CharacterBody3D
 
 # Nodos de puntos de patrullaje
 @export var patrol_points_parent: Node3D  # Nodo padre de los puntos de patrullaje
+@export var detection_range: float = 30.0  # Distancia máxima a la que el enemigo puede detectar al jugador
 
 var patrol_points: Array = []
 var last_patrol_index: int = -1  # Para recordar el último índice patrullado
@@ -56,13 +57,24 @@ func _ready():
 	start_wandering()
 
 func _process(delta):
+	if is_player_in_range():
+		current_state = EnemyState.CHASE
+	else:
+		current_state = EnemyState.WANDER
+	
 	match current_state:
 		EnemyState.WANDER:
 			wander(delta)
 		EnemyState.CHASE:
 			chase_player(delta)
-		EnemyState.SEARCH:
-			search_for_player(delta)
+func is_player_in_range() -> bool:
+	var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
+	return distance_to_player <= detection_range  # Verifica si el jugador está dentro del rango
+	# Verificar si el jugador es visible en cada frame
+	if is_player_visible():
+		current_state = EnemyState.CHASE
+	elif current_state == EnemyState.CHASE and not is_player_visible():
+		current_state = EnemyState.SEARCH  # Cambia a buscar si el jugador ya no es visible
 
 # Estados
 
@@ -71,36 +83,27 @@ func start_wandering():
 	patrol_target = get_next_patrol_point()
 	navigation_agent.target_location = patrol_target  # Actualiza el destino del agente
 	animation_player.play("Patrullaje")  # Reproducir animación de caminar
-	play_walk_sound()
+	play_walk_sound()  # Iniciar sonido de caminar
 
 func wander(delta):
 	if is_at_patrol_point():
 		patrol_target = get_next_patrol_point()  # Seleccionar un nuevo objetivo al llegar a uno
 		navigation_agent.target_location = patrol_target  # Actualiza el destino del agente
+
 	move_with_navigation(delta, patrol_speed)
 
 func chase_player(delta):
-	if player and not player.get_meta("hidden", false):  # Continuar persiguiendo si el jugador es visible
+	if player and is_player_in_range():  # Si el jugador está dentro del rango de detección
 		var player_pos = player.global_transform.origin
 		navigation_agent.target_location = player_pos  # Establecer el destino como el jugador
 		move_with_navigation(delta, chase_speed)
 		animation_player.play("Correr")  # Reproducir animación de correr
 		play_run_sound()
-
+		
 		if is_in_jumpscare_range():
 			kill_player()
-
-		# Reiniciar el temporizador de pérdida de vista si el jugador está a la vista
-		lost_sight_timer = lost_sight_time
-		has_lost_sight = false
 	else:
-		# Comenzar a contar hacia abajo si el jugador no está a la vista
-		has_lost_sight = true
-		lost_sight_timer -= delta
-
-		# Si el jugador ha estado fuera de la vista durante el tiempo completo, volver a patrullar
-		if lost_sight_timer <= 0:
-			start_wandering()
+		start_wandering()  # Regresar a patrullar si el jugador sale del rango
 
 func search_for_player(delta):
 	search_timer -= delta
@@ -122,9 +125,14 @@ func move_with_navigation(delta, speed: float):
 
 		# Reproducir animación de caminar si se está moviendo
 		if direction.length() > 0:  # Si hay movimiento
-			animation_player.play("")  # Asegúrate de que esta animación exista
+			if current_state == EnemyState.WANDER:
+				play_walk_sound()  # Reproducir sonido de caminar si está patrullando
+				animation_player.play("Patrullaje")  # Asegúrate de que esta animación exista
+			elif current_state == EnemyState.CHASE:
+				animation_player.play("Correr")  # Reproducir animación de correr
 		else:
 			animation_player.stop()  # Detener la animación si no hay movimiento
+			stop_walk_sound()  # Detener sonido de caminar si no se mueve
 
 # Reproducir sonido de caminar
 func play_walk_sound():
@@ -203,3 +211,18 @@ func _on_detector_body_entered(body: Node3D) -> void:
 		current_state = EnemyState.SEARCH
 		search_timer = search_time
 		patrol_target = player.global_transform.origin
+
+func is_player_visible() -> bool:
+	var direction_to_player = (player.global_transform.origin - global_transform.origin).normalized()
+	var distance_to_player = global_transform.origin.distance_to(player.global_transform.origin)
+
+	# Crear parámetros de raycast
+	var ray_parameters = PhysicsRayQueryParameters3D.new()
+	ray_parameters.from = global_transform.origin
+	ray_parameters.to = player.global_transform.origin
+
+	# Realiza el raycast
+	var result = get_world_3d().direct_space_state.intersect_ray(ray_parameters)
+
+	# El jugador es visible solo si no hay ningún objeto entre ellos y está dentro del rango de detección
+	return result.size() == 0 and distance_to_player <= detection_range

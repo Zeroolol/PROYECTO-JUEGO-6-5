@@ -3,7 +3,7 @@ extends StaticBody3D
 var interactable = true
 var opened = false
 
-func interact():
+func interact(jugador):
 	# Verifica si la puerta es interactuable
 	if interactable:
 		# Evita múltiples interacciones mientras la puerta se abre o cierra

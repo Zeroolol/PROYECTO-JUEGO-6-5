@@ -125,7 +125,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l48c0"]
-size = Vector3(29, 42, 14)
+size = Vector3(15, 21, 14)
 
 [node name="Armario" type="Node3D"]
 
@@ -179,8 +179,9 @@ libraries = {
 }
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("6_arv2p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 21.5, -7.5)
+transform = Transform3D(1.00001, 0, 0, 0, 1.00001, 0, 0, 0, 1, 8, 11, -7.5)
 shape = SubResource("BoxShape3D_l48c0")

@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://crpfh16ooltk4"]
+
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="1_a6ry1"]
+[ext_resource type="Script" path="res://Scripts/keypad.gd" id="1_juaih"]
+
+[node name="Keypad" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_juaih")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00416667
+anchor_top = 0.00237342
+anchor_right = 0.995833
+anchor_bottom = 0.997627
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_a6ry1")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 3
+
+[node name="Button" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "1"
+
+[node name="Button2" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "2"
+
+[node name="Button3" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "3"
+
+[node name="Button4" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "4"
+
+[node name="Button5" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "5"
+
+[node name="Button6" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "6"
+
+[node name="Button7" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "7"
+
+[node name="Button8" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "8"
+
+[node name="Button9" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "9"
+
+[node name="Button10" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "VOLVER"
+
+[node name="Button11" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "0"
+
+[node name="Button12" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "INGRESAR"
+
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button8" to="." method="_on_button_8_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button9" to="." method="_on_button_9_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button10" to="." method="_on_button_10_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button11" to="." method="_on_button_11_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/Button12" to="." method="_on_button_12_pressed"]

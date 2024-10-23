@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://b8s1jlsxona4u"]
+
+[ext_resource type="Script" path="res://Resources/ItemResource.gd" id="1_wsgsa"]
+
+[resource]
+script = ExtResource("1_wsgsa")
+item_name = "LlaveLab0"
+quantity = 1
+description = ""

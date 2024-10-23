@@ -60,13 +60,13 @@ _data = {
 "RESET": SubResource("Animation_tn4rl")
 }
 
-[node name="Puertas" type="Node3D" groups=["doors"]]
+[node name="Puertas" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="Bisagra" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.826994, 2.45661, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra" groups=["doors"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="Bisagra" groups=["doors", "puertas"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.826994, -2.45661, 0)
 script = ExtResource("2_0hg6c")
 

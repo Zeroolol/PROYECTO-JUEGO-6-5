@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://dwehjyj4c4ck4"]
+[gd_scene load_steps=28 format=4 uid="uid://dwehjyj4c4ck4"]
 
 [ext_resource type="PackedScene" uid="uid://i13bvug2pbhn" path="res://Escenas/Dialogos.tscn" id="1_2k1c5"]
-[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="2_pbb50"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="2_pbb50"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="3_3x1y6"]
 [ext_resource type="Script" path="res://Scripts/AnimacionIntro.gd" id="4_0yoml"]
 [ext_resource type="PackedScene" uid="uid://ceh7xg4t5agqy" path="res://Escenas/puertaTest.tscn" id="4_o11gv"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://d4k3epp0gdqp" path="res://Modelos/Colegio/Colegiooo_TexturaPuerta.png" id="11_28q3l"]
 [ext_resource type="Script" path="res://Scripts/Area3D.gd" id="11_nj55y"]
 [ext_resource type="ArrayMesh" uid="uid://danusx2juu8rh" path="res://Textures/PuertaBaño.obj" id="12_7k1oj"]
+[ext_resource type="PackedScene" uid="uid://dvqelm55a10mn" path="res://Modelos/male_character_ps1-style/scene.gltf" id="13_fowwn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftbl1"]
 sky_top_color = Color(0.407843, 0.337255, 0.854902, 1)
@@ -410,61 +411,25 @@ transform = Transform3D(1.05588, 0, 0, 0, 0.19988, 0, 0, 0, 1, -28.2695, -0.1027
 [node name="Cube_004" parent="Colegio/NavigationRegion3D/Colegiooo" index="364"]
 transform = Transform3D(-0.000395918, 1, 8.74896e-08, 9.12464e-08, 1.19209e-07, -0.734296, -0.76543, -0.000517249, -8.75802e-08, 3.69065, 0, -24.8537)
 
-[node name="Cube_268" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="365"]
+[node name="Cube_451" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="365"]
 transform = Transform3D(-0.000446686, 1.00007, 8.74896e-08, 1.02947e-07, 1.19217e-07, -0.734296, -0.863581, -0.000517283, -8.75802e-08, 3.69065, 0, -6.51846)
 mesh = SubResource("ArrayMesh_o1fmp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_268"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_268/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_bluta")
-
-[node name="Cube_269" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="366"]
+[node name="Cube_452" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="366"]
 transform = Transform3D(-0.000446686, 1.00007, 8.74896e-08, 1.02947e-07, 1.19217e-07, -0.734296, -0.863581, -0.000517283, -8.75802e-08, 3.69065, 0, 7.91641)
 mesh = SubResource("ArrayMesh_o1fmp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_269"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_269/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_bluta")
-
-[node name="Cube_270" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="367"]
+[node name="Cube_453" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="367"]
 transform = Transform3D(-0.000446686, 1.00007, 8.74896e-08, 1.02947e-07, 1.19217e-07, -0.734296, -0.863581, -0.000517283, -8.75802e-08, 3.69065, 0, -42.4448)
 mesh = SubResource("ArrayMesh_o1fmp")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_bluta")
-
-[node name="PuertaBaño" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
-transform = Transform3D(0.529288, 6.47625e-08, -0.000517214, 0.000317019, 1.99317e-07, 1.15808, 7.42564e-08, -0.990681, 1.87948e-07, 32.4771, 0.066256, -0.115892)
-mesh = ExtResource("12_7k1oj")
-
-[node name="PuertaBaño2" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
-transform = Transform3D(-0.542806, 2.13021e-07, 0.000517066, -0.000325142, 1.22369e-07, -1.15808, -7.61531e-08, -0.990681, -1.87948e-07, 30.3705, 0.0653162, -0.115893)
-mesh = ExtResource("12_7k1oj")
-
-[node name="PuertaBaño3" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
-transform = Transform3D(-0.0912204, 1.62942e-07, -1.14216, 0.543986, 1.17192e-07, -0.191349, 7.553e-08, -1.42652, -1.91196e-07, 20.1536, -20.7967, -0.115898)
-mesh = ExtResource("12_7k1oj")
-
-[node name="PuertaBaño4" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D"]
-transform = Transform3D(-0.0522873, 2.65085e-07, 1.1531, -0.563246, 3.32729e-07, -0.107222, -9.87768e-08, -1.42652, 1.44254e-07, 26.0467, -25.4901, -0.115898)
-mesh = ExtResource("12_7k1oj")
-
-[node name="Cube_271" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="368"]
+[node name="Cube_454" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo" index="368"]
 transform = Transform3D(-0.000525426, 1.00016, 1.00985e-07, 1.21094e-07, 1.19228e-07, -0.847566, -1.01581, -0.00051733, -1.0109e-07, 11.6995, 0, -26.6283)
 mesh = SubResource("ArrayMesh_o1fmp")
 skeleton = NodePath("")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_271"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_271/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_bluta")
 
 [node name="Cube_219" parent="Colegio/NavigationRegion3D/Colegiooo" index="372"]
 visible = false
@@ -477,6 +442,42 @@ visible = false
 
 [node name="Cube_222" parent="Colegio/NavigationRegion3D/Colegiooo" index="375"]
 visible = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_271/StaticBody3D" index="1"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_271" index="1"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_268/StaticBody3D" index="1"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_268" index="1"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_269/StaticBody3D" index="1"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_269" index="1"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D" index="1"]
+shape = SubResource("ConcavePolygonShape3D_bluta")
+
+[node name="PuertaBaño" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D" index="2"]
+transform = Transform3D(0.529288, 6.47625e-08, -0.000517214, 0.000317019, 1.99317e-07, 1.15808, 7.42564e-08, -0.990681, 1.87948e-07, 32.4771, 0.066256, -0.115892)
+mesh = ExtResource("12_7k1oj")
+
+[node name="PuertaBaño2" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D" index="3"]
+transform = Transform3D(-0.542806, 2.13021e-07, 0.000517066, -0.000325142, 1.22369e-07, -1.15808, -7.61531e-08, -0.990681, -1.87948e-07, 30.3705, 0.0653162, -0.115893)
+mesh = ExtResource("12_7k1oj")
+
+[node name="PuertaBaño3" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D" index="4"]
+transform = Transform3D(-0.0912204, 1.62942e-07, -1.14216, 0.543986, 1.17192e-07, -0.191349, 7.553e-08, -1.42652, -1.91196e-07, 20.1536, -20.7967, -0.115898)
+mesh = ExtResource("12_7k1oj")
+
+[node name="PuertaBaño4" type="MeshInstance3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270/StaticBody3D" index="5"]
+transform = Transform3D(-0.0522873, 2.65085e-07, 1.1531, -0.563246, 3.32729e-07, -0.107222, -9.87768e-08, -1.42652, 1.44254e-07, 26.0467, -25.4901, -0.115898)
+mesh = ExtResource("12_7k1oj")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Colegio/NavigationRegion3D/Colegiooo/Cube_270" index="1"]
 
 [node name="Luces" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300997, 2.06536)
@@ -1026,6 +1027,9 @@ light_energy = 2.293
 light_indirect_energy = 1.646
 light_volumetric_fog_energy = 2.455
 omni_range = 6.674
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("13_fowwn")]
+transform = Transform3D(-0.332194, 0, -1.68466, 0, 2.00378, 0, 2.00532, 0, -0.279075, -24.2052, -0.309273, 8.54581)
 
 [editable path="Dialogos"]
 [editable path="Player"]
