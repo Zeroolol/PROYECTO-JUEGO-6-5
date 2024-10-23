@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://cpqnplcptqbjm"]
+
+[ext_resource type="Script" path="res://Resources/ItemResource.gd" id="1_vyarv"]
+
+[resource]
+script = ExtResource("1_vyarv")
+item_name = "Fusible"
+quantity = 1
+description = ""

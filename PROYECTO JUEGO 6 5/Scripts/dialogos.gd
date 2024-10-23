@@ -1,4 +1,4 @@
-extends Control
+extends Control  # Dialogos
 
 @onready var dialog_label: Label = $Panel/TextoDialogo  # Obtener referencia al Label
 @onready var panel_dialogo: Panel = $Panel  # Obtener referencia al Panel
@@ -54,6 +54,15 @@ func mostrar_dialogo(texto: String):
 func ocultar_dialogo():
 	panel_dialogo.visible = false  # Hacer invisible el panel
 	dialog_label.text = ""  # Limpia el texto del diálogo
+
+# Función para mostrar un diálogo específico cuando se interactúa con la caja
+func mostrar_dialogo_fusible(texto: String, mensaje_mission: String = ""):
+	mostrar_dialogo(texto)  # Mostrar el texto del diálogo
+	if mensaje_mission != "":
+		mensaje_label.text = mensaje_mission  # Mostrar mensaje de misión si es necesario
+		mensaje_label.visible = true  # Hacer visible el mensaje de misión
+		await get_tree().create_timer(3.0).timeout  # Esperar 3 segundos
+		mensaje_label.visible = false  # Ocultar el mensaje de misión
 
 # Función para procesar la entrada del jugador
 func _process(delta):

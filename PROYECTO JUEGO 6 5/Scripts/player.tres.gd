@@ -38,7 +38,8 @@ var keys : Array = []  # Array para almacenar las llaves que tiene el jugador
 	"LlaveTest": $Cabeza/Camera3D/Llaves,  # Nodo del modelo de la llave
 	"Linterna": $Cabeza/Camera3D/Linterna,
 	"Palanca": $Cabeza/Camera3D/Crowbar,
-	"Llaves Aula": $Cabeza/Camera3D/LlaveAulas  # Nodo de otro ítem
+	"Llaves Aula": $Cabeza/Camera3D/LlaveAulas,
+	"Fusible": $Cabeza/Camera3D/Fusible
 }
 
 func _ready():

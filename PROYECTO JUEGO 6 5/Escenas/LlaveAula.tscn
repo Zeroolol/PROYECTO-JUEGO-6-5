@@ -19,6 +19,5 @@ transform = Transform3D(0.999997, 0, 0, 0, 1, 0, 0, 0, 0.999989, 1.93145, 0, 0.0
 shape = SubResource("BoxShape3D_66yfu")
 
 [node name="LlaveAulas" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("1_utl1r")
 skeleton = NodePath("../..")

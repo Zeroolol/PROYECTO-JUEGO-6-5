@@ -44,7 +44,7 @@ func mostrar_siguiente_dialogo():
 
 # Función para mostrar el mensaje final
 func mostrar_mensaje_final():
-	mensaje_label.text = "REGRESA AL AULA"
+	mensaje_label.text = "REGRESA AL AULA"  # Cambia el texto aquí
 	mensaje_label.visible = true  # Hacer visible el Label del mensaje
 	await get_tree().create_timer(3.0).timeout  # Opcional: Ocultar el mensaje después de 3 segundos
 	mensaje_label.visible = false  # Ocultar el mensaje después de la espera

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dn3uh0vv5ak5r"]
+[gd_scene load_steps=22 format=3 uid="uid://dn3uh0vv5ak5r"]
 
 [ext_resource type="Script" path="res://Scripts/player.tres.gd" id="1_8e347"]
 [ext_resource type="Script" path="res://Scripts/FlashLight.gd" id="2_y3y1k"]
@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b4tdmugqwj0e" path="res://Modelos/Linterna/ModeloLinterna.obj" id="8_ipp1r"]
 [ext_resource type="Texture2D" uid="uid://bp40e20vgvtyl" path="res://Textures/Crowbar_baseColor.png" id="9_y72io"]
 [ext_resource type="ArrayMesh" uid="uid://c4jlq8e52453p" path="res://Modelos/CrowBar/Crowbar.obj" id="10_ckdv2"]
+[ext_resource type="ArrayMesh" uid="uid://dm54mwu2b3sdk" path="res://Modelos/Fusible/Fusible.obj" id="11_i5glu"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vexrq"]
 
@@ -142,6 +143,7 @@ skeleton = NodePath("../../../..")
 
 [node name="Linterna" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
 transform = Transform3D(0.101122, 0.00675827, 0.0453448, -0.0578884, -2.70865e-09, 0.124987, 0.00629723, -0.109845, 0.00282378, 0.761011, -0.41682, 0.245714)
+visible = false
 mesh = ExtResource("8_ipp1r")
 skeleton = NodePath("../../../..")
 
@@ -152,6 +154,7 @@ shape = SubResource("ConcavePolygonShape3D_b16ak")
 
 [node name="Crowbar" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
 transform = Transform3D(-0.409335, -0.00545033, 1.67421, -1.28137, 0.0808464, -0.839663, -0.0322073, -2.00102, -0.0264602, 0.535193, -0.36582, -0.678865)
+visible = false
 material_override = SubResource("StandardMaterial3D_mscdu")
 mesh = ExtResource("10_ckdv2")
 skeleton = NodePath("../../../..")
@@ -177,6 +180,10 @@ expand_mode = 1
 transform = Transform3D(0.803635, 3.72529e-09, -2.22045e-16, 0, -6.55646e-08, -1, 0, 1.20361, -3.50758e-08, 0, -0.10793, -0.341285)
 collision_mask = 3
 script = ExtResource("3_uwjih")
+
+[node name="Fusible" type="MeshInstance3D" parent="CharacterBody3D/Cabeza/Camera3D"]
+transform = Transform3D(-0.0407236, 0.139804, -0.226027, -0.00646743, 0.368142, 0.088598, 0.261772, 0.0308446, -0.0329737, 0.535, -0.72, -0.805)
+mesh = ExtResource("11_i5glu")
 
 [node name="Caminar" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
 stream = ExtResource("5_7uu1o")

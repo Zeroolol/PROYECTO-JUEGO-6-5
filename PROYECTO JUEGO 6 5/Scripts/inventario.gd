@@ -1,4 +1,4 @@
-extends Control
+extends Control  # Inventario
 
 var template_inv_slot = preload("res://Templates/inventoryslots.tscn")
 @onready var gridcontainer = get_node("Background/MarginContainer/VBoxContainer/ScrollContainer/GridContainer")
@@ -23,6 +23,19 @@ func add_item(item_data: ItemResource):
 			update_inventory_ui()
 		else:
 			inventory[item_data.item_name].quantity += item_data.quantity
+
+# Función para verificar si el jugador tiene un ítem específico (como el fusible)
+func has_item(item_name: String) -> bool:
+	return inventory.has(item_name)  # Verifica si el inventario contiene el ítem por su nombre
+
+# Función para remover un ítem del inventario
+func remove_item(item_name: String):
+	if has_item(item_name):
+		var item = inventory[item_name]
+		item.quantity -= 1  # Disminuye la cantidad del ítem
+		if item.quantity <= 0:
+			inventory.erase(item_name)  # Si ya no quedan ítems, se borra del inventario
+		update_inventory_ui()  # Actualiza la UI después de eliminar el ítem
 
 # Actualizar la UI del inventario
 func update_inventory_ui():
