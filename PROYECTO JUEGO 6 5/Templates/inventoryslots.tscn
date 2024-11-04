@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg60cygmihy8"]
+[gd_scene load_steps=4 format=3 uid="uid://bg60cygmihy8"]
 
 [ext_resource type="Texture2D" uid="uid://tyo5f33uikmr" path="res://Assets/Images/inventorygrid.png" id="1_oe48c"]
 [ext_resource type="Script" path="res://Scripts/InventorySlots.gd" id="2_0qtvp"]
+[ext_resource type="FontFile" uid="uid://biavbmyn1vqhg" path="res://Assets/press-start/prstart.ttf" id="3_mehu3"]
 
 [node name="Inv1" type="TextureRect"]
 custom_minimum_size = Vector2(100, 100)
@@ -17,3 +18,12 @@ offset_right = 96.0
 offset_bottom = 95.0
 expand_mode = 1
 stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 103.0
+offset_right = 99.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_mehu3")
+theme_override_font_sizes/font_size = 9

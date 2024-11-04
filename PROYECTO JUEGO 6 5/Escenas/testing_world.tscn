@@ -37,10 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://qvey5fbb2cj" path="res://Escenas/LlaveLabs.tscn" id="35_acm3m"]
 [ext_resource type="PackedScene" uid="uid://dncea8015kdq4" path="res://Escenas/PuertaCuarto.tscn" id="36_kplfo"]
 [ext_resource type="PackedScene" uid="uid://crpfh16ooltk4" path="res://Escenas/keypad.tscn" id="37_qs72w"]
-[ext_resource type="PackedScene" uid="uid://mjt0q6wr83ab" path="res://Escenas/Enemy.tscn" id="39_c2keb"]
 [ext_resource type="PackedScene" uid="uid://bwuokaiirhyob" path="res://Escenas/llavelab0.tscn" id="39_g8c7n"]
 [ext_resource type="Script" path="res://Scripts/AreaFinal.gd" id="40_km8ah"]
 [ext_resource type="PackedScene" uid="uid://d32ot2hh164g6" path="res://Escenas/PuertaLab0.tscn" id="40_njd7q"]
+[ext_resource type="PackedScene" uid="uid://cxqdpgn2ujm22" path="res://Escenas/monster.tscn" id="41_tva48"]
 
 [sub_resource type="Environment" id="Environment_46p6g"]
 background_color = Color(0.00504526, 0, 0.126841, 1)
@@ -586,12 +586,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.8547, 0.963341, -89.9171)
 [node name="Marker3D16" type="Marker3D" parent="PatrolPointsParents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.8547, 0.963341, -96.796)
 
-[node name="Marker3D17" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -73.549, 0.963341, -96.796)
-
-[node name="Marker3D18" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -74.7508, 0.963341, -101.074)
-
 [node name="Marker3D19" type="Marker3D" parent="PatrolPointsParents"]
 transform = Transform3D(0.999999, -0.00171042, 0, 0.00171042, 0.999999, 0, 0, 0, 1, -67.4812, 0.963341, -105.289)
 
@@ -603,9 +597,6 @@ transform = Transform3D(0.114427, 0, 0, 0, 0.0968804, 0, 0, 0, 0.0680523, -75.23
 
 [node name="Llave" parent="." instance=ExtResource("16_55mrr")]
 transform = Transform3D(-0.0714817, 0.0020397, -0.000551056, -0.000764005, -0.172424, -0.00289009, 0.00108494, 0.0129675, -0.0383419, -91.1699, 2.11219, 7.79771)
-
-[node name="Llaves" parent="Llave/Llave" index="0"]
-transform = Transform3D(1, 1.16415e-09, 0, 2.91038e-10, 1, 9.31323e-09, 0, 0, 1, -262.523, -28.8335, 1788.19)
 
 [node name="Crowbar" parent="." instance=ExtResource("16_kcw7f")]
 transform = Transform3D(1.08227, -0.0119231, -3.03003, -1.86927, 0.0205932, -1.75433, 0.00995255, 5.16434, 7.05196e-10, -80.4823, 5.52096, -95.6732)
@@ -652,10 +643,10 @@ transform = Transform3D(0.823077, 0, -0.56793, 0, 1, 0, 0.56793, 0, 0.823077, 0.
 transform = Transform3D(4.70101e-08, 0, 1, 0, 1.02527, 0, -0.527229, 0, 1.19209e-07, -94.9816, 0.373243, -89.603)
 
 [node name="Bisagra" parent="Puertas/Puertas4" index="0"]
-transform = Transform3D(-0.594795, 0, 0.803878, 0, 1, 0, -0.803878, 0, -0.594795, -1.85373, 2.38952, -0.279205)
+transform = Transform3D(-0.594798, 0, 0.803876, 0, 1, 0, -0.803876, 0, -0.594798, -1.85373, 2.38952, -0.279205)
 
 [node name="Bisagra2" parent="Puertas/Puertas4" index="1"]
-transform = Transform3D(0.541398, 0, 0.840766, 0, 1, 0, -0.840767, 0, 0.541398, 7.29947, 2.38952, 0.0525589)
+transform = Transform3D(0.541399, 0, 0.840766, 0, 1, 0, -0.840767, 0, 0.541398, 7.29947, 2.38952, 0.0525589)
 
 [node name="Tablas" type="Node3D" parent="."]
 
@@ -685,6 +676,7 @@ skeleton = NodePath("")
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("17_qknyh")
+bake_mask = 4294967293
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -880,16 +872,22 @@ stream = ExtResource("9_vx6fb")
 volume_db = 5.0
 
 [node name="LlavesLab" parent="." instance=ExtResource("35_acm3m")]
-transform = Transform3D(1, 0, 0, 0, 1.37327, 0, 0, 0, 1, -77.5632, 1.81728, -85.0447)
+transform = Transform3D(1, 0, 0, 0, 1.37327, 0, 0, 0, 1, -77.919, 1.83222, -82.6817)
 
 [node name="PuertaCuarto" parent="." groups=["puertakeypad"] instance=ExtResource("36_kplfo")]
 transform = Transform3D(0, 0, -1, 0, 0.74151, 0, 0.787108, 0, 0, -94.9557, 0.54103, -6.47165)
 
+[node name="PuertaLab" parent="PuertaCuarto/Bisagra/StaticBody3D" index="1"]
+layers = 2
+
+[node name="Panel" parent="PuertaCuarto/Bisagra/StaticBody3D" index="2"]
+layers = 2
+
 [node name="Keypad" parent="." instance=ExtResource("37_qs72w")]
 visible = false
 
-[node name="Node3D" parent="." instance=ExtResource("39_g8c7n")]
-transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, -109.367, 1.99239, 10.7661)
+[node name="Llave Lab0" parent="." instance=ExtResource("39_g8c7n")]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, -103.722, 1.99239, 13.12)
 
 [node name="Node3D2" parent="." instance=ExtResource("40_njd7q")]
 transform = Transform3D(-1.19209e-07, 0, 1, 0, 2.21943, 0, -1.80197, 0, -2.98023e-08, -70.7212, 0.376748, -97.8652)
@@ -905,7 +903,7 @@ shape = SubResource("BoxShape3D_laftb")
 [node name="Escena Final" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Escena Final"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -93.4851, 3.77028, -90.9648)
+transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, -93.4851, 3.77028, -90.9648)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Escena Final"]
 libraries = {
@@ -929,12 +927,8 @@ light_size = 1.0
 omni_range = 0.64
 omni_attenuation = 9.989
 
-[node name="Enemy" parent="." instance=ExtResource("39_c2keb")]
-transform = Transform3D(0.88624, 0, 0, 0, 1, 0, 0, 0, 1, -89.5804, 1.43295, 14.7117)
-
-[node name="CharacterBody3D" parent="Enemy" index="0" node_paths=PackedStringArray("player", "patrol_points_parent")]
-player = NodePath("../../Player/CharacterBody3D")
-patrol_points_parent = NodePath("../../PatrolPointsParents")
+[node name="Monster" parent="." instance=ExtResource("41_tva48")]
+transform = Transform3D(-1.85956, 0, 0.00176598, 0, 1.6597, 0, -0.00220696, 0, -1.488, -81.3097, 0.315967, 13.2088)
 
 [editable path="Player"]
 [editable path="Llave"]
@@ -957,6 +951,5 @@ patrol_points_parent = NodePath("../../PatrolPointsParents")
 [editable path="PanelElectrico"]
 [editable path="MonsterSA"]
 [editable path="MonsterSA/CRIATURA_FEA (3)"]
+[editable path="PuertaCuarto"]
 [editable path="Keypad"]
-[editable path="Enemy"]
-[editable path="Enemy/CharacterBody3D/CollisionShape3D/CRIATURA_FEA (3)"]

@@ -13,10 +13,9 @@ var current_state: EnemyState = EnemyState.WANDER
 @export var search_time: float = 5.0  # Tiempo que busca al jugador
 @export var lost_sight_time: float = 10.0  # Tiempo para perder de vista al jugador
 @export var player: CharacterBody3D
-
-# Nodos de puntos de patrullaje
 @export var patrol_points_parent: Node3D  # Nodo padre de los puntos de patrullaje
 @export var detection_range: float = 30.0  # Distancia máxima a la que el enemigo puede detectar al jugador
+@export var lost_sight_timeout: float = 30.0  # Tiempo límite sin ver al jugador
 
 var patrol_points: Array = []
 var last_patrol_index: int = -1  # Para recordar el último índice patrullado
@@ -59,9 +58,15 @@ func _ready():
 func _process(delta):
 	if is_player_in_range():
 		current_state = EnemyState.CHASE
+		lost_sight_timer = 0.0  # Reinicia el temporizador cuando ve al jugador
 	else:
-		current_state = EnemyState.WANDER
-	
+		lost_sight_timer += delta  # Incrementa el temporizador cuando no ve al jugador
+		if lost_sight_timer >= lost_sight_timeout:
+			start_wandering()  # Cambia a patrullaje si supera el tiempo límite
+		else:
+			current_state = EnemyState.WANDER
+
+	# Lógica para el cambio de estados
 	match current_state:
 		EnemyState.WANDER:
 			wander(delta)

@@ -84,13 +84,13 @@ transform = Transform3D(2.18696, 0, 0, 0, 1, 0, 0, 0, 1.79064, 0, 0, 0.29095)
 shape = SubResource("CylinderShape3D_41sln")
 
 [node name="BiggerDetector" type="Area3D" parent="CharacterBody3D"]
-transform = Transform3D(2.43191, 0, 0, 0, 2.43191, 0, 0, 0, 2.43191, 0, 0, 0)
+transform = Transform3D(0.568232, 0, 0, 0, 2.43191, 0, 0, 0, 0.560249, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/BiggerDetector"]
 shape = SubResource("CylinderShape3D_803i7")
 
 [node name="Detector" type="Area3D" parent="CharacterBody3D"]
-transform = Transform3D(3.20084, 0, 0, 0, 1.51358, 0, 0, 0, 12.7786, -0.00433922, 0.232606, 6.98856)
+transform = Transform3D(1.32676, 0, 0, 0, 1.53024, 0, 0, 0, 4.19699, -0.00433922, 0.232606, 2.61976)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Detector"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.0185242, 0, 0.254852)

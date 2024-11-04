@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxqdpgn2ujm22"]
+
+[ext_resource type="PackedScene" uid="uid://mc8bu18slmxu" path="res://Modelos/bichofeo/CRIATURA_FEA (3).glb" id="1_jjeco"]
+[ext_resource type="Script" path="res://Scripts/Monster.gd" id="1_ksqiv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7sjy"]
+size = Vector3(0.927185, 2.53314, 0.723389)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkugw"]
+size = Vector3(0.941162, 2.51013, 5.9989)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sx754"]
+radius = 1.01959
+
+[node name="Monster" type="Node3D"]
+transform = Transform3D(-1.86, 0, 0.00220748, 0, 1.86, 0, -0.00220748, 0, -1.86, -0.365714, 0, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_ksqiv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190582, 1.29581, -0.290894)
+shape = SubResource("BoxShape3D_u7sjy")
+
+[node name="CRIATURA_FEA (3)" parent="CharacterBody3D/CollisionShape3D" instance=ExtResource("1_jjeco")]
+transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, -0.00199759, -1.2466, -0.11542)
+
+[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.189968, 2.408, -0.0439205)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+
+[node name="DetectionArea" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/DetectionArea"]
+transform = Transform3D(1, 0, 9.31323e-10, 0, 1, 0, -9.31323e-10, 0, 1, 0.199295, 1.31658, 2.3519)
+shape = SubResource("BoxShape3D_vkugw")
+
+[node name="JumpscareArea" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/JumpscareArea"]
+transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, 0.197507, 0, -0.237581)
+shape = SubResource("CylinderShape3D_sx754")
+
+[connection signal="body_entered" from="CharacterBody3D/DetectionArea" to="CharacterBody3D" method="_on_detection_area_body_entered"]
+[connection signal="body_entered" from="CharacterBody3D/JumpscareArea" to="CharacterBody3D" method="_on_jumpscare_area_body_entered"]
+
+[editable path="CharacterBody3D/CollisionShape3D/CRIATURA_FEA (3)"]
