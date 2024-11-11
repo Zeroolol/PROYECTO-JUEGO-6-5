@@ -71,7 +71,7 @@ func reproducir_animaciones_y_sonidos():
 	# Reproduce ambas animaciones
 	if animation_player_1 and animation_player_2:
 		animation_player_1.play("Patrullaje")  # Cambia con el nombre de la animación
-		animation_player_2.play("Secuencia1Mons")  # Cambia con el nombre de la animación
+		animation_player_2.play("AnimacionMonsterSA")  # Cambia con el nombre de la animación
 		print("Animaciones reproducidas.")
 		
 		# Conectar la señal 'animation_finished' de animation_player_2 para ocultar Monster SA al terminar

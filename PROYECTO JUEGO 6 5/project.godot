@@ -36,6 +36,7 @@ import/fbx/enabled=false
 
 puertas=""
 puertakeypad=""
+monster=""
 
 [input]
 

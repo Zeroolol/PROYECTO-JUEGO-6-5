@@ -135,7 +135,6 @@ func _process(delta):
 		# Movimiento y animación
 		var input_dir = Input.get_vector("atras", "avanzar", "izquierda", "derecha")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
 		if direction.length() > 0:
 			velocity.x = direction.x * player_speed
 			velocity.z = direction.z * player_speed

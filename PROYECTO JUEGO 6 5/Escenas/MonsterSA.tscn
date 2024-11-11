@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4a2nsd6cfgl3"]
+
+[ext_resource type="PackedScene" uid="uid://mc8bu18slmxu" path="res://Modelos/bichofeo/CRIATURA_FEA (3).glb" id="1_6mk64"]
+
+[node name="MonsterSA" type="Node3D"]
+transform = Transform3D(1.465, 0, 0, 0, 1.465, 0, 0, 0, 1.465, 0, 0, 0)
+
+[node name="CRIATURA_FEA (3)" parent="." instance=ExtResource("1_6mk64")]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="Skeleton3D" parent="CRIATURA_FEA (3)/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.0368788, -0.0311952, 0.00744091, 0.998805)
+bones/3/rotation = Quaternion(0.265326, 0.000697777, 0.00415754, 0.964149)
+bones/4/rotation = Quaternion(0.255812, 3.08466e-09, -2.46516e-07, 0.966727)
+bones/8/rotation = Quaternion(-0.457388, 0.299892, -0.610693, 0.572639)
+bones/9/rotation = Quaternion(0.417333, 0.118951, -0.0307777, 0.900409)
+bones/10/rotation = Quaternion(0.217125, 0.0311005, 0.143145, 0.96509)
+bones/12/rotation = Quaternion(0.0972781, 0.137577, -0.00378649, 0.985695)
+bones/14/rotation = Quaternion(0.0600715, 0.314362, 0.497289, 0.806394)
+bones/15/rotation = Quaternion(0.303223, -0.00673876, 0.119573, 0.945364)
+bones/16/rotation = Quaternion(0.00711234, 0.000497392, -0.0244513, 0.999676)
+bones/18/rotation = Quaternion(-0.21003, -0.0577587, 0.162343, 0.962391)
+bones/19/rotation = Quaternion(0.0232313, 0.224733, 0.949241, -0.218856)
+bones/20/rotation = Quaternion(-0.213313, 0.0217951, -0.22738, 0.949906)
+bones/21/rotation = Quaternion(0.177822, -0.0105316, 0.0529752, 0.982579)
+bones/22/rotation = Quaternion(0.499217, -0.0571206, -0.0541235, 0.862896)
+bones/23/rotation = Quaternion(0.067781, -0.463414, 0.865432, 0.177991)
+bones/24/rotation = Quaternion(-0.14892, -0.0497234, 0.238963, 0.958252)
+bones/25/rotation = Quaternion(0.111651, 0.0709523, -0.0813754, 0.987865)
+bones/26/rotation = Quaternion(0.429667, 0.032697, 0.0319678, 0.901829)
+
+[editable path="CRIATURA_FEA (3)"]

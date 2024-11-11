@@ -2,16 +2,15 @@
 
 [ext_resource type="AudioStream" uid="uid://g4bo48rtk5y5" path="res://Sonidos/Lluvia.mp3" id="1_6pqp4"]
 [ext_resource type="Script" path="res://Scripts/Phone.gd" id="1_bkcf4"]
+[ext_resource type="Script" path="res://Scripts/level_manager.gd" id="1_ymwrt"]
 [ext_resource type="AudioStream" uid="uid://df4yyhe31hmmw" path="res://Sonidos/MonsterFondo1.mp3" id="3_01hxx"]
 [ext_resource type="AudioStream" uid="uid://b33i1mhvhwym4" path="res://Sonidos/Tren.mp3" id="3_jaduy"]
 [ext_resource type="AudioStream" uid="uid://dhvjnrroib6h" path="res://Sonidos/CorteLuz.mp3" id="4_a4il5"]
 [ext_resource type="ArrayMesh" uid="uid://babmrxwv85daj" path="res://Modelos/Celular/Telefono.obj" id="5_limr4"]
 [ext_resource type="PackedScene" uid="uid://86hx4480nwcb" path="res://Escenas/puertas_2.tscn" id="6_p5w5k"]
-[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="6_yj7ha"]
 [ext_resource type="AudioStream" uid="uid://kg82l77hxeb0" path="res://Sonidos/PhoneSound.mp3" id="7_e56m1"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="7_fu7ci"]
 [ext_resource type="AudioStream" uid="uid://d6spkta0bbj" path="res://Sonidos/SFX1.mp3" id="8_atkb3"]
-[ext_resource type="AudioStream" uid="uid://bivudw5rfedq1" path="res://Sonidos/CaminarMonster.mp3" id="9_vx6fb"]
 [ext_resource type="Script" path="res://Scripts/Escena inicio.gd" id="10_0xs08"]
 [ext_resource type="PackedScene" uid="uid://cj1r7rwhj0ro8" path="res://Shaders/vhs_shader.tscn" id="10_5fqsu"]
 [ext_resource type="PackedScene" uid="uid://b01dp5hsad1k8" path="res://Escenas/light.tscn" id="10_ibikv"]
@@ -33,14 +32,15 @@
 [ext_resource type="Texture2D" uid="uid://ybxinwtna5gx" path="res://Modelos/Colegio/Colegiooo_MaderaBarricaa.png" id="19_p0hny"]
 [ext_resource type="PackedScene" uid="uid://dm1qx76i0evom" path="res://Escenas/LlaveAula.tscn" id="23_i2ajv"]
 [ext_resource type="PackedScene" uid="uid://bne1r3pedis2l" path="res://Escenas/PanelElectrico.tscn" id="30_jyq7h"]
-[ext_resource type="PackedScene" uid="uid://dvwujx6pbc2an" path="res://Escenas/MonsterAnimations.tscn" id="33_m2mdt"]
 [ext_resource type="PackedScene" uid="uid://qvey5fbb2cj" path="res://Escenas/LlaveLabs.tscn" id="35_acm3m"]
 [ext_resource type="PackedScene" uid="uid://dncea8015kdq4" path="res://Escenas/PuertaCuarto.tscn" id="36_kplfo"]
 [ext_resource type="PackedScene" uid="uid://crpfh16ooltk4" path="res://Escenas/keypad.tscn" id="37_qs72w"]
 [ext_resource type="PackedScene" uid="uid://bwuokaiirhyob" path="res://Escenas/llavelab0.tscn" id="39_g8c7n"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="40_317um"]
+[ext_resource type="PackedScene" uid="uid://bo4y10evdntlp" path="res://Escenas/Monster.tscn" id="40_dsdt3"]
 [ext_resource type="Script" path="res://Scripts/AreaFinal.gd" id="40_km8ah"]
 [ext_resource type="PackedScene" uid="uid://d32ot2hh164g6" path="res://Escenas/PuertaLab0.tscn" id="40_njd7q"]
-[ext_resource type="PackedScene" uid="uid://cxqdpgn2ujm22" path="res://Escenas/monster.tscn" id="41_tva48"]
+[ext_resource type="PackedScene" uid="uid://c4a2nsd6cfgl3" path="res://Escenas/MonsterSA.tscn" id="41_rnsq3"]
 
 [sub_resource type="Environment" id="Environment_46p6g"]
 background_color = Color(0.00504526, 0, 0.126841, 1)
@@ -178,43 +178,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k5yht")
-
-[sub_resource type="Animation" id="Animation_c1efc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CRIATURA_FEA (3):position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.0386098, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_0j2ah"]
-resource_name = "Secuencia1Mons"
-length = 4.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CRIATURA_FEA (3):position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0.0386098, 0), Vector3(0, 0.0386098, 17.4575)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1by8m"]
-_data = {
-"RESET": SubResource("Animation_c1efc"),
-"Secuencia1Mons": SubResource("Animation_0j2ah")
-}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_laftb"]
 size = Vector3(1, 5.15533, 5.35437)
@@ -400,8 +363,46 @@ _data = {
 "RESET": SubResource("Animation_xwq1r")
 }
 
+[sub_resource type="Animation" id="Animation_3jcxe"]
+resource_name = "AnimacionMonsterSA"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CRIATURA_FEA (3):position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 3.10418)]
+}
+
+[sub_resource type="Animation" id="Animation_ojlme"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CRIATURA_FEA (3):position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2q7xq"]
+_data = {
+"AnimacionMonsterSA": SubResource("Animation_3jcxe"),
+"RESET": SubResource("Animation_ojlme")
+}
+
 [node name="TestingWorld" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70831, -0.54103, 1.92401)
+script = ExtResource("1_ymwrt")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_46p6g")
@@ -487,18 +488,6 @@ volume_db = 5.0
 [node name="SFX1" type="AudioStreamPlayer3D" parent="Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.2849, 0, -27.2886)
 stream = ExtResource("8_atkb3")
-
-[node name="Player" parent="." instance=ExtResource("6_yj7ha")]
-transform = Transform3D(-0.0150673, 0, -0.795701, 0, 1.40159, 0, 0.9968, 0, -0.0120276, -73.7285, 0.671159, -63.4324)
-
-[node name="MeshInstance3D" parent="Player/CharacterBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.691071, 0)
-
-[node name="CollisionShape3D" parent="Player/CharacterBody3D" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711111, 0)
-
-[node name="Camera3D" parent="Player/CharacterBody3D/Cabeza" index="0"]
-transform = Transform3D(1.25375, 0, -1.49012e-08, 0, 0.713475, 0, 1.49012e-08, 0, 1.2462, 0, 1.69082, 0)
 
 [node name="Escena inicio" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -74.2852, 0.615206, -63.399)
@@ -843,34 +832,6 @@ metadata/_edit_use_anchors_ = true
 [node name="PanelElectrico" parent="." instance=ExtResource("30_jyq7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.769, 2.19726, -13.5215)
 
-[node name="MonsterSA" parent="." instance=ExtResource("33_m2mdt")]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.8, -65.2917, 0.349084, -68.1976)
-
-[node name="Skeleton3D" parent="MonsterSA/CRIATURA_FEA (3)/Armature" index="0"]
-bones/3/rotation = Quaternion(0.239226, -0.00238556, 0.0158185, 0.970832)
-bones/8/rotation = Quaternion(-0.264325, -0.00350374, -0.63444, 0.726365)
-bones/9/rotation = Quaternion(0.170907, -0.0331221, -0.0147248, 0.98462)
-bones/14/rotation = Quaternion(-0.101537, 0.18238, 0.558597, 0.802743)
-bones/15/rotation = Quaternion(0.346345, 0.0224226, 0.0697809, 0.93524)
-bones/19/rotation = Quaternion(-0.163339, 0.0506916, 0.983724, -0.0551242)
-bones/20/rotation = Quaternion(-0.388864, -0.0851176, -0.139099, 0.906748)
-bones/21/rotation = Quaternion(0.507391, -0.0202441, 0.0878847, 0.856983)
-bones/22/rotation = Quaternion(0.374465, -0.0323607, -0.0431736, 0.92567)
-bones/23/rotation = Quaternion(-0.124296, -0.163347, 0.973028, 0.105289)
-bones/24/rotation = Quaternion(-0.456148, -0.15631, 0.054716, 0.874358)
-bones/25/rotation = Quaternion(0.386217, 0.0153274, -0.0789951, 0.918891)
-bones/26/rotation = Quaternion(0.702729, 0.0539413, 0.057835, 0.707048)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MonsterSA"]
-libraries = {
-"": SubResource("AnimationLibrary_1by8m")
-}
-
-[node name="MonsterFootsteps" type="AudioStreamPlayer3D" parent="MonsterSA"]
-transform = Transform3D(1.42857, 0, 0, 0, 1.42857, 0, 0, 0, 1.25, -0.0832901, 4.46333, -1.26887)
-stream = ExtResource("9_vx6fb")
-volume_db = 5.0
-
 [node name="LlavesLab" parent="." instance=ExtResource("35_acm3m")]
 transform = Transform3D(1, 0, 0, 0, 1.37327, 0, 0, 0, 1, -77.919, 1.83222, -82.6817)
 
@@ -927,10 +888,44 @@ light_size = 1.0
 omni_range = 0.64
 omni_attenuation = 9.989
 
-[node name="Monster" parent="." instance=ExtResource("41_tva48")]
-transform = Transform3D(-1.85956, 0, 0.00176598, 0, 1.6597, 0, -0.00220696, 0, -1.488, -81.3097, 0.315967, 13.2088)
+[node name="Player" parent="." instance=ExtResource("40_317um")]
+transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.49601, 0, 0.999886, 0, -0.015114, -73.7089, 0.373243, -63.4554)
 
-[editable path="Player"]
+[node name="MonsterSA" parent="." instance=ExtResource("41_rnsq3")]
+transform = Transform3D(4.545, 0, 0, 0, 4.545, 0, 0, 0, 4.545, -65.2917, 0.325348, -67.924)
+
+[node name="CRIATURA_FEA (3)" parent="MonsterSA" index="0"]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="Skeleton3D" parent="MonsterSA/CRIATURA_FEA (3)/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.175042, 6.86404e-17, 6.86404e-17, 0.984561)
+bones/3/rotation = Quaternion(0.239226, -0.00238556, 0.0158185, 0.970832)
+bones/4/rotation = Quaternion(0.255812, 6.22242e-10, -2.44037e-07, 0.966727)
+bones/8/rotation = Quaternion(-0.264325, -0.00350374, -0.63444, 0.726365)
+bones/9/rotation = Quaternion(0.170907, -0.0331221, -0.0147248, 0.98462)
+bones/10/rotation = Quaternion(0.00711233, -0.000497393, 0.0244512, 0.999676)
+bones/12/rotation = Quaternion(-0.21003, 0.0577587, -0.162343, 0.962391)
+bones/14/rotation = Quaternion(-0.101537, 0.18238, 0.558597, 0.802743)
+bones/15/rotation = Quaternion(0.346345, 0.0224226, 0.0697809, 0.93524)
+bones/16/rotation = Quaternion(0.00711236, 0.000497392, -0.0244513, 0.999676)
+bones/18/rotation = Quaternion(-0.21003, -0.0577587, 0.162343, 0.962391)
+bones/19/rotation = Quaternion(-0.163339, 0.0506916, 0.983724, -0.0551242)
+bones/20/rotation = Quaternion(-0.388864, -0.0851176, -0.139099, 0.906748)
+bones/21/rotation = Quaternion(0.507391, -0.0202441, 0.0878847, 0.856983)
+bones/22/rotation = Quaternion(0.374465, -0.0323607, -0.0431736, 0.92567)
+bones/23/rotation = Quaternion(-0.124296, -0.163347, 0.973028, 0.105289)
+bones/24/rotation = Quaternion(-0.456148, -0.15631, 0.054716, 0.874358)
+bones/25/rotation = Quaternion(0.386217, 0.0153274, -0.0789951, 0.918891)
+bones/26/rotation = Quaternion(0.702729, 0.0539413, 0.057835, 0.707048)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MonsterSA"]
+libraries = {
+"": SubResource("AnimationLibrary_2q7xq")
+}
+
+[node name="Monster" parent="." instance=ExtResource("40_dsdt3")]
+transform = Transform3D(-4.37114e-08, 0, 1.21878, 0, 1.50454, 0, -1, 0, -5.32744e-08, -66.2917, 0.54103, -90.924)
+
 [editable path="Llave"]
 [editable path="Crowbar"]
 [editable path="Puertas/puertalab3"]
@@ -949,7 +944,8 @@ transform = Transform3D(-1.85956, 0, 0.00176598, 0, 1.6597, 0, -0.00220696, 0, -
 [editable path="Dialogos"]
 [editable path="UI"]
 [editable path="PanelElectrico"]
-[editable path="MonsterSA"]
-[editable path="MonsterSA/CRIATURA_FEA (3)"]
 [editable path="PuertaCuarto"]
 [editable path="Keypad"]
+[editable path="Player"]
+[editable path="MonsterSA"]
+[editable path="MonsterSA/CRIATURA_FEA (3)"]

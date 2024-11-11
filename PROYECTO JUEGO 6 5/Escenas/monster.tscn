@@ -1,48 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxqdpgn2ujm22"]
+[gd_scene load_steps=6 format=3 uid="uid://bo4y10evdntlp"]
 
-[ext_resource type="PackedScene" uid="uid://mc8bu18slmxu" path="res://Modelos/bichofeo/CRIATURA_FEA (3).glb" id="1_jjeco"]
-[ext_resource type="Script" path="res://Scripts/Monster.gd" id="1_ksqiv"]
+[ext_resource type="Script" path="res://Scripts/Monster.gd" id="1_7jt3j"]
+[ext_resource type="Material" uid="uid://c2kebvqynmgdt" path="res://Assets/Material/PisoLab.tres" id="2_6dp6x"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_u7sjy"]
-size = Vector3(0.927185, 2.53314, 0.723389)
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uwwdr"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vkugw"]
-size = Vector3(0.941162, 2.51013, 5.9989)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xwl6h"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_sx754"]
-radius = 1.01959
+[sub_resource type="BoxMesh" id="BoxMesh_4r0fr"]
 
-[node name="Monster" type="Node3D"]
-transform = Transform3D(-1.86, 0, 0.00220748, 0, 1.86, 0, -0.00220748, 0, -1.86, -0.365714, 0, 0)
+[node name="Monster" type="CharacterBody3D" groups=["monster"]]
+transform = Transform3D(-4.37114e-08, 0, 1.21878, 0, 1.50454, 0, -1, 0, -5.32744e-08, 0, 0, 0)
+script = ExtResource("1_7jt3j")
+scene_name = "PantallaMuerte"
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_ksqiv")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_uwwdr")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190582, 1.29581, -0.290894)
-shape = SubResource("BoxShape3D_u7sjy")
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
 
-[node name="CRIATURA_FEA (3)" parent="CharacterBody3D/CollisionShape3D" instance=ExtResource("1_jjeco")]
-transform = Transform3D(0.38, 0, 0, 0, 0.38, 0, 0, 0, 0.38, -0.00199759, -1.2466, -0.11542)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_xwl6h")
 
-[node name="RayCast3D" type="RayCast3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.189968, 2.408, -0.0439205)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(6.87088e-08, 0, 0.753641, 0, 0.18983, 0, -0.523958, 0, 9.88282e-08, -0.0144342, 1.48202, -0.392824)
+material_override = ExtResource("2_6dp6x")
+mesh = SubResource("BoxMesh_4r0fr")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
 
-[node name="DetectionArea" type="Area3D" parent="CharacterBody3D"]
+[node name="JumpscareCamara" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, 1.14395e-07, 0, 0.664656, 0, -9.38607e-08, 0, -0.820496, 0.037648, 1.47352, -1.24082)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/DetectionArea"]
-transform = Transform3D(1, 0, 9.31323e-10, 0, 1, 0, -9.31323e-10, 0, 1, 0.199295, 1.31658, 2.3519)
-shape = SubResource("BoxShape3D_vkugw")
-
-[node name="JumpscareArea" type="Area3D" parent="CharacterBody3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/JumpscareArea"]
-transform = Transform3D(1, 0, 2.32831e-10, 0, 1, 0, -2.32831e-10, 0, 1, 0.197507, 0, -0.237581)
-shape = SubResource("CylinderShape3D_sx754")
-
-[connection signal="body_entered" from="CharacterBody3D/DetectionArea" to="CharacterBody3D" method="_on_detection_area_body_entered"]
-[connection signal="body_entered" from="CharacterBody3D/JumpscareArea" to="CharacterBody3D" method="_on_jumpscare_area_body_entered"]
-
-[editable path="CharacterBody3D/CollisionShape3D/CRIATURA_FEA (3)"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="on_navigation_agent_3d_velocity_computed"]
