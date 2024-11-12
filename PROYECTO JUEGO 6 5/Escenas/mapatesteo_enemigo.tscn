@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cwjqqalgcgubw" path="res://Escenas/colegio.tscn" id="2_6d6w3"]
 [ext_resource type="Material" uid="uid://p24jlfaq428" path="res://Assets/Material/PisoGeneral.tres" id="2_g0ceq"]
 [ext_resource type="PackedScene" uid="uid://bo4y10evdntlp" path="res://Escenas/Monster.tscn" id="3_lw1ct"]
-[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://Escenas/player.tscn" id="4_ccpsq"]
+[ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="4_ccpsq"]
 [ext_resource type="PackedScene" uid="uid://drkp5ftnrtf06" path="res://Escenas/UI.tscn" id="5_rw6n2"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_exrne"]
