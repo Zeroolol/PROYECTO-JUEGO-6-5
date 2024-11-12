@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://dtjviddtunp3j"]
+[gd_scene load_steps=58 format=4 uid="uid://dtjviddtunp3j"]
 
 [ext_resource type="AudioStream" uid="uid://g4bo48rtk5y5" path="res://Sonidos/Lluvia.mp3" id="1_6pqp4"]
 [ext_resource type="Script" path="res://Scripts/Phone.gd" id="1_bkcf4"]
@@ -37,9 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://crpfh16ooltk4" path="res://Escenas/keypad.tscn" id="37_qs72w"]
 [ext_resource type="PackedScene" uid="uid://bwuokaiirhyob" path="res://Escenas/llavelab0.tscn" id="39_g8c7n"]
 [ext_resource type="PackedScene" uid="uid://dn3uh0vv5ak5r" path="res://player (1).tscn" id="40_317um"]
-[ext_resource type="PackedScene" uid="uid://bo4y10evdntlp" path="res://Escenas/Monster.tscn" id="40_dsdt3"]
-[ext_resource type="Script" path="res://Scripts/AreaFinal.gd" id="40_km8ah"]
 [ext_resource type="PackedScene" uid="uid://d32ot2hh164g6" path="res://Escenas/PuertaLab0.tscn" id="40_njd7q"]
+[ext_resource type="AudioStream" uid="uid://bivudw5rfedq1" path="res://Sonidos/CaminarMonster.mp3" id="41_7t6cb"]
 [ext_resource type="PackedScene" uid="uid://c4a2nsd6cfgl3" path="res://Escenas/MonsterSA.tscn" id="41_rnsq3"]
 
 [sub_resource type="Environment" id="Environment_46p6g"]
@@ -178,9 +177,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k5yht")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_laftb"]
-size = Vector3(1, 5.15533, 5.35437)
 
 [sub_resource type="Animation" id="Animation_krvp5"]
 resource_name = "AnimacionFinal"
@@ -365,7 +361,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_3jcxe"]
 resource_name = "AnimacionMonsterSA"
-length = 3.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -373,7 +369,7 @@ tracks/0/path = NodePath("CRIATURA_FEA (3):position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 3.10418)]
@@ -527,59 +523,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9849, 0.905177, -58.6709)
 
 [node name="PatrolPointsParents" type="Node3D" parent="."]
 
-[node name="Marker3D" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.8855, 0.963341, 13.3503)
+[node name="destination" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99, 1, 15)
 
-[node name="Marker3D2" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98.1045, 0.963341, 17.9301)
+[node name="destination2" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 1, 15)
 
-[node name="Marker3D3" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -88.2393, 0.963341, 17.9301)
+[node name="destination3" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 1, -13)
 
-[node name="Marker3D4" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.3327, 0.963341, 13.8363)
+[node name="destination4" type="Marker3D" parent="PatrolPointsParents/destination3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -40)
 
-[node name="Marker3D5" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.5139, 0.963341, 17.7439)
-
-[node name="Marker3D6" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.6336, 0.963341, 17.7439)
-
-[node name="Marker3D7" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.6336, 0.963341, 11.6255)
-
-[node name="Marker3D8" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1534, 0.963341, 2.06691)
-
-[node name="Marker3D9" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1534, 0.963341, -8.76427)
-
-[node name="Marker3D10" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1534, 0.963341, -22.2404)
-
-[node name="Marker3D11" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1534, 0.963341, -38.749)
-
-[node name="Marker3D12" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1534, 0.963341, -54.27)
-
-[node name="Marker3D13" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.1534, 0.963341, -66.8356)
-
-[node name="Marker3D14" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.8547, 0.963341, -75.021)
-
-[node name="Marker3D15" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.8547, 0.963341, -89.9171)
-
-[node name="Marker3D16" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.8547, 0.963341, -96.796)
-
-[node name="Marker3D19" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(0.999999, -0.00171042, 0, 0.00171042, 0.999999, 0, 0, 0, 1, -67.4812, 0.963341, -105.289)
-
-[node name="Marker3D20" type="Marker3D" parent="PatrolPointsParents"]
-transform = Transform3D(0.999999, -0.00171042, 0, 0.00171042, 0.999999, 0, 0, 0, 1, -90.8671, 0.963341, -89.6869)
+[node name="destination5" type="Marker3D" parent="PatrolPointsParents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67, 2, -93)
 
 [node name="StaticBody3D" parent="." instance=ExtResource("16_anedx")]
 transform = Transform3D(0.114427, 0, 0, 0, 0.0968804, 0, 0, 0, 0.0680523, -75.2387, 1.8748, -96.8718)
@@ -853,25 +810,17 @@ transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, -103.722, 1.99239, 1
 [node name="Node3D2" parent="." instance=ExtResource("40_njd7q")]
 transform = Transform3D(-1.19209e-07, 0, 1, 0, 2.21943, 0, -1.80197, 0, -2.98023e-08, -70.7212, 0.376748, -97.8652)
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.832, 0, -90.781)
-script = ExtResource("40_km8ah")
+[node name="EscenaFinal" type="Node3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07767, -0.479675)
-shape = SubResource("BoxShape3D_laftb")
-
-[node name="Escena Final" type="Node3D" parent="."]
-
-[node name="Camera3D" type="Camera3D" parent="Escena Final"]
+[node name="Camera3D" type="Camera3D" parent="EscenaFinal"]
 transform = Transform3D(-3.61999e-06, 0, 1, 0, 1, 0, -1, 0, -3.61999e-06, -93.4851, 3.77028, -90.9648)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Escena Final"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EscenaFinal"]
 libraries = {
 "": SubResource("AnimationLibrary_h7h1m")
 }
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Escena Final"]
+[node name="OmniLight3D" type="OmniLight3D" parent="EscenaFinal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -114.481, 9, -108)
 light_color = Color(1, 0.819608, 0.180392, 1)
 light_energy = 16.0
@@ -879,7 +828,7 @@ light_size = 1.0
 omni_range = 36.361
 omni_attenuation = 1.183
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Escena Final"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="EscenaFinal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.275, 7.763, -91.452)
 light_energy = 16.0
 light_indirect_energy = 5.69
@@ -892,10 +841,7 @@ omni_attenuation = 9.989
 transform = Transform3D(-0.015114, 0, -0.999886, 0, 1.49601, 0, 0.999886, 0, -0.015114, -73.7089, 0.373243, -63.4554)
 
 [node name="MonsterSA" parent="." instance=ExtResource("41_rnsq3")]
-transform = Transform3D(4.545, 0, 0, 0, 4.545, 0, 0, 0, 4.545, -65.2917, 0.325348, -67.924)
-
-[node name="CRIATURA_FEA (3)" parent="MonsterSA" index="0"]
-transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+transform = Transform3D(4.545, 0, 0, 0, 4.545, 0, 0, 0, 4.545, -65.2917, 0.325348, -66.924)
 
 [node name="Skeleton3D" parent="MonsterSA/CRIATURA_FEA (3)/Armature" index="0"]
 bones/1/rotation = Quaternion(-0.175042, 6.86404e-17, 6.86404e-17, 0.984561)
@@ -908,7 +854,6 @@ bones/12/rotation = Quaternion(-0.21003, 0.0577587, -0.162343, 0.962391)
 bones/14/rotation = Quaternion(-0.101537, 0.18238, 0.558597, 0.802743)
 bones/15/rotation = Quaternion(0.346345, 0.0224226, 0.0697809, 0.93524)
 bones/16/rotation = Quaternion(0.00711236, 0.000497392, -0.0244513, 0.999676)
-bones/18/rotation = Quaternion(-0.21003, -0.0577587, 0.162343, 0.962391)
 bones/19/rotation = Quaternion(-0.163339, 0.0506916, 0.983724, -0.0551242)
 bones/20/rotation = Quaternion(-0.388864, -0.0851176, -0.139099, 0.906748)
 bones/21/rotation = Quaternion(0.507391, -0.0202441, 0.0878847, 0.856983)
@@ -923,8 +868,8 @@ libraries = {
 "": SubResource("AnimationLibrary_2q7xq")
 }
 
-[node name="Monster" parent="." instance=ExtResource("40_dsdt3")]
-transform = Transform3D(-4.37114e-08, 0, 1.21878, 0, 1.50454, 0, -1, 0, -5.32744e-08, -66.2917, 0.54103, -90.924)
+[node name="MonsterFootsteps" type="AudioStreamPlayer3D" parent="MonsterSA"]
+stream = ExtResource("41_7t6cb")
 
 [editable path="Llave"]
 [editable path="Crowbar"]
