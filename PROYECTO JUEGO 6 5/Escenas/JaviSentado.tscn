@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://7nwh5fbsnbaj"]
+
+[ext_resource type="PackedScene" uid="uid://b8wh2adhgaino" path="res://Modelos/ModelosPersonajes/Javier Sentado.glb" id="1_4uonc"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Javier Sentado" parent="." instance=ExtResource("1_4uonc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09872, 0, -1.14714)
+
+[node name="Skeleton3D" parent="Javier Sentado/Armature" index="0"]
+bones/0/position = Vector3(-0.000412941, 0.0585041, -1.5015)
+bones/0/rotation = Quaternion(-0.762992, 0.0082389, 0.0215162, 0.645997)
+bones/1/rotation = Quaternion(0.157543, -0.00768485, -0.0363937, 0.986811)
+bones/2/rotation = Quaternion(0.0197305, -0.000646656, -0.00336063, 0.999799)
+bones/3/rotation = Quaternion(0.0197325, -0.000682214, -0.00340643, 0.999799)
+bones/4/rotation = Quaternion(0.0303835, 0.00441497, -2.09201e-05, 0.999529)
+bones/5/rotation = Quaternion(-0.148101, 0.030818, 0.0271122, 0.98812)
+bones/7/rotation = Quaternion(-0.647578, -0.3634, 0.50449, -0.440538)
+bones/8/rotation = Quaternion(0.34689, -0.0561203, 0.183603, 0.918046)
+bones/9/rotation = Quaternion(0.024838, -4.89787e-06, 0.477498, 0.878282)
+bones/10/rotation = Quaternion(-0.142309, 0.445191, 0.0300685, 0.883543)
+bones/11/rotation = Quaternion(0.101327, 0.112879, 0.271634, 0.950372)
+bones/12/rotation = Quaternion(0.195544, -0.000398672, -0.110146, 0.97449)
+bones/13/rotation = Quaternion(-0.00751689, 0.0467846, 0.0559869, 0.997306)
+bones/15/rotation = Quaternion(0.450379, -0.0208733, 0.174286, 0.875413)
+bones/16/rotation = Quaternion(0.268066, 0.00270937, 0.0202996, 0.963183)
+bones/17/rotation = Quaternion(0.10732, 0.00817331, 0.116542, 0.987337)
+bones/19/rotation = Quaternion(0.68328, -0.325309, 0.496559, 0.425125)
+bones/20/rotation = Quaternion(0.290707, 0.053323, -0.305011, 0.905326)
+bones/21/rotation = Quaternion(0.0136714, 1.97338e-05, -0.322385, 0.94651)
+bones/22/rotation = Quaternion(-0.0187568, -0.455167, -0.0745946, 0.887078)
+bones/23/rotation = Quaternion(-0.0299714, -0.112129, -0.234013, 0.965281)
+bones/24/rotation = Quaternion(0.288102, -0.0687375, 0.0342913, 0.954514)
+bones/25/rotation = Quaternion(0.109542, 0.132139, -0.0550975, 0.983618)
+bones/27/rotation = Quaternion(0.405047, 0.0201263, -0.185308, 0.895094)
+bones/28/rotation = Quaternion(0.283073, -0.00300038, -0.029, 0.958655)
+bones/29/rotation = Quaternion(0.144943, -0.0124989, -0.153982, 0.977305)
+bones/31/rotation = Quaternion(0.0757247, 0.638979, 0.761582, -0.0772311)
+bones/32/rotation = Quaternion(-0.703501, 0.0221768, -0.0776715, 0.706089)
+bones/33/rotation = Quaternion(0.465259, 0.029257, 0.0643894, 0.882345)
+bones/34/rotation = Quaternion(0.294545, -0.0559469, 0.0172766, 0.953842)
+bones/36/rotation = Quaternion(-0.0440283, 0.653354, 0.754309, 0.0469804)
+bones/37/rotation = Quaternion(-0.723832, 0.0684623, -0.0585158, 0.684073)
+bones/38/rotation = Quaternion(0.492406, -0.0169738, -0.0767911, 0.866805)
+bones/39/rotation = Quaternion(0.291331, 0.0567097, -0.0172526, 0.954784)
+
+[editable path="Javier Sentado"]

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkbrmc6c2w6jv"
-path.s3tc="res://.godot/imported/Cara1.png-6d8443680de68e66abfbcec5935898b5.s3tc.ctex"
+uid="uid://cscmmyai5pq6q"
+path.s3tc="res://.godot/imported/Javier Sentado_Cara1.png-97db432b1d06026632327c02207723db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "59189ea77e2250ce0ec56e0b297b0b9d"
+}
 
 [deps]
 
-source_file="res://Textures/TexturaPersonajes/Cara1.png"
-dest_files=["res://.godot/imported/Cara1.png-6d8443680de68e66abfbcec5935898b5.s3tc.ctex"]
+source_file="res://Modelos/ModelosPersonajes/Javier Sentado_Cara1.png"
+dest_files=["res://.godot/imported/Javier Sentado_Cara1.png-97db432b1d06026632327c02207723db.s3tc.ctex"]
 
 [params]
 

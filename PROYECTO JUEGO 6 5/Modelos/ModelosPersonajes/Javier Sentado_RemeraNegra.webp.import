@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkbrmc6c2w6jv"
-path.s3tc="res://.godot/imported/Cara1.png-6d8443680de68e66abfbcec5935898b5.s3tc.ctex"
+uid="uid://ditpccwsibvwn"
+path.s3tc="res://.godot/imported/Javier Sentado_RemeraNegra.webp-618e9e5b41d1dc2a008e7fdea10b01d2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "090f143e4e7ffd71be1c80529870bf1a"
+}
 
 [deps]
 
-source_file="res://Textures/TexturaPersonajes/Cara1.png"
-dest_files=["res://.godot/imported/Cara1.png-6d8443680de68e66abfbcec5935898b5.s3tc.ctex"]
+source_file="res://Modelos/ModelosPersonajes/Javier Sentado_RemeraNegra.webp"
+dest_files=["res://.godot/imported/Javier Sentado_RemeraNegra.webp-618e9e5b41d1dc2a008e7fdea10b01d2.s3tc.ctex"]
 
 [params]
 
